@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Sign In</title>
+		<script src="js/webjars/jquery.js"></script>
+		<script src="js/webjars/md5.js"></script>
+		<script src="js/commonRest.js"></script>
+		<script src="js/users/user.js"></script>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th>Please Sign In</th>
+			</tr>			
+			<tr>
+				<td><input type="email" id="inputEmail" placeholder="Email address" required="required"  autofocus="autofocus"></td>
+			</tr>
+			<tr>
+				<td><input type="password" id="inputPassword" placeholder="Password" required="required"></td>
+			</tr>
+			<tr>
+				<td><button id="signin" onclick="signIn()">Sign in</button></td>
+			</tr>
+			<tr>
+				<td><div id="resultDiv" style="color:red;"></div></td>
+			</tr>
+		</table>
+	</body>
+</html>

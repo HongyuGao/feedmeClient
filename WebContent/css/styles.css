@@ -1,0 +1,172 @@
+/*
+A custom Bootstrap 3.1 theme from http://bootply.com\
+
+This CSS code should follow the 'bootstrap.css'
+in your HTML file.
+
+license: MIT
+author: bootply.com
+*/
+
+html,body{
+  	height:100%;
+}
+
+body{
+  	padding-top:50px; /*padding for navbar*/
+}
+a{
+  color: inherit;
+}
+
+.navbar-custom .icon-bar {
+	background-color:#fff;
+}
+
+.navbar-custom {
+	background-color: #ac3326;
+  color:#fff;
+}
+
+.navbar-custom li>a:hover, .navbar-custom li>a:focus {
+	background-color:#c0392b;
+}
+.container{
+  padding-left: 115px;
+  padding-top: 10px;
+  min-width: 900px;
+  max-width: 1080px
+}
+.navbar-custom a{
+    color:#fefefe;
+}
+
+.navbar-custom .form-control:focus {
+	border-color: #49bfff;
+	outline: 0;
+	-webkit-box-shadow: inset 0 0 0;
+	box-shadow: inset 0 0 0;
+}
+.dropdown-menu li a:hover{
+  background-color: #c0392b;
+  color: #FFF;
+}
+
+#filter {
+  padding-top:12px;
+}
+#shops{
+  min-height: 600px;
+}
+.row{
+  padding-top: 10px;
+  border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 10px;
+}
+.shop_info{
+  float:left;
+}
+.shop{
+  float:left;
+  margin: 0px;
+}
+.shop_info{
+  font-size: 14px;
+  color: #4C4C4C;
+  padding-left: 8px;
+  padding-right: 2px;
+}
+
+.shop_info .address{
+  display: none;
+}
+.shop_info .minimal_spend, .shop_info .deliver_fee{
+  padding-top: 4px;
+}
+.shop.li{
+
+}
+.shop_name{
+  font-size: 18px;
+  font-style: bold;
+
+}
+.shop_img{
+  padding: 2px;
+}
+.open_time{
+  padding:4px;
+  font-size: 10px;
+  color: #4C4C4C;
+}
+.open_time li{
+  margin-left: 4px;
+}
+.pay_method{
+  padding-top: 8px;
+}
+.shop:hover{
+  background-color: #F1F1F1;
+}
+.total_sale{
+  padding-top:3px;
+}
+
+
+#dishes{
+
+}
+.dish_detail{
+  padding-top: 10px;
+}
+.dish_detail:hover{
+    background-color: #F1F1F1;
+}
+.show_dish_detail{
+  text-decoration: underline;
+  font-size: 10px;
+  color: #A8AEB8;
+}
+.show_dish_detail:hover{
+  color: #B2D6E2;
+  cursor: pointer;
+}
+.dish_name{
+  font-size: 18px;
+  font-size: bold;
+}
+.ingredient{
+  font-size: 14px;
+}
+.ingredient a{
+  font-size: 12px;
+  font-style: italic;
+}
+
+.dish_desc{
+  font-size: 12px;
+  padding-top: 4px;
+  display: none;
+  color: #5d5d5d;
+}
+.add_cart{
+  padding: 4px;
+  padding-bottom: 20px;
+}
+
+#map-canvas {
+	width:33.3333%;
+    height:calc(100% - 0);
+    position:absolute;
+    right:16px;
+    top:50px;
+    bottom:0;
+    overflow:hidden;
+}
+
+#foot{
+  height: 100px;
+  background-color: #ac3326;
+  color:#fff;
+  clear: both;
+}

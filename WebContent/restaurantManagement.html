@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Restaurants Management</title>
+		<style type="text/css">
+			body{text-align:center}
+			.page{margin:0 auto; width:1200px;height:800px; border:1px solid #ccc;}
+			.header{height:4%;border-bottom:1px solid #ccc;}
+			.MainContainer{height:96%; width:1200px;}
+			.firCol{float:left; height:100%; width:200px; border-right:1px solid #ccc;}
+			.secCol{float:left; height:100%; width:380px; border-right:1px solid #ccc;}
+			.thiCol{float:left; height:100%; width:615px;}
+			.firRow{height:40%; width:100%; border-bottom:1px solid #ccc;}
+			.secRow{height:60%; width:100%;}
+		</style>
+		<script src="js/webjars/jquery.js"></script>
+		<script src="js/commonRest.js"></script>
+		<script src="js/restaurant/restaurantMng.js"></script>
+	</head>
+	<body>
+		<div class="page">		
+        	<div class="header">
+            	<div id="title">Restaurant Management</div>
+       		</div>
+        	<div class="MainContainer">
+            	<div class="firCol">
+            		<label>Restaurant List</label>
+            		<div id="resultDiv1" style="color:red;"></div>
+            		<ul id="rsrList" style="padding-left:0; list-style-type:none"></ul>
+            	</div>
+            	<div class="secCol" >
+            		<div class="firRow" id="rsrInfo" align="center">
+            			<label>General Information</label><br/>
+            			<div id="resultDiv2" style="color:read"></div>
+            			<table style="border:1px solid #ccc">
+            				<tr>
+            					<td>logo:</td>
+            					<td ><img src="" alt="logo" id="logo" style="width:120px; height:60px"/></td>
+            					<td><button id="logoE" onclick="">Edit</button></td>
+            				</tr>
+            				<tr>
+            					<td>name:</td>
+            					<td><input id="name" readonly="readonly" onblur="closeEdit()"/></td>
+            					<td><button id="nameE" name="name" onclick="editRestaurant(this)">Edit</button></td>
+            				</tr>
+            				<tr>
+            					<td>type:</td>
+            					<td><input id="type" readonly="readonly" onblur="closeEdit()"/></td>
+            					<td><button id="typeE" name="type" onclick="editRestaurant(this)">Edit</button></td>
+            				</tr>
+            				<tr>
+            					<td>phone:</td>
+            					<td><input id="phone" readonly="readonly" onblur="closeEdit()"/></td>
+            					<td><button id="phoneE" name="phone" onclick="editRestaurant(this)">Edit</button></td>
+            				</tr>
+            				<tr>
+            					<td>email:</td>
+            					<td><input id="email" readonly="readonly" onblur="closeEdit()"/></td>
+            					<td><button id="emailE" name="email" onclick="editRestaurant(this)">Edit</button></td>
+            				</tr>
+            				<tr>
+            					<td>description:</td>
+            					<td></td>
+            					<td><button id="descriptionE" name="description" onclick="editRestaurant(this)">Edit</button></td>
+            				</tr>
+            				<tr>
+            					<td colspan="3"><textarea id="description" rows="3" cols="50" readonly="readonly" onblur="closeEdit()"></textarea></td>
+            				</tr>
+            				<tr>
+            					<td colspan="3"><button id="apply" onclick="updateRestaurant()">Apply</button></td>
+            				</tr>
+            			</table>
+            		</div>
+            		<div class="secRow" id="newDish" align="center">
+            			<label>Add A New Dish</label><br/>
+            			<div id="resultDiv3" style="color:red"></div>
+            			<table style="border:1px solid #ccc">
+            				<tr>
+            					<td>photo:</td>
+            					<td><img src="" alt="photo" id="dPhoto" style="width:120px; height:60px"/></td>
+            				</tr>
+            				<tr>
+            					<td>name:</td>
+            					<td><input id="dName"/></td>
+            				</tr>
+            				<tr>
+            					<td>type:</td>
+            					<td>
+            						<select id="dType">
+            							<option>Soup</option>
+            							<option>Dessert</option>
+            							<option>Staple</option>
+            							<option>Drinks</option>
+            							<option>Others</option>
+            						</select>
+            					</td>
+            				</tr>
+            				<tr>
+            					<td>price:</td>
+            					<td><input id="dPrice"/></td>
+            				</tr>
+            				<tr>
+            					<td>discount:</td>
+            					<td><input id="dDiscount"/></td>
+            				</tr>
+            				<tr>
+            					<td>ingredient:</td>
+            					<td><input id="dIngredient"/></td>
+            				</tr>
+            				<tr>
+            					<td>description:</td>
+            					<td><input id="dDescription"/></td>
+            				</tr>
+            				<tr>
+            					<td><button onclick="addDish()">Add</button></td>
+            					<td><button onclick="clean()">Clean</button></td>
+            				</tr>
+            			</table>           		
+            		</div>   
+            	</div> 
+            	<div class="thiCol" style="border: 1px solid red;">
+            		<label>Dishes</label>
+            		<div id="resultDiv4" style="color:red;"></div>
+            		<div>Soup</div>
+            		<div id="Soup"></div>
+            		<div>Dessert</div>
+            		<div id="Dessert"></div>
+            		<div>Staple</div>
+            		<div id="Staple"></div>
+            		<div>Drink</div>
+       				<div id="Drinks"></div>
+       				<div>Others</div>
+            		<div id="Others"></div>
+            	</div>       
+        	</div>            	    	
+    	</div>   	
+    	<script>
+    		jQuery(document).ready(function () {
+    			loadRestaurants();
+        	});
+		</script>
+	</body>
+</html>
+
+
+
+
