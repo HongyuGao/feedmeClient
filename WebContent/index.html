@@ -222,7 +222,6 @@
 			restGet(TEXT_HOST+'/dishes/query/?shopId=2',GET_METHOD, function(data){
 				$.each(data, function(i, dish){
 					dishAppend(dish);
-					// $('#shops').append('DDDDD:'+restaurant.name);
 				});
 
 			}, '#info')
