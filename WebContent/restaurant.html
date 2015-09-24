@@ -1,0 +1,246 @@
+<!-- page for restaurants -->
+<!-- 
+contents:
+	(1) Name of the restaurant;
+	(2) Phone;
+	(3) Address;
+	(4) Dish Menu (sidebar);
+-->
+	
+
+<!DOCTYPE html>
+
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link href="css/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="css/left_menu.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
+		<title>Feed Me - Gloden Drum</title>
+		<style type="text/css">object,embed{-webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;-ms-animation-duration:.001s;-ms-animation-name:playerInserted;-o-animation-duration:.001s;-o-animation-name:playerInserted;animation-duration:.001s;animation-name:playerInserted;}@-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style>
+	</head>
+
+	<body>
+		<!-- Left transition menu to filter content-->
+		<nav>
+		  	<ul class="list-unstyled main-menu">
+			    <!--Include your navigation here-->
+			    <a href="#" id="nav-close"><li class="text-right">Filter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-times"></i> &nbsp;</li></a>
+
+				<a href="#"><li> Restaurant Info <span class="icon"></span> </li></a>
+				
+				<hr>
+				
+				<a href="#">
+					<li class="sub-nav" >
+						<i class="forder" data-status="open"> Dish Menu
+							<i class="fa fa-angle-down"></i>
+						</i>
+
+
+						<!-- TODO: dynamically insert dishes' types using jQuery -->
+						<ul id="dishTypeList" class="list-unstyled" data-index="0" style="display:block" >
+					    	
+					    	<a href="#"><li class="sub-sub-nav" data-type="Drink" data-status="open"> Drink <span class="icon"></span></li></a>
+
+					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open"> Drinks <span class="icon"></span></li></a>
+
+					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open"> Others <span class="icon"></span></li></a>
+							
+						</ul>
+
+					</li>
+				</a>
+
+		  	</ul>
+		</nav>
+		<!-- End Left transition menu to filter content-->
+
+		<!-- Navbar on head of page-->
+		<div class="navbar navbar-custom navbar-fixed-top">
+				<div class="navbar-header ">
+				<!-- <a class="navbar-brand nav-expander glyphicon glyphicon-list" href="#">  &nbsp;</a> -->
+				<span class="navbar-brand">
+					Brand
+				</span>
+			</div>
+				<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<!-- <li class="active"><a href="#">&nbsp; &nbsp; &nbsp;</a></li> -->
+						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="login.html">Login</a></li>
+						<li><a href="#">Contact</a></li>
+						<li>&nbsp;</li>
+					</ul>
+					<form class="navbar-form">
+						<div class="form-group" style="display:inline;">
+							<div class="input-group">
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										Category <span class="caret"></span></button>
+									<ul class="dropdown-menu">
+										<li><a href="#">China</a></li>
+										<li><a href="#">India</a></li>
+										<li><a href="#">Korea</a></li>
+										<li><a href="#">Singapore</a></li>
+										<li><a href="#">Australia</a></li>
+									</ul>
+								</div>
+								<input type="text" class="form-control" placeholder="Search resturants and foods here">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">Search</button>
+								</span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- End Navbar on head of page-->
+
+		<div class="float_left">
+			<a id="nav-expander">
+				 <i class="fa fa-bars fa-lg white"></i>
+			</a>
+		</div>
+
+		
+	<!-- begin container -->
+	<div class="container">
+
+		<div class="container-fluid" id="dishes">
+			<!-- relevant content will be inserted here after js files are executed -->	
+		</div>
+
+	</div>
+	<!-- End Container-->
+
+	<div id="restaurantInfo" style="text-align: center">
+		<!-- relevant content will be inserted here after js files are executed -->	
+	</div>
+
+
+	<div id="info">
+
+	</div>
+
+<!-- script references -->
+<script src="js/webjars/jquery.min.js"></script>
+<script src="js/webjars/bootstrap.min.js"></script>
+<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
+<script src="js/commonRest.js"></script>
+<script src="js/commonPath.js"></script>
+<script src="js/restaurant.js"></script>
+<script>
+	//window.restaurantsType = {};
+
+	window.dishesType = {};
+
+	// global restaurant id used for this page:
+	var restaurantId = "";
+
+	$(document).ready(function(){
+
+	   	// Navigation Menu Slider
+	    $('#nav-expander').on('click',function(e){
+	  		e.preventDefault();
+	  		$('body').removeClass('nav-expanded');
+	  	});
+
+	  	$('#nav-close').on('click',function(e){
+	  		e.preventDefault();
+	  		$('body').toggleClass('nav-expanded');
+	  	});
+
+    });
+
+	$(document).ready(function(){
+
+		$('.forder').on('click', function(){
+			var status = $(this).data('status');
+			if(status==='open'){
+				$(this).data('status','close');
+			//console.log($(this).parent().parent().find("ul"));
+				$(this).parent().parent().find("ul").slideUp();
+			}else if(status==='close'){
+				$(this).data('status','open');
+				// console.log(this);
+				$(this).parent().parent().find("ul").slideDown();
+			}
+		});
+
+		$('.show_dish_detail').on('click', function(){
+			var status = $(this).data('status');
+			if(status==='close'){
+				$(this).data('status','open');
+				//console.log($(this).parent().parent().find(".dish_desc"));
+				$(this).parent().parent().find(".dish_desc").slideDown();
+				$(this).html("Hidden");
+			}else if(status==='open'){
+				$(this).data('status','close');
+				// console.log(this);
+				$(this).parent().parent().find(".dish_desc").slideUp();
+				$(this).html("Show More");
+			}
+		});
+
+	});
+
+
+	// Get restaurant information:
+	$(window).load(function(){
+			restGet(TEXT_HOST+'/restaurants/allRestaurant',GET_METHOD, function(data){
+				$.each(data, function(i, restaurant){
+					if(restaurant.id == "2"){
+						setRestaurantInfo(restaurant);
+					}
+				});
+
+			}, '#info');
+	});
+
+	// Append dishes after loading the whole page:
+	$(window).load(function(){
+		restGet(TEXT_HOST+'/dishes/query/?shopId=2',GET_METHOD, function(data){
+			$.each(data, function(i, dish){
+				if(i == "dishes") {
+					var dishes = data.dishes;
+					for(var i = 0; i < dishes.length; i++) {
+						dishAppend(dishes[i]);
+						//dishTypeAppend(dishes[i].type, dishes[i].id);
+
+						if(dishes[i].type != null || dishes[i].type != ''){
+							window.dishesType[dishes[i].type] = dishes[i].type;
+						}
+					}
+				}
+			});
+		}, '#info');
+	});
+
+
+	// TODO!
+	// dishes fillter by click left menu
+	$(window).load(function(){
+		$(".sub-sub-nav").on('click', function(){
+			// get the current selected food type:
+			var current_type = $(this).data("type");
+			// alert("current type: "+current_type);
+
+			// apply filter and update the content inside the
+			// display area:
+			update(current_type);
+		});
+	});
+
+</script>
+
+
+
+	</body>
+
+</html>

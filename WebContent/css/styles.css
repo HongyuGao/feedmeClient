@@ -115,7 +115,7 @@ a{
 
 
 #dishes{
-
+  min-height: 600px;
 }
 .dish_detail{
   padding-top: 10px;
