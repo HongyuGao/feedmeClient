@@ -92,13 +92,20 @@ function dishTypeAppend(type, id) {
 
 
 function setRestaurantInfo(restaurant) {
+    // $("#restaurantInfo").append(
+    //     "<p style='text-align: bottom'>" +
+    //     restaurant.name + "<br>" +
+    //     "Phone: " + restaurant.phone + "<br>" +
+    //     "Address: " + "..." +
+    //     "</p>"
+    // );
+
     $("#restaurantInfo").append(
-        "<p style='text-align: bottom'>" +
-        restaurant.name + "<br>" +
-        "Phone: " + restaurant.phone + "<br>" +
-        "Address: " + "..." +
-        "</p>"
+        "<li" + ' style="text-align: left" ' + "> " + "Name: " + restaurant.name + "</li>" + "<br>" +
+        "<li" + ' style="text-align: left" ' + "> " + "Phone: " + restaurant.phone + "</li>" + "<br>"
     );
+
+
 }
 
 function setCurrentDishType(type) {
