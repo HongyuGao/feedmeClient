@@ -11,10 +11,12 @@
 			.firCol{float:left; height:100%; width:200px; border-right:1px solid #ccc;}
 			.secCol{float:left; height:100%; width:380px; border-right:1px solid #ccc;}
 			.thiCol{float:left; height:100%; width:615px;}
-			.firRow{height:40%; width:100%; border-bottom:1px solid #ccc;}
-			.secRow{height:60%; width:100%;}
+			.firRow{height:50%; width:100%; border-bottom:1px solid #ccc;}
+			.secRow{height:50%; width:100%;}
 		</style>
 		<script src="js/webjars/jquery.js"></script>
+		<script src="js/commonPath.js"></script>
+		<script src="js/ajaxfileUpload.js"></script>
 		<script src="js/commonRest.js"></script>
 		<script src="js/restaurant/restaurantMng.js"></script>
 	</head>
@@ -35,32 +37,47 @@
             			<div id="resultDiv2" style="color:read"></div>
             			<table style="border:1px solid #ccc">
             				<tr>
-            					<td>logo:</td>
-            					<td ><img src="" alt="logo" id="logo" style="width:120px; height:60px"/></td>
-            					<td><button id="logoE" onclick="">Edit</button></td>
+            					<td>Logo:</td>
+            					<td colspan='2'><img src="" alt="logo" id="logo" style="width:130px; height:60px"/></td>
             				</tr>
             				<tr>
-            					<td>name:</td>
+            					<td></td>
+            					<td colspan='2'><input type="file"  disabled="disabled"  id="apkFile" name="apkFile" onchange="PreviewImage(this)"/></td>
+            				</tr>
+            				<tr>
+            					<td>Name:</td>
             					<td><input id="name" readonly="readonly" onblur="closeEdit()"/></td>
             					<td><button id="nameE" name="name" onclick="editRestaurant(this)">Edit</button></td>
             				</tr>
             				<tr>
-            					<td>type:</td>
+            					<td>Type:</td>
             					<td><input id="type" readonly="readonly" onblur="closeEdit()"/></td>
             					<td><button id="typeE" name="type" onclick="editRestaurant(this)">Edit</button></td>
             				</tr>
             				<tr>
-            					<td>phone:</td>
+            					<td>Phone:</td>
             					<td><input id="phone" readonly="readonly" onblur="closeEdit()"/></td>
             					<td><button id="phoneE" name="phone" onclick="editRestaurant(this)">Edit</button></td>
             				</tr>
             				<tr>
-            					<td>email:</td>
+            					<td>Email:</td>
             					<td><input id="email" readonly="readonly" onblur="closeEdit()"/></td>
             					<td><button id="emailE" name="email" onclick="editRestaurant(this)">Edit</button></td>
             				</tr>
             				<tr>
-            					<td>description:</td>
+            					<td>Open AM:</td>
+            					<td><input id="om" readonly="readonly" onblur="closeEdit()"/></td>
+            					<td><button id="omE" name="om" onclick="editRestaurant(this)">Edit</button></td>
+            					<td></td>
+            				</tr>
+            				<tr>
+            					<td>Open PM:</td>
+            					<td><input id="oa" readonly="readonly" onblur="closeEdit()"/></td>
+            					<td><button id="oaE" name="om" onclick="editRestaurant(this)">Edit</button></td>
+            					<td></td>
+            				</tr>
+            				<tr>
+            					<td>Description:</td>
             					<td></td>
             					<td><button id="descriptionE" name="description" onclick="editRestaurant(this)">Edit</button></td>
             				</tr>
@@ -68,7 +85,8 @@
             					<td colspan="3"><textarea id="description" rows="3" cols="50" readonly="readonly" onblur="closeEdit()"></textarea></td>
             				</tr>
             				<tr>
-            					<td colspan="3"><button id="apply" onclick="updateRestaurant()">Apply</button></td>
+            					<td colspan='2'><div id="CR" style="color:red"></div></td>
+            					<td><button id="apply" onclick="updateRestaurant()">Apply</button></td>
             				</tr>
             			</table>
             		</div>
@@ -77,15 +95,18 @@
             			<div id="resultDiv3" style="color:red"></div>
             			<table style="border:1px solid #ccc">
             				<tr>
-            					<td>photo:</td>
+            					<td>Photo:</td>
             					<td><img src="" alt="photo" id="dPhoto" style="width:120px; height:60px"/></td>
             				</tr>
             				<tr>
-            					<td>name:</td>
+            					<td colspan='2'><input type="file"  disabled="disabled"  id="phFile" name="phFile" onchange="PreviewImage(this)"/></td>
+            				</tr>
+            				<tr>
+            					<td>Name:</td>
             					<td><input id="dName"/></td>
             				</tr>
             				<tr>
-            					<td>type:</td>
+            					<td>Type:</td>
             					<td>
             						<select id="dType">
             							<option>Soup</option>
@@ -97,19 +118,23 @@
             					</td>
             				</tr>
             				<tr>
-            					<td>price:</td>
+            					<td>Price:</td>
             					<td><input id="dPrice"/></td>
             				</tr>
             				<tr>
-            					<td>discount:</td>
+            					<td>Discount:</td>
             					<td><input id="dDiscount"/></td>
             				</tr>
             				<tr>
-            					<td>ingredient:</td>
+            					<td>Flavor</td>
+            					<td><input id="dFlavor"/></td>
+            				</tr>
+            				<tr>
+            					<td>Ingredient:</td>
             					<td><input id="dIngredient"/></td>
             				</tr>
             				<tr>
-            					<td>description:</td>
+            					<td>Description:</td>
             					<td><input id="dDescription"/></td>
             				</tr>
             				<tr>
@@ -119,18 +144,18 @@
             			</table>           		
             		</div>   
             	</div> 
-            	<div class="thiCol" style="border: 1px solid red;">
+            	<div id="dPanel" class="thiCol" style="border: 1px solid red; text-align: left;">
             		<label>Dishes</label>
             		<div id="resultDiv4" style="color:red;"></div>
-            		<div>Soup</div>
+            		<div><h5 onclick="dishPanel(this)">Soup</h5></div>
             		<div id="Soup"></div>
-            		<div>Dessert</div>
+            		<div><h5 onclick="dishPanel(this)">Dessert</h5></div>
             		<div id="Dessert"></div>
-            		<div>Staple</div>
+            		<div><h5 onclick="dishPanel(this)">Staple</h5></div>
             		<div id="Staple"></div>
-            		<div>Drink</div>
+            		<div><h5 onclick="dishPanel(this)">Drink</h5></div>
        				<div id="Drinks"></div>
-       				<div>Others</div>
+       				<div><h5 onclick="dishPanel(this)">Others</h5></div>
             		<div id="Others"></div>
             	</div>       
         	</div>            	    	
@@ -139,6 +164,11 @@
     		jQuery(document).ready(function () {
     			loadRestaurants();
         	});
+    		
+    		function dishPanel(par){
+				console.log("Enter dishPanel: "+par);
+    			     jQuery(par).next("div").toggle();
+			}
 		</script>
 	</body>
 </html>

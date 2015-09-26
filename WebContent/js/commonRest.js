@@ -3,10 +3,6 @@
  */
 var storage = window.sessionStorage;
 
-var USER_PATH = "/users";
-var DEVICE_PATH = "/devices";
-var SIGNIN_PATH = "/users/signin";
-
 const NO_RESULT = "There's no result from the server";
 
 const GET_METHOD = 'GET';
@@ -51,7 +47,23 @@ function rest(restUrl, httpMethod, entity, contentType, dataType, callback, resu
     request.fail(function (textStatus, errorThrown) {
         resultLine.html(errorThrown + " status=" + textStatus.status + " text=" + textStatus.statusText);
     });
-   // resultLine.append(" DONE!");
+}
+
+function ajaxFileUpload(urlPath, putData, fileId) {
+	 $.ajaxFileUpload({
+		 url: urlPath, 
+		 secureuri: false, 
+		 fileElementId: fileId,
+		 data: putData,
+		 dataType: 'text', 
+		 success: function (data, status){  
+			 			console.log("Yes!!!!!!");
+			 			console.log(data);
+                     },
+       error: function (data, status, e){
+       		  alert(e);}
+   })
+   return false;
 }
 
 function checkSignIn() {
@@ -62,15 +74,4 @@ function checkSignIn() {
         var user = storage.getItem("userName");
         jQuery('#topDiv').html("Welcome " + user);
     }
-}
-
-function getValue(query, key) {
-    var vars = query.split("&");
-    for (var i = 0; i < vars.length; i++) {
-        var parts = vars[i].split("=");
-        if (parts[0] == key) {
-            return parts[1];
-        }
-    }
-    return null;
 }
