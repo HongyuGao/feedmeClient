@@ -4,14 +4,13 @@
  *
  */
 
-/*  modifications by Jun Chen on 9/22/2015:
-    (1) add page-redirection: restaurant.html in function shopAppend(restaurant);
-    (2) add function dishTypeAppend(type);
-*/
+var order = {};
+var total_price = 0;
 
-var current_dish_type;
-
-
+/**
+ * Append restaurant's information into the page.
+ * @param restaurant: a restaurant object.
+ */
 function shopAppend(restaurant) {
   $('#shops').append(
     "<a href='restaurant.html'>" + "<div class='shop col-xs-4 " + restaurant.country + " " +
@@ -39,6 +38,10 @@ function shopAppend(restaurant) {
 }
 
 
+/**
+ * Append dish's information into the page.
+ * @param dish: a dish object.
+ */
 function dishAppend(dish) {
     $("#dishes").append(
         "<div class='col-xs-3 dish_detail' id='dish_id1'>" +
@@ -63,8 +66,11 @@ function dishAppend(dish) {
         "</div>" +
         "<div class='add_cart'>" +
         "<a href='#' class='btn btn-default btn-sm pull-left disabled' role='button'>" +
+
         "<i>65</li> Saled</a>" +
-        "<a href='#' class='btn btn-success btn-sm pull-right' role='button'>" +
+        // "<a href='#' class='btn btn-success btn-sm pull-right' role='button'>" +
+        "<a href='#' class='btn btn-success btn-sm pull-right' role='button'" +
+        " id=" + dish.id +  " onclick='addToCart(" + '"' + dish.name.trim() + '"' + ", " + dish.price + ")'>"  +
         "<i class='fa fa-cart-plus'>&nbsp;</i>" +
         "<i class='fa fa-usd'></i>" + dish.price + "</a>" +
         "</div>" +
@@ -76,8 +82,7 @@ function dishAppend(dish) {
 
 /**
  * Get and append all types of dishes to the left sub-nav bar one by one.
- * @param type: one type of dishes
- * @author Jun Chen
+ * @param type: one type of dishes.
  */
 function dishTypeAppend(type, id) {
     $("#dishTypeList").append(
@@ -91,47 +96,64 @@ function dishTypeAppend(type, id) {
 }
 
 
+/**
+ * Insert the information of current restaurant into the page.
+ * @param restaurant: the current restaurant.
+ */
 function setRestaurantInfo(restaurant) {
-    // $("#restaurantInfo").append(
-    //     "<p style='text-align: bottom'>" +
-    //     restaurant.name + "<br>" +
-    //     "Phone: " + restaurant.phone + "<br>" +
-    //     "Address: " + "..." +
-    //     "</p>"
-    // );
+    /** add the logo of the restaurant */
+    $("#res_photo").append(
+        "<img src='" + PICTURE_HOST + "/img/logo/" + restaurant.logo + ">"
+    );
 
     $("#restaurantInfo").append(
         "<li" + ' style="text-align: left" ' + "> " + "Name: " + restaurant.name + "</li>" + "<br>" +
         "<li" + ' style="text-align: left" ' + "> " + "Phone: " + restaurant.phone + "</li>" + "<br>"
     );
-
-
 }
 
 function setCurrentDishType(type) {
-    alert("set current_dish_type to: " + type);
     current_dish_type = type;
-    alert('current_dish_type: ' + current_dish_type);
 }
 
 function getCurrentDishType() {
-    alert("in test");
     return current_dish_type;
 }
 
 
+/** 
+ * Update the dish display according to the applied filter (selected type).
+ * @param current_type: the selected type.
+ */
 function update(current_type) {
     $("#dishes").empty();
     restGet(TEXT_HOST+'/dishes/query/?shopId=2',GET_METHOD, function(data){
             $.each(data, function(i, dish){
-                if(i == "dishes") {
-                    var dishes = data.dishes;
-                    for(var i = 0; i < dishes.length; i++) {
-                        if(dishes[i].type == current_type) {
-                           dishAppend(dishes[i]);
-                        }
-                    }
+                if(dish.type == current_type) {
+                    dishAppend(dish); 
                 }
             });
     }, '#info');
 }
+
+/**
+ * Add an item to shopping cart.
+ */
+function addToCart(name, price) {
+    if(order[name] == undefined) {
+        order[name] = {};
+    }
+    if(order[name]["count"] == undefined) {
+        order[name]["count"] = 1;
+    } else {
+        order[name]["count"] += 1;
+    }
+    total_price += price;
+}
+
+/**
+ * Display the order to the page.
+ */
+ function appendOrder() {
+    
+ }

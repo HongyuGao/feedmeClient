@@ -33,6 +33,12 @@ contents:
 
 				<a href="#" class="text-left">
 					<li> Restaurant Info <span class="icon"></span> </li>
+
+
+        			<!-- <img src=PICTURE_HOST + "/img/photo/" + dish.photo> -->
+        			<div id="res_photo"> </div>
+
+
 					<ul id="restaurantInfo" class="text-left">
 						<!-- data to be inserted dynamically -->
 					</ul>
@@ -50,11 +56,11 @@ contents:
 						<!-- TODO: dynamically insert dishes' types using jQuery -->
 						<ul id="dishTypeList" class="list-unstyled" data-index="0" style="display:block" >
 					    	
-					    	<a href="#"><li class="sub-sub-nav" data-type="Drink" data-status="open"> Drink <span class="icon"></span></li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="Drink" data-status="open"> Drink </li></a>
 
-					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open"> Drinks <span class="icon"></span></li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open"> Drinks </li></a>
 
-					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open"> Others <span class="icon"></span></li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open"> Others </li></a>
 							
 						</ul>
 
@@ -145,6 +151,9 @@ contents:
 	// global restaurant id used for this page:
 	var restaurantId = "";
 
+	//
+	var dish_counter = {};
+
 	$(document).ready(function(){
 
 	   	// Navigation Menu Slider
@@ -209,20 +218,39 @@ contents:
 	$(window).load(function(){
 		restGet(TEXT_HOST+'/dishes/query/?shopId=2',GET_METHOD, function(data){
 			$.each(data, function(i, dish){
-				if(i == "dishes") {
-					var dishes = data.dishes;
-					for(var i = 0; i < dishes.length; i++) {
-						dishAppend(dishes[i]);
-						//dishTypeAppend(dishes[i].type, dishes[i].id);
 
-						if(dishes[i].type != null || dishes[i].type != ''){
-							window.dishesType[dishes[i].type] = dishes[i].type;
-						}
-					}
-				}
+				dishAppend(dish);
+				// count and update the number of items of the specific type:
+			    var dish_type = "" + dish.type;
+			    //alert(dish_type);
+			    if(dish_counter.dish_type == undefined) {
+			        dish_counter[dish_type] = 1;
+			    } else {
+			        dish_counter[dish_type] += 1;
+			    }
+
 			});
+
+		// Append dish counter information to corresponding types in the sidebar:
+		$(".sub-sub-nav").each(function(type_index, value){
+			value.innerHTML += "(" + dish_counter[value.innerHTML.trim()] + ")";
+		});
+
+
 		}, '#info');
+
+		
+
 	});
+
+	// Append dish counter information to types in the sidebar:
+	// $(window).load(function(){
+	// 	//alert("test");
+	// 	$(".sub-sub-nav").each(function(type_index, value){
+	// 		value.innerHTML += dish_counter[""+value.innerHTML];
+	// 		alert('test' + value.innerHTML);
+	// 	});
+	// });
 
 
 	// TODO!
