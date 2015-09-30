@@ -20,6 +20,7 @@ contents:
 		<link href="css/lib/bootstrap.min.css" rel="stylesheet">
 		<link href="css/left_menu.css" rel="stylesheet">
 		<link href="css/styles.css" rel="stylesheet">
+		<link href="css/cart.css" rel="stylesheet">
 		<title>Feed Me - Gloden Drum</title>
 		<style type="text/css">object,embed{-webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;-ms-animation-duration:.001s;-ms-animation-name:playerInserted;-o-animation-duration:.001s;-o-animation-name:playerInserted;animation-duration:.001s;animation-name:playerInserted;}@-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style>
 	</head>
@@ -130,6 +131,56 @@ contents:
 	</div>
 	<!-- End Container-->
 
+
+	<!-- begin shopping cart -->
+	<div class="cart">
+		<div id="cart">
+			<div id="rest_info">
+				<!-- to be inserted dynamincally -->
+				Golden Drum 
+			</div>
+
+			<hr>
+
+			<ul id="dish_info">
+				<!--
+					<li class="dish_item" id="1"> item1 <button type="button"> - </button> 5 <button type="button"> + </button> price1 </li> 
+					<li class="dish_item" id="2"> item2 <button type="button"> - </button> 5 <button type="button"> + </button> price2 </li>
+				-->
+			</ul>
+
+			<hr>
+			<div id="other_fee">
+				Other Fee (not included in total price)
+			</div>
+
+			<div id="delivery_fee">
+				Deliver Fee: 0
+			</div>
+
+
+			<hr>
+			<div id="order_note">
+				Note:
+			</div>
+			<textarea rows="4" cols="45">
+				At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+			</textarea>
+
+			<hr>
+			<div id="cart_summary"> 
+				Total Items: <span id="cart_sum_num"> 0 </span> <br>
+				Total price: <span id="cart_sum_price"> 0.00 </span>
+			</div>
+
+			<hr>
+			<div id="place_order">
+				<button type="submit" onclick="appendOrder()"> Place Your Order </button>
+			</div>
+
+		</div>
+	</div>
+	<!-- end shopping cart -->
 
 
 	<div id="info">

@@ -6,6 +6,7 @@
 
 var order = {};
 var total_price = 0;
+var total_num = 0;
 
 /**
  * Append restaurant's information into the page.
@@ -70,7 +71,7 @@ function dishAppend(dish) {
         "<i>65</li> Saled</a>" +
         // "<a href='#' class='btn btn-success btn-sm pull-right' role='button'>" +
         "<a href='#' class='btn btn-success btn-sm pull-right' role='button'" +
-        " id=" + dish.id +  " onclick='addToCart(" + '"' + dish.name.trim() + '"' + ", " + dish.price + ")'>"  +
+        " onclick='addToCart(" + '"' + dish.name.trim() + '"' + ", " + dish.id + ", " + dish.price + ")'>"  +
         "<i class='fa fa-cart-plus'>&nbsp;</i>" +
         "<i class='fa fa-usd'></i>" + dish.price + "</a>" +
         "</div>" +
@@ -138,22 +139,67 @@ function update(current_type) {
 
 /**
  * Add an item to shopping cart.
+ *
+ * @param name: the name of the dish.
+ * @param id: the id of the dish.
+ * @param price: the price of the dish.
  */
-function addToCart(name, price) {
+function addToCart(name, id, price) {
+    // a flag variable denotes whether the dish to be added to cart
+    // is already in the cart (flag=1) or not (flag=0).
+    var flag = 0;
+
+    total_price += price;
+    total_num += 1;
+
     if(order[name] == undefined) {
         order[name] = {};
-    }
-    if(order[name]["count"] == undefined) {
-        order[name]["count"] = 1;
+        order[name]["count"] = 1;        
     } else {
-        order[name]["count"] += 1;
+        flag = 1;
     }
-    total_price += price;
+
+    // update the current order:
+    updateOrder(flag, name, id, price);
 }
 
 /**
- * Display the order to the page.
+ * Update order when the order changes.
  */
- function appendOrder() {
+ function updateOrder(flag, name, id, price) {
+    // update dishes list:
+    if(flag == 1) { // if the dish is already in the cart:
+        // update quantity:
+        var quantity = document.getElementById(id).innerHTML;
+        document.getElementById(id).innerHTML = Number(quantity) + 1;
+
+        // update total price of a existing dish:
+        var dish_total_price = document.getElementById(id+"price").innerHTML;
+        document.getElementById(id+"price").innerHTML = Number(dish_total_price) + price;
+
+    } else { // if the dish is the first time to be added to the cart:
+        $("#dish_info").append(
+        '<li class="dish_item"> ' +
+        name + 
+        '<button type="button"> - </button> <span id=' + '"' + id + '"' + '>1</span>' + 
+        ' <button type="button"> + </button> ' + 
+        '<span id="' + id + 'price">' + price + '</span>' +
+        ' </li>' 
+        );
+    }
+
+    // update dishes count:
+    $("#cart_sum_num").empty();
+    $("#cart_sum_num").append(total_num);
+
+    // update dishes total price:
+    $("#cart_sum_price").empty();
+    $("#cart_sum_price").append(total_price);
+ }
+
+/**
+ * Send the order to the server.
+ */
+ function sendOrder() {
     
  }
