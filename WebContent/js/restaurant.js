@@ -149,9 +149,6 @@ function addToCart(name, id, price) {
     // is already in the cart (flag=1) or not (flag=0).
     var flag = 0;
 
-    total_price += price;
-    total_num += 1;
-
     if(order[name] == undefined) {
         order[name] = {};
         order[name]["count"] = 1;        
@@ -167,22 +164,44 @@ function addToCart(name, id, price) {
  * Update order when the order changes.
  */
  function updateOrder(flag, name, id, price) {
+    // update total price of the current order:
+    total_price += price;
+
+    // update total number of items of the current order:
+    if(price < 0) {
+        total_num -= 1;    
+    } else {
+        total_num += 1;    
+    }
+    
     // update dishes list:
     if(flag == 1) { // if the dish is already in the cart:
         // update quantity:
-        var quantity = document.getElementById(id).innerHTML;
-        document.getElementById(id).innerHTML = Number(quantity) + 1;
+        var quantity = Number(document.getElementById(id).innerHTML);
+        var new_quantity = quantity + price / Math.abs(price);
+        if(new_quantity >= 0) {
+            document.getElementById(id).innerHTML = new_quantity;
 
-        // update total price of a existing dish:
-        var dish_total_price = document.getElementById(id+"price").innerHTML;
-        document.getElementById(id+"price").innerHTML = Number(dish_total_price) + price;
+            // update total price of a existing dish:
+            var dish_total_price = Number(document.getElementById(id+"price").innerHTML);
+            document.getElementById(id+"price").innerHTML = dish_total_price + price;
+        } else {
+            total_price -= price;
+            if(price < 0) {
+                total_num += 1;    
+            } else {
+                total_num -= 1;
+            }
+        }
 
     } else { // if the dish is the first time to be added to the cart:
         $("#dish_info").append(
         '<li class="dish_item"> ' +
         name + 
-        '<button type="button"> - </button> <span id=' + '"' + id + '"' + '>1</span>' + 
-        ' <button type="button"> + </button> ' + 
+        '<button type="button" onclick="updateOrder(' + 1 + ", '" + name + "', " + id + ', ' + (-1.0*price) + ')"' +
+        '> - </button> <span id=' + '"' + id + '"' + '>1</span>' + 
+        '<button type="button" onclick="updateOrder(' + 1 + ", '" + name + "', " + id + ', ' + price + ')"' +
+        '> + </button> ' + 
         '<span id="' + id + 'price">' + price + '</span>' +
         ' </li>' 
         );
