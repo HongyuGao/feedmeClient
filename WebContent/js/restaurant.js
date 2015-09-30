@@ -38,7 +38,6 @@ function shopAppend(restaurant) {
   );
 }
 
-
 /**
  * Append dish's information into the page.
  * @param dish: a dish object.
@@ -162,6 +161,12 @@ function addToCart(name, id, price) {
 
 /**
  * Update order when the order changes.
+ *
+ * @param flag: a binary integer denotes whether the item is already 
+        in the cart (flag=1) or not (flag=0).
+ * @param name: the name of the item to be inserted.
+ * @param id: the id of the item to be inserted.
+ * @param price: the price of the item to be inserted.
  */
  function updateOrder(flag, name, id, price) {
     // update total price of the current order:
@@ -179,12 +184,17 @@ function addToCart(name, id, price) {
         // update quantity:
         var quantity = Number(document.getElementById(id).innerHTML);
         var new_quantity = quantity + price / Math.abs(price);
+
+        // process negative values that might occur:
         if(new_quantity >= 0) {
             document.getElementById(id).innerHTML = new_quantity;
 
             // update total price of a existing dish:
             var dish_total_price = Number(document.getElementById(id+"price").innerHTML);
             document.getElementById(id+"price").innerHTML = dish_total_price + price;
+
+            // update the total count of the dish:
+            order[name]["count"] += price / Math.abs(price);
         } else {
             total_price -= price;
             if(price < 0) {
@@ -203,6 +213,8 @@ function addToCart(name, id, price) {
         '<button type="button" onclick="updateOrder(' + 1 + ", '" + name + "', " + id + ', ' + price + ')"' +
         '> + </button> ' + 
         '<span id="' + id + 'price">' + price + '</span>' +
+        '<button type="button" onclick="clearDishItem(' + id + ",'" + name.trim() + "', " + (-1.0*price*order[name]["count"]) + ')"' + '>' +
+        ' X </button>' +
         ' </li>' 
         );
     }
@@ -215,6 +227,27 @@ function addToCart(name, id, price) {
     $("#cart_sum_price").empty();
     $("#cart_sum_price").append(total_price);
  }
+
+
+function clearDishItem(id, name, price) {
+    var reduced_price = price * Number(order[name]["count"]);
+    var reduced_count = Number(order[name]["count"]);
+    total_price += reduced_price;
+    total_num -= reduced_count;
+
+    // update dishes count:
+    $("#cart_sum_num").empty();
+    $("#cart_sum_num").append(total_num);
+
+    // update dishes total price:
+    $("#cart_sum_price").empty();
+    $("#cart_sum_price").append(total_price);
+
+    // remove the whole item information from the shopping cart and order:
+    order[name]["count"] = 0;
+    order[name] = undefined;
+    $("#" + id).parent().remove();
+}
 
 /**
  * Send the order to the server.
