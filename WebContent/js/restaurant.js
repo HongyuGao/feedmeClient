@@ -13,29 +13,29 @@ var total_num = 0;
  * @param restaurant: a restaurant object.
  */
 function shopAppend(restaurant) {
-  $('#shops').append(
-    "<a href='restaurant.html'>" + "<div class='shop col-xs-4 " + restaurant.country + " " +
-    restaurant.type + "' data-status='open'>" +
-    "<div class='shop_img col-xs-6'>" + "<img src='" + PICTURE_HOST +
-    "/img/logo/" + restaurant.logo + "' class='img-responsive' alt='...'>" +
-    "<div class='open_time'>" + "Open Time:" +
-    "<li class='fa fa-clock-o'> 11:00 am - 02:00 pm</li>" +
-    "<li class='fa fa-clock-o'> 04:00 pm - 09:00 pm</li>" + "</div>" +
-    "</div>" + "<div class='shop_info col-xs-6'>" + "<div class='shop_name'>" +
-    restaurant.name + "</div>" + "<div class='star'>" +
-    "<span class='glyphicon glyphicon-star'></span>" +
-    "<span class='glyphicon glyphicon-star'></span>" +
-    "<span class='glyphicon glyphicon-star'></span>" +
-    "<span class='glyphicon glyphicon-star-empty'></span>" +
-    "<span class='glyphicon glyphicon-star-empty'></span>" +
-    "<span >(23)</span>" + "</div>" +
-    "<div class='minimal_spend'>Min. Delivery: $30</div>" +
-    "<div class='deliver_fee'>Deliver Fee: $5</div>" +
-    "<div class='pay_method'>" + "<i class='fa fa-cc-visa'></i>" +
-    "<i class='fa fa-cc-mastercard'></i>" + "<i class='fa fa-cc-paypal'></i>" +
-    "</div>" + "<div class='address'>34 Mary Gungahlin, ACT</div>" + "</div>" +
-    "</div>" + "</a>"
-  );
+    $('#shops').append(
+        "<a href='restaurant.html'>" + "<div class='shop col-xs-4 " + restaurant.country + " " +
+        restaurant.type + "' data-status='open'>" +
+        "<div class='shop_img col-xs-6'>" + "<img src='" + PICTURE_HOST +
+        "/img/logo/" + restaurant.logo + "' class='img-responsive' alt='...'>" +
+        "<div class='open_time'>" + "Open Time:" +
+        "<li class='fa fa-clock-o'> 11:00 am - 02:00 pm</li>" +
+        "<li class='fa fa-clock-o'> 04:00 pm - 09:00 pm</li>" + "</div>" +
+        "</div>" + "<div class='shop_info col-xs-6'>" + "<div class='shop_name'>" +
+        restaurant.name + "</div>" + "<div class='star'>" +
+        "<span class='glyphicon glyphicon-star'></span>" +
+        "<span class='glyphicon glyphicon-star'></span>" +
+        "<span class='glyphicon glyphicon-star'></span>" +
+        "<span class='glyphicon glyphicon-star-empty'></span>" +
+        "<span class='glyphicon glyphicon-star-empty'></span>" +
+        "<span >(23)</span>" + "</div>" +
+        "<div class='minimal_spend'>Min. Delivery: $30</div>" +
+        "<div class='deliver_fee'>Deliver Fee: $5</div>" +
+        "<div class='pay_method'>" + "<i class='fa fa-cc-visa'></i>" +
+        "<i class='fa fa-cc-mastercard'></i>" + "<i class='fa fa-cc-paypal'></i>" +
+        "</div>" + "<div class='address'>34 Mary Gungahlin, ACT</div>" + "</div>" +
+        "</div>" + "</a>"
+    );
 }
 
 /**
@@ -252,6 +252,11 @@ function clearDishItem(id, name, price) {
 /**
  * Send the order to the server.
  */
- function sendOrder() {
-    
+function sendOrder() {
+    if(total_price == 0) {
+        alert("Order is empty. Add something to the shopping cart first :)");
+    }
+    else {
+       alert("not implemented yet");
+    }
  }
