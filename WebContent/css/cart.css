@@ -1,0 +1,19 @@
+#cart {
+	clear: both;
+	float: right;
+	margin: 0 0 10px 10px;
+    height: 100%;
+    width: 295px;
+    overflow: auto;
+    background-color: #e6e6e6;
+}
+
+#rest_info {
+	background: #fff;
+    font-size: 16px;
+    color: #999;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+

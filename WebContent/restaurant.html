@@ -20,6 +20,7 @@ contents:
 		<link href="css/lib/bootstrap.min.css" rel="stylesheet">
 		<link href="css/left_menu.css" rel="stylesheet">
 		<link href="css/styles.css" rel="stylesheet">
+		<link href="css/cart.css" rel="stylesheet">
 		<title>Feed Me - Gloden Drum</title>
 		<style type="text/css">object,embed{-webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;-ms-animation-duration:.001s;-ms-animation-name:playerInserted;-o-animation-duration:.001s;-o-animation-name:playerInserted;animation-duration:.001s;animation-name:playerInserted;}@-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style>
 	</head>
@@ -33,6 +34,12 @@ contents:
 
 				<a href="#" class="text-left">
 					<li> Restaurant Info <span class="icon"></span> </li>
+
+
+        			<!-- <img src=PICTURE_HOST + "/img/photo/" + dish.photo> -->
+        			<div id="res_photo"> </div>
+
+
 					<ul id="restaurantInfo" class="text-left">
 						<!-- data to be inserted dynamically -->
 					</ul>
@@ -50,11 +57,11 @@ contents:
 						<!-- TODO: dynamically insert dishes' types using jQuery -->
 						<ul id="dishTypeList" class="list-unstyled" data-index="0" style="display:block" >
 					    	
-					    	<a href="#"><li class="sub-sub-nav" data-type="Drink" data-status="open"> Drink <span class="icon"></span></li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="Drink" data-status="open"> Drink </li></a>
 
-					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open"> Drinks <span class="icon"></span></li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open"> Drinks </li></a>
 
-					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open"> Others <span class="icon"></span></li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open"> Others </li></a>
 							
 						</ul>
 
@@ -125,6 +132,54 @@ contents:
 	<!-- End Container-->
 
 
+	<!-- begin shopping cart -->
+	<div class="cart">
+		<div id="cart">
+			<div id="rest_info">
+				<!-- to be inserted dynamincally -->
+				Golden Drum 
+			</div>
+
+			<hr>
+
+			<ul id="dish_info">
+				<!--
+					<li class="dish_item" id="1"> item1 <button type="button"> - </button> 5 <button type="button"> + </button> price1 </li> 
+					<li class="dish_item" id="2"> item2 <button type="button"> - </button> 5 <button type="button"> + </button> price2 </li>
+				-->
+			</ul>
+
+			<hr>
+			<div id="other_fee">
+				Other Fee (not included in total price)
+			</div>
+
+			<div id="delivery_fee">
+				Deliver Fee: 0
+			</div>
+
+
+			<hr>
+			<div id="order_note">
+				Note:
+			</div>
+			<textarea rows="4" cols="45" placeholder="Add any notes here you may have..."></textarea>
+
+			<hr>
+			<div id="cart_summary"> 
+				Total Items: <span id="cart_sum_num"> 0 </span> <br>
+				Total price: <span id="cart_sum_price"> 0.00 </span>
+			</div>
+
+			<hr>
+			<div id="place_order">
+				<button type="submit" onclick="sendOrder()"> Place Your Order </button>
+			</div>
+
+		</div>
+	</div>
+	<!-- end shopping cart -->
+
 
 	<div id="info">
 
@@ -144,6 +199,9 @@ contents:
 
 	// global restaurant id used for this page:
 	var restaurantId = "";
+
+	//
+	var dish_counter = {};
 
 	$(document).ready(function(){
 
@@ -209,20 +267,39 @@ contents:
 	$(window).load(function(){
 		restGet(TEXT_HOST+'/dishes/query/?shopId=2',GET_METHOD, function(data){
 			$.each(data, function(i, dish){
-				if(i == "dishes") {
-					var dishes = data.dishes;
-					for(var i = 0; i < dishes.length; i++) {
-						dishAppend(dishes[i]);
-						//dishTypeAppend(dishes[i].type, dishes[i].id);
 
-						if(dishes[i].type != null || dishes[i].type != ''){
-							window.dishesType[dishes[i].type] = dishes[i].type;
-						}
-					}
-				}
+				dishAppend(dish);
+				// count and update the number of items of the specific type:
+			    var dish_type = "" + dish.type;
+			    //alert(dish_type);
+			    if(dish_counter.dish_type == undefined) {
+			        dish_counter[dish_type] = 1;
+			    } else {
+			        dish_counter[dish_type] += 1;
+			    }
+
 			});
+
+		// Append dish counter information to corresponding types in the sidebar:
+		$(".sub-sub-nav").each(function(type_index, value){
+			value.innerHTML += "(" + dish_counter[value.innerHTML.trim()] + ")";
+		});
+
+
 		}, '#info');
+
+		
+
 	});
+
+	// Append dish counter information to types in the sidebar:
+	// $(window).load(function(){
+	// 	//alert("test");
+	// 	$(".sub-sub-nav").each(function(type_index, value){
+	// 		value.innerHTML += dish_counter[""+value.innerHTML];
+	// 		alert('test' + value.innerHTML);
+	// 	});
+	// });
 
 
 	// TODO!
