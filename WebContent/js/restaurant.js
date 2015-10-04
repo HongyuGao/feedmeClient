@@ -219,22 +219,35 @@ function addToCart(name, id, price) {
         );
     }
 
-    // update dishes count:
-    $("#cart_sum_num").empty();
-    $("#cart_sum_num").append(total_num);
-
-    // update dishes total price:
-    $("#cart_sum_price").empty();
-    $("#cart_sum_price").append(total_price);
+    updateSummary();
  }
 
 
+/**
+ * Remove a dish item from the shopping cart when click on the "X" button.
+ *
+ * @param id: the id of the target dish.
+ * @param name: the name the target dish.
+ * @param price: the price of the target dish.
+ */
 function clearDishItem(id, name, price) {
     var reduced_price = price * Number(order[name]["count"]);
     var reduced_count = Number(order[name]["count"]);
     total_price += reduced_price;
     total_num -= reduced_count;
 
+    updateSummary();
+
+    // remove the whole item information from the shopping cart and order:
+    order[name]["count"] = 0;
+    order[name] = undefined;
+    $("#" + id).parent().remove();
+}
+
+/**
+ * Update the summary of the shopping cart.
+ */
+function updateSummary() {
     // update dishes count:
     $("#cart_sum_num").empty();
     $("#cart_sum_num").append(total_num);
@@ -242,11 +255,6 @@ function clearDishItem(id, name, price) {
     // update dishes total price:
     $("#cart_sum_price").empty();
     $("#cart_sum_price").append(total_price);
-
-    // remove the whole item information from the shopping cart and order:
-    order[name]["count"] = 0;
-    order[name] = undefined;
-    $("#" + id).parent().remove();
 }
 
 /**
