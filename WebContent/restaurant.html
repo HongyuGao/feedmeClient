@@ -1,12 +1,12 @@
 <!-- page for restaurants -->
-<!-- 
+<!--
 contents:
 	(1) Name of the restaurant;
 	(2) Phone;
 	(3) Address;
 	(4) Dish Menu (sidebar);
 -->
-	
+
 
 <!DOCTYPE html>
 
@@ -44,9 +44,9 @@ contents:
 						<!-- data to be inserted dynamically -->
 					</ul>
 				</a>
-				
+
 				<hr>
-				
+
 				<a href="#">
 					<li class="sub-nav" >
 						<i class="forder" data-status="open"> Dish Menu
@@ -56,13 +56,13 @@ contents:
 
 						<!-- TODO: dynamically insert dishes' types using jQuery -->
 						<ul id="dishTypeList" class="list-unstyled" data-index="0" style="display:block" >
-					    	
+
 					    	<a href="#"><li class="sub-sub-nav" data-type="Drink" data-status="open"> Drink </li></a>
 
 					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open"> Drinks </li></a>
 
 					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open"> Others </li></a>
-							
+
 						</ul>
 
 					</li>
@@ -71,6 +71,45 @@ contents:
 		  	</ul>
 		</nav>
 		<!-- End Left transition menu to filter content-->
+
+
+			<!-- begin shopping cart -->
+			<div id="shoppingcart">
+				<div id="cart_left">
+					<li class="rotate">ShoppingCart</li>
+
+				</div>
+				<div id="cart">
+					<div id="rest_info">
+						<!-- to be inserted dynamincally -->
+						Golden Drum
+					</div>
+					<div id="dish_info">
+						<!--
+							<li class="dish_item" id="1"> item1 <button type="button"> - </button> 5 <button type="button"> + </button> price1 </li>
+							<li class="dish_item" id="2"> item2 <button type="button"> - </button> 5 <button type="button"> + </button> price2 </li>
+						-->
+					</div>
+					<hr>
+					<div id="other_fee">
+						Other Fee (not included in total price)
+					</div>
+					<div id="delivery_fee">
+						Deliver Fee: 0
+					</div>
+					<div id="order_note">
+						Note:
+					</div>
+					<div id="cart_summary">
+						Total Items: <span id="cart_sum_num"> 0 </span> <br>
+						Total price: <span id="cart_sum_price"> 0.00 </span>
+					</div>
+					<div id="place_order">
+						<button type="submit" onclick="sendOrder()"> Place Your Order </button>
+					</div>
+				</div>
+			</div>
+			<!-- end shopping cart -->
 
 		<!-- Navbar on head of page-->
 		<div class="navbar navbar-custom navbar-fixed-top">
@@ -120,65 +159,18 @@ contents:
 			</a>
 		</div>
 
-		
+
 	<!-- begin container -->
 	<div class="container">
 
 		<div class="container-fluid" id="dishes">
-			<!-- relevant content will be inserted here after js files are executed -->	
+			<!-- relevant content will be inserted here after js files are executed -->
 		</div>
 
 	</div>
 	<!-- End Container-->
 
 
-	<!-- begin shopping cart -->
-	<div class="cart">
-		<div id="cart">
-			<div id="rest_info">
-				<!-- to be inserted dynamincally -->
-				Golden Drum 
-			</div>
-
-			<hr>
-
-			<ul id="dish_info">
-				<!--
-					<li class="dish_item" id="1"> item1 <button type="button"> - </button> 5 <button type="button"> + </button> price1 </li> 
-					<li class="dish_item" id="2"> item2 <button type="button"> - </button> 5 <button type="button"> + </button> price2 </li>
-				-->
-			</ul>
-
-			<hr>
-			<div id="other_fee">
-				Other Fee (not included in total price)
-			</div>
-
-			<div id="delivery_fee">
-				Deliver Fee: 0
-			</div>
-
-
-			<hr>
-			<div id="order_note">
-				Note:
-			</div>
-			<textarea rows="4" cols="45" placeholder="Add any notes here you may have..."></textarea>
-
-			<hr>
-			<div id="cart_summary"> 
-				Total Items: <span id="cart_sum_num"> 0 </span> <br>
-				Total price: <span id="cart_sum_price"> 0.00 </span>
-			</div>
-
-			<hr>
-			<div id="place_order">
-				<button type="submit" onclick="sendOrder()"> Place Your Order </button>
-			</div>
-
-		</div>
-	</div>
-	<!-- end shopping cart -->
 
 
 	<div id="info">
@@ -288,7 +280,7 @@ contents:
 
 		}, '#info');
 
-		
+
 
 	});
 
