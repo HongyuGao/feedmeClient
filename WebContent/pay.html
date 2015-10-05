@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link href="css/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="css/left_menu.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
+		<link href="css/cart.css" rel="stylesheet">
+		<title>Pay Your Order</title>
+		<style type="text/css">object,embed{-webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;-ms-animation-duration:.001s;-ms-animation-name:playerInserted;-o-animation-duration:.001s;-o-animation-name:playerInserted;animation-duration:.001s;animation-name:playerInserted;}@-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style>
+
+		<script src="js/webjars/jquery.min.js"></script>
+		<script src="js/pay.js"></script>
+	</head>
+
+	<body>
+		<div>
+			<ul id="payInfo">
+			</ul>
+		</div>
+
+		<div class="cartTypeRadios">
+			<label for="delivery" class="radio">
+				<input id="delivery" type="radio" name="cartType" checked="checked" value="delivery">PayPal
+			</label>
+
+			<label for="pickUp" class="radio">
+				<input id="pickUp" type="radio" name="cartType" value="pickUp">Master Card
+			</label>						
+		</div>
+
+		<div id="submit-btn">
+			<a href="www.google.com">
+				<button type="submit" onclick="pay()"> Confirm </button>
+			</a>
+		</id>
+
+		<script>
+			payInfo();
+		</script>
+	</body>
+
+</html>
