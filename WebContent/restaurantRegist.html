@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			.page{margin:0 auto; width:1000px;height:800px; border:1px solid #ccc;}
+			.header{height:4%;border-bottom:1px solid #ccc;}
+			.mainBody{height:96%; width:1000px;}
+			.firstCln{float:left; height:100%; width:500px; border-right:1px solid #ccc;}
+			.secondCln{float:left; height:100%; width:495px;}
+		</style>
+		<script src="js/webjars/jquery.js"></script>
+		<script src="js/commonPath.js"></script>
+		<script src="js/ajaxfileUpload.js"></script>
+		<script src="js/commonRest.js"></script>
+		<script src="js/restaurant/restaurantRegist.js"></script>
+	</head>	
+	<body>
+	<div id="Page" class='page' align="center">
+		<div class="header">
+			<label>Restaurant Register</label>
+		</div>
+		<div class="mainBody">
+			<div class="firstCln">
+				<label>Add a new Restaurant</label>
+				<table style="border:1px solid #ccc">
+					<tr>
+						<td>Logo:</td>
+						<td><img src="" alt="logo" id="logo" style="width:130px; height:60px"/></td>
+           			</tr>
+            		<tr>
+            			<td></td>
+            			<td><input type="file"  id="logoFile" name="logoFile" onchange="PreviewImage(this,'logo')"/></td>
+            		</tr>
+            		<tr>
+            			<td>Name:</td>
+            			<td><input id="name" /></td>
+            		</tr>
+            		<tr>
+            			<td>Type:</td>
+            			<td><input id="type" /></td>
+            		</tr>
+            		<tr>
+            			<td>Phone:</td>
+            			<td><input id="phone" /></td>
+            		</tr>
+            		<tr>
+            			<td>Email:</td>
+            			<td><input id="email" /></td>
+            		</tr>
+            		<tr>
+            			<td>Open AM:</td>
+            			<td><input id="om" /></td>
+            		</tr>
+            		<tr>
+            			<td>Open PM:</td>
+            			<td><input id="oa" /></td>
+            		</tr>
+            		<tr>
+            			<td>Description:</td>
+            		</tr>
+            		<tr>
+            			<td colspan="2"><textarea id="description" rows="3" cols="40" ></textarea></td>
+            		</tr>
+            		<tr>
+            			<td><button id="addButton" onclick="addRestaurant()">Add</button></td>
+            			<td><button id="cancelButton" onclick="cancelAdd()">Cancel</button></td>
+            		</tr>
+            		<tr>
+            			<td colspan='2'><div id="resultDiv" style="color:red"></div></td>
+            		</tr>
+				</table>
+			</div>
+			<div class="secondCln">
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
