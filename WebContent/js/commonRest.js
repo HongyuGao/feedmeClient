@@ -49,21 +49,59 @@ function rest(restUrl, httpMethod, entity, contentType, dataType, callback, resu
     });
 }
 
-function ajaxFileUpload(urlPath, putData, fileId) {
+function ajaxFileUpload(urlPath, putData, fileId, callback) {
 	 $.ajaxFileUpload({
-		 url: urlPath, 
-		 secureuri: false, 
+		 url: urlPath,
+		 secureuri: false,
 		 fileElementId: fileId,
 		 data: putData,
-		 dataType: 'text', 
-		 success: function (data, status){  
-			 			console.log("Yes!!!!!!");
-			 			console.log(data);
+		 //dataType: 'text',
+		 dataType: 'json',
+		 success: function (data, status){
+            if(data==null){
+
+            }
+            else if(callback!=null && callback!=""){
+              callback(data);
+            }
                      },
        error: function (data, status, e){
-       		  alert(e);}
+       		  alert("File upload error: "+e);}
    })
    return false;
+}
+
+function PreviewImage(upload,paramId){
+	var fileInput=upload.id;
+	if (checkPic(fileInput)) {
+		try {
+			var imgPath;
+			if(window.navigator.userAgent.indexOf("MSIE")>=1){
+				upload.select();
+				jQuery("#"+paramId).attr("src",imgPath);
+			}else{
+				var reader = new FileReader();
+				reader.onload = function (event) {
+				    document.getElementById(paramId).src = event.target.result;
+				};
+				reader.readAsDataURL(document.getElementById(fileInput).files[0]);
+			}
+         } catch (e) {
+             console.log(e);
+         }
+	}
+	else{
+		  alert("Invalid picture formate");
+	}
+}
+
+function checkPic(paramId) {
+	var picPath=jQuery("#"+paramId).val();
+    var type = picPath.substring(picPath.lastIndexOf(".") + 1, picPath.length).toLowerCase();
+    if (type == "jpg" || type == "bmp" || type == "png") {
+        return true;
+    }
+    return false;
 }
 
 function checkSignIn() {
