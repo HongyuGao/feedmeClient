@@ -264,7 +264,35 @@ function sendOrder() {
     if(total_price == 0) {
         alert("Order is empty. Add something to the shopping cart first :)");
     }
-    else {
-       alert("not implemented yet");
+    // else {
+    //    alert("not implemented yet");
+    // }
+
+    // construct a JSON object to store the order:
+
+    if(typeof(Storage) !== "undefined") {
+        localStorage.setItem("total_price", total_price);
+        localStorage.setItem("total_num", total_num);
+        localStorage.setItem("order", order);
+    } else {
+        alert("Sorry, your browser does not support Web Storage...");
     }
+
+    payInfo();
+
+}
+
+function payInfo() {
+    var info = "Items: <br>";
+    for(var key in order) {
+        info += "<li>" + key + ": " + order[key]["count"] + "</li>";
+    }
+
+    info += "<br>";
+    info += "Total items: " + total_num;
+    info += "<br>";
+    info += "Total price: " + total_price;
+
+    localStorage.setItem("order", info);
  }
+ 
