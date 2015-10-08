@@ -14,7 +14,7 @@ var total_num = 0;
  */
 function shopAppend(restaurant) {
     $('#shops').append(
-        "<a href='restaurant.html'>" + "<div class='shop col-xs-4 " + restaurant.country + " " +
+        "<a href='restaurant.html?shopId=" + restaurant.id + "'>" + "<div class='shop col-xs-4 " + restaurant.country + " " +
         restaurant.type + "' data-status='open'>" +
         "<div class='shop_img col-xs-6'>" + "<img src='" + PICTURE_HOST +
         "/img/logo/" + restaurant.logo + "' class='img-responsive' alt='...'>" +
@@ -80,6 +80,15 @@ function dishAppend(dish) {
     );
 }
 
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value){
+        vars[key] = value;
+    });
+    return vars;
+}
+
 /**
  * Get and append all types of dishes to the left sub-nav bar one by one.
  * @param type: one type of dishes.
@@ -112,24 +121,15 @@ function setRestaurantInfo(restaurant) {
     );
 }
 
-function setCurrentDishType(type) {
-    current_dish_type = type;
-}
-
-function getCurrentDishType() {
-    return current_dish_type;
-}
-
-
 /** 
  * Update the dish display according to the applied filter (selected type).
  * @param current_type: the selected type.
  */
 function update(current_type) {
     $("#dishes").empty();
-    restGet(TEXT_HOST+'/dishes/query/?shopId=2',GET_METHOD, function(data){
+    restGet(TEXT_HOST+'/dishes/query/?shopId=1',GET_METHOD, function(data){
             $.each(data, function(i, dish){
-                if(dish.type == current_type) {
+                if(current_type == "All" || dish.type == current_type) {
                     dishAppend(dish); 
                 }
             });
@@ -267,8 +267,6 @@ function sendOrder() {
     // else {
     //    alert("not implemented yet");
     // }
-
-    // construct a JSON object to store the order:
 
     if(typeof(Storage) !== "undefined") {
         localStorage.setItem("total_price", total_price);

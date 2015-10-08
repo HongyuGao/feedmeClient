@@ -1,16 +1,4 @@
-<!-- page for restaurants -->
-<!--
-contents:
-	(1) Name of the restaurant;
-	(2) Phone;
-	(3) Address;
-	(4) Dish Menu (sidebar);
--->
-
-
 <!DOCTYPE html>
-
-
 <html>
 
 	<head>
@@ -53,15 +41,20 @@ contents:
 							<i class="fa fa-angle-down"></i>
 						</i>
 
+						<ul id="dishTypeList" class="list-unstyled" data-index="0" style="display:block">
 
-						<!-- TODO: dynamically insert dishes' types using jQuery -->
-						<ul id="dishTypeList" class="list-unstyled" data-index="0" style="display:block" >
 
-					    	<a href="#"><li class="sub-sub-nav" data-type="Drink" data-status="open"> Drink </li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="All" data-status="open">All</li></a>
 
-					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open"> Drinks </li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="Staple" data-status="open">Staple</li></a>
 
-					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open"> Others </li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="Soup" data-status="open">Soup</li></a>
+
+					    	<a href="#"><li class="sub-sub-nav" data-type="Dessert" data-status="open">Dessert</li></a>
+
+					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open">Drinks</li></a>
+
+					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open">Others</li></a>
 
 						</ul>
 
@@ -182,23 +175,15 @@ contents:
 <!-- script references -->
 <script src="js/webjars/jquery.min.js"></script>
 <script src="js/webjars/bootstrap.min.js"></script>
-<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
 <script src="js/commonRest.js"></script>
 <script src="js/commonPath.js"></script>
 <script src="js/restaurant.js"></script>
 <script>
-	//window.restaurantsType = {};
-
-	window.dishesType = {};
-
-	// global restaurant id used for this page:
-	var restaurantId = "";
-
-	//
+	var shopId = getUrlVars()["shopId"];
 	var dish_counter = {};
+	var total_count = 0;
 
 	$(document).ready(function(){
-
 	   	// Navigation Menu Slider
 	    $('#nav-expander').on('click',function(e){
 	  		e.preventDefault();
@@ -209,20 +194,16 @@ contents:
 	  		e.preventDefault();
 	  		$('body').toggleClass('nav-expanded');
 	  	});
-
     });
 
 	$(document).ready(function(){
-
 		$('.forder').on('click', function(){
 			var status = $(this).data('status');
 			if(status==='open'){
 				$(this).data('status','close');
-			//console.log($(this).parent().parent().find("ul"));
 				$(this).parent().parent().find("ul").slideUp();
 			}else if(status==='close'){
 				$(this).data('status','open');
-				// console.log(this);
 				$(this).parent().parent().find("ul").slideDown();
 			}
 		});
@@ -231,69 +212,50 @@ contents:
 			var status = $(this).data('status');
 			if(status==='close'){
 				$(this).data('status','open');
-				//console.log($(this).parent().parent().find(".dish_desc"));
 				$(this).parent().parent().find(".dish_desc").slideDown();
 				$(this).html("Hidden");
 			}else if(status==='open'){
 				$(this).data('status','close');
-				// console.log(this);
 				$(this).parent().parent().find(".dish_desc").slideUp();
 				$(this).html("Show More");
 			}
 		});
-
 	});
 
-
-	// Get restaurant information:
+	// Display restaurant general information:
 	$(window).load(function(){
-			restGet(TEXT_HOST+'/restaurants/allRestaurant',GET_METHOD, function(data){
-				$.each(data, function(i, restaurant){
-					if(restaurant.id == "2"){
-						setRestaurantInfo(restaurant);
-					}
-				});
-
-			}, '#info');
+		restGet(TEXT_HOST + "/restaurants/query/?id=" + shopId, GET_METHOD, function(data){
+			setRestaurantInfo(data);
+		});
 	});
 
-	// Append dishes after loading the whole page:
+	// Display all dishes:
 	$(window).load(function(){
-		restGet(TEXT_HOST+'/dishes/query/?shopId=2',GET_METHOD, function(data){
+		restGet(TEXT_HOST+'/dishes/query/?shopId='+shopId,GET_METHOD, function(data){
 			$.each(data, function(i, dish){
-
+				total_count += 1;
 				dishAppend(dish);
-				// count and update the number of items of the specific type:
+				// count and update the number of items of the chosen type:
 			    var dish_type = "" + dish.type;
-			    //alert(dish_type);
 			    if(dish_counter.dish_type == undefined) {
 			        dish_counter[dish_type] = 1;
 			    } else {
 			        dish_counter[dish_type] += 1;
 			    }
-
 			});
 
-		// Append dish counter information to corresponding types in the sidebar:
-		$(".sub-sub-nav").each(function(type_index, value){
-			value.innerHTML += "(" + dish_counter[value.innerHTML.trim()] + ")";
-		});
+			dish_counter["All"] = total_count;
 
-
+			// set dish counter information according to selected types in the sidebar:
+			$(".sub-sub-nav").each(function(type_index, value){
+				var count = dish_counter[value.innerHTML.trim()];
+				if(count == undefined) {
+					count = 0
+				}
+				value.innerHTML += "(" + count + ")";
+			});
 		}, '#info');
-
-
-
 	});
-
-	// Append dish counter information to types in the sidebar:
-	// $(window).load(function(){
-	// 	//alert("test");
-	// 	$(".sub-sub-nav").each(function(type_index, value){
-	// 		value.innerHTML += dish_counter[""+value.innerHTML];
-	// 		alert('test' + value.innerHTML);
-	// 	});
-	// });
 
 
 	// TODO!
