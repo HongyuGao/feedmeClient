@@ -75,7 +75,7 @@
 				<div id="cart">
 					<div id="rest_info">
 						<!-- to be inserted dynamincally -->
-						Golden Drum
+						
 					</div>
 					<div id="dish_info">
 						<!--
@@ -94,13 +94,22 @@
 						Note:
 					</div>
 					<div id="cart_summary">
-						Total Items: <span id="cart_sum_num"> 0 </span> <br>
-						Total price: <span id="cart_sum_price"> 0.00 </span>
+						Total Items: <span id="cart_sum_num" class="cart_sum_q"> 0 </span> <br>
+						Total Price: <span id="cart_sum_price" class="cart_sum_p"> 0.00 </span>
 					</div>
 					<div id="place_order">
-						<a href="pay.html">
-							<button type="submit" onclick="sendOrder()"> Place Your Order </button>
-						</a>
+						<hr>
+						<hr>
+						<div>
+							Total Items (all orders): <span id="all_sum_num"></span> <br>
+							Total Price (all orders): <span id="all_sum_price"></span> <br>
+							Total Delivery Fee (all orders): <span id="all_sum_delivery">0</span>
+						</div>
+						<div>
+							<a href="pay.html">
+								<button type="submit" onclick=""> Place Your Order </button>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -179,6 +188,9 @@
 <script src="js/commonPath.js"></script>
 <script src="js/restaurant.js"></script>
 <script>
+
+	localStorage.setItem("userId", 1);
+
 	var shopId = getUrlVars()["shopId"];
 	var dish_counter = {};
 	var total_count = 0;
@@ -231,7 +243,7 @@
 
 	// Display all dishes:
 	$(window).load(function(){
-		restGet(TEXT_HOST+'/dishes/query/?shopId='+shopId,GET_METHOD, function(data){
+		restGet(TEXT_HOST+'/dishes/query/?shopId='+shopId, GET_METHOD, function(data){
 			$.each(data, function(i, dish){
 				total_count += 1;
 				dishAppend(dish);
@@ -257,25 +269,18 @@
 		}, '#info');
 	});
 
-
-	// TODO!
-	// dishes fillter by click left menu
+	// Dishes fillter by click left menu:
 	$(window).load(function(){
 		$(".sub-sub-nav").on('click', function(){
 			// get the current selected food type:
 			var current_type = $(this).data("type");
-			// alert("current type: "+current_type);
-
-			// apply filter and update the content inside the
-			// display area:
+			// apply filter and update the content inside the display area:
 			update(current_type);
 		});
 	});
 
 </script>
-
-
-
-	</body>
+	
+</body>
 
 </html>
