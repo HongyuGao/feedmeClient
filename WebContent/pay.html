@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link href="css/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="css/left_menu.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
+		<link href="css/cart.css" rel="stylesheet">
+		<title>Pay Your Order</title>
+		<style type="text/css">object,embed{-webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;-ms-animation-duration:.001s;-ms-animation-name:playerInserted;-o-animation-duration:.001s;-o-animation-name:playerInserted;animation-duration:.001s;animation-name:playerInserted;}@-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style>
+
+		<script src="js/webjars/jquery.min.js"></script>
+		<script src="js/pay.js"></script>
+	</head>
+
+	<body>
+		<div>
+			<ul id="payInfo">
+			</ul>
+
+			<hr id="sumline">
+		</div>
+
+		<div class="cartTypeRadios">
+			<label for="delivery" class="radio">
+				<input id="delivery" type="radio" name="cartType" checked="checked" value="delivery">PayPal
+			</label>
+
+			<label for="pickUp" class="radio">
+				<input id="pickUp" type="radio" name="cartType" value="pickUp">Master Card
+			</label>						
+		</div>
+
+		<div id="submit-btn">
+			<a href="#">
+				<button type="submit" onclick="confirm(dishes)"> Confirm </button>
+			</a>
+		</id>
+
+
+<!-- script references -->
+<script src="js/webjars/jquery.min.js"></script>
+<script src="js/webjars/bootstrap.min.js"></script>
+<script src="js/commonRest.js"></script>
+<script src="js/commonPath.js"></script>
+<script src="js/restaurant.js"></script>
+<script>
+	var userId = localStorage.getItem("userId");
+
+	var orders = new Object();
+
+	$(document).ready(function() {
+		restGet(TEXT_HOST+"/shoppingCart/queryCart?userId=" + userId, GET_METHOD, function(data){
+
+			var items = data.items.trim();
+			console.log(items);
+			var itemsArr = items.split(" ");
+			console.log(itemsArr);
+			var itemsLen = itemsArr.length;
+			console.log(itemsLen);
+
+			var index = 0;
+			for(index = 0; index < itemsLen; index++) {
+				var item = itemsArr[index];
+				var pos = item.search(",");
+				if(pos == -1) {
+					continue;
+				}
+
+				var dishes = Array();
+
+				var restId = item.substring(0, pos);
+				var dishArr = item.substring(pos+1).split(",");
+				var totalPrice = 0;
+				var dish = new Object();
+				$("<hr>").insertBefore($("#sumline"));
+				$("<ul>").insertBefore($("#sumline"));
+				for(var i = 0; i < dishArr.length - 3; i += 4) {
+					var dishName = dishArr[i];
+
+					dish.dishId = dishArr[i+1];
+					dish.price = dishArr[i+2];
+					dish.amount = dishArr[i+3];
+
+					dishes.push(dish);
+					generateOrder(restId, userId, dishes, totalPrice);
+
+					totalPrice += Number(dish.price) * Number(dish.amount); 
+					
+					$("<li>" + dishName + "		" + dish.price + "		" + dish.amount + "</li>").insertBefore("#sumline");
+				}
+
+
+				$("</ul>").insertBefore($("#sumline"));
+				$("<hr>").insertBefore($("#sumline"));
+				$("<div class=\"sub-sum\">Total: "+ totalPrice +"</div>").insertBefore("#sumline");
+			}
+
+		}, "");
+	});
+	
+</script>
+
+	</body>
+
+</html>

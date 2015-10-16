@@ -10,9 +10,10 @@
 			.MainContainer{height:96%; width:1200px;}
 			.firCol{float:left; height:100%; width:200px; border-right:1px solid #ccc;}
 			.secCol{float:left; height:100%; width:380px; border-right:1px solid #ccc;}
-			.thiCol{float:left; height:100%; width:615px;}
+			.thiCol{float:left; height:100%; width:615px; overflow:auto;}
 			.firRow{height:50%; width:100%; border-bottom:1px solid #ccc;}
 			.secRow{height:50%; width:100%;}
+			.dPanel{height:20px; width:615px; border-top:1px solid #ccc; text-align:center;}
 		</style>
 		<script src="js/webjars/jquery.js"></script>
 		<script src="js/commonPath.js"></script>
@@ -21,7 +22,7 @@
 		<script src="js/restaurant/restaurantMng.js"></script>
 	</head>
 	<body>
-		<div class="page">		
+		<div class="page">
         	<div class="header">
             	<div id="title">Restaurant Management</div>
        		</div>
@@ -42,7 +43,7 @@
             				</tr>
             				<tr>
             					<td></td>
-            					<td colspan='2'><input type="file"  disabled="disabled"  id="apkFile" name="apkFile" onchange="PreviewImage(this)"/></td>
+            					<td colspan='2'><input type="file"  disabled="disabled"  id="apkFile" name="apkFile" onchange="PreviewImage(this,'logo')"/></td>
             				</tr>
             				<tr>
             					<td>Name:</td>
@@ -68,13 +69,11 @@
             					<td>Open AM:</td>
             					<td><input id="om" readonly="readonly" onblur="closeEdit()"/></td>
             					<td><button id="omE" name="om" onclick="editRestaurant(this)">Edit</button></td>
-            					<td></td>
             				</tr>
             				<tr>
             					<td>Open PM:</td>
             					<td><input id="oa" readonly="readonly" onblur="closeEdit()"/></td>
-            					<td><button id="oaE" name="om" onclick="editRestaurant(this)">Edit</button></td>
-            					<td></td>
+            					<td><button id="oaE" name="oa" onclick="editRestaurant(this)">Edit</button></td>
             				</tr>
             				<tr>
             					<td>Description:</td>
@@ -82,10 +81,10 @@
             					<td><button id="descriptionE" name="description" onclick="editRestaurant(this)">Edit</button></td>
             				</tr>
             				<tr>
-            					<td colspan="3"><textarea id="description" rows="3" cols="50" readonly="readonly" onblur="closeEdit()"></textarea></td>
+            					<td colspan="3"><textarea id="description" rows="3" cols="45" readonly="readonly" onblur="closeEdit()"></textarea></td>
             				</tr>
             				<tr>
-            					<td colspan='2'><div id="CR" style="color:red"></div></td>
+            					<td colspan='2'><div id="CRR" style="color:red"></div></td>
             					<td><button id="apply" onclick="updateRestaurant()">Apply</button></td>
             				</tr>
             			</table>
@@ -97,13 +96,16 @@
             				<tr>
             					<td>Photo:</td>
             					<td><img src="" alt="photo" id="dPhoto" style="width:120px; height:60px"/></td>
+											<td></td>
             				</tr>
             				<tr>
-            					<td colspan='2'><input type="file"  disabled="disabled"  id="phFile" name="phFile" onchange="PreviewImage(this)"/></td>
+											<td></td>
+            					<td colspan='2'><input type="file"  disabled="disabled"  id="phFile" name="phFile" onchange="PreviewImage(this,'dPhoto')"/></td>
             				</tr>
             				<tr>
             					<td>Name:</td>
             					<td><input id="dName"/></td>
+											<td></td>
             				</tr>
             				<tr>
             					<td>Type:</td>
@@ -116,63 +118,65 @@
             							<option>Others</option>
             						</select>
             					</td>
+											<td></td>
             				</tr>
             				<tr>
             					<td>Price:</td>
             					<td><input id="dPrice"/></td>
+											<td></td>
             				</tr>
             				<tr>
             					<td>Discount:</td>
             					<td><input id="dDiscount"/></td>
+											<td></td>
             				</tr>
             				<tr>
             					<td>Flavor</td>
             					<td><input id="dFlavor"/></td>
+											<td></td>
             				</tr>
             				<tr>
             					<td>Ingredient:</td>
             					<td><input id="dIngredient"/></td>
+											<td></td>
             				</tr>
             				<tr>
             					<td>Description:</td>
             					<td><input id="dDescription"/></td>
+											<td></td>
             				</tr>
             				<tr>
             					<td><button onclick="addDish()">Add</button></td>
-            					<td><button onclick="clean()">Clean</button></td>
+            					<td><button onclick="CleanAddDish()">Clean</button></td>
+											<td></td>
             				</tr>
-            			</table>           		
-            		</div>   
-            	</div> 
+            			</table>
+            		</div>
+            	</div>
             	<div id="dPanel" class="thiCol" style="border: 1px solid red; text-align: left;">
             		<label>Dishes</label>
             		<div id="resultDiv4" style="color:red;"></div>
-            		<div><h5 onclick="dishPanel(this)">Soup</h5></div>
+            		<div class='dPanel' onclick="dishPanel(this)">Soup<label id='SoupNo'>()</label></div>
             		<div id="Soup"></div>
-            		<div><h5 onclick="dishPanel(this)">Dessert</h5></div>
+            		<div class='dPanel' onclick="dishPanel(this)">Dessert<label id='DessertNo'>()</label></div>
             		<div id="Dessert"></div>
-            		<div><h5 onclick="dishPanel(this)">Staple</h5></div>
+            		<div class='dPanel' onclick="dishPanel(this)">Staple<label id='StapleNo'>()</label></div>
             		<div id="Staple"></div>
-            		<div><h5 onclick="dishPanel(this)">Drink</h5></div>
-       				<div id="Drinks"></div>
-       				<div><h5 onclick="dishPanel(this)">Others</h5></div>
+            		<div class='dPanel' onclick="dishPanel(this)">Drinks<label id='DrinksNo'>()</label></div>
+       					<div id="Drinks"></div>
+       					<div class='dPanel' onclick="dishPanel(this)">Others<label id='OthtersNo'>()</label></div>
             		<div id="Others"></div>
-            	</div>       
-        	</div>            	    	
-    	</div>   	
+            	</div>
+        	</div>
+    	</div>
     	<script>
     		jQuery(document).ready(function () {
     			loadRestaurants();
         	});
-    		
+
     		function dishPanel(par){
-				console.log("Enter dishPanel: "+par);
     			     jQuery(par).next("div").toggle();
-			}
+				}
 		</script>
 	</body>
 </html>
-
-
-
-

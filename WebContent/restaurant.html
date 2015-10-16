@@ -1,16 +1,4 @@
-<!-- page for restaurants -->
-<!-- 
-contents:
-	(1) Name of the restaurant;
-	(2) Phone;
-	(3) Address;
-	(4) Dish Menu (sidebar);
--->
-	
-
 <!DOCTYPE html>
-
-
 <html>
 
 	<head>
@@ -44,25 +32,30 @@ contents:
 						<!-- data to be inserted dynamically -->
 					</ul>
 				</a>
-				
+
 				<hr>
-				
+
 				<a href="#">
 					<li class="sub-nav" >
 						<i class="forder" data-status="open"> Dish Menu
 							<i class="fa fa-angle-down"></i>
 						</i>
 
+						<ul id="dishTypeList" class="list-unstyled" data-index="0" style="display:block">
 
-						<!-- TODO: dynamically insert dishes' types using jQuery -->
-						<ul id="dishTypeList" class="list-unstyled" data-index="0" style="display:block" >
-					    	
-					    	<a href="#"><li class="sub-sub-nav" data-type="Drink" data-status="open"> Drink </li></a>
 
-					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open"> Drinks </li></a>
+					    	<a href="#"><li class="sub-sub-nav" data-type="All" data-status="open">All</li></a>
 
-					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open"> Others </li></a>
-							
+					    	<a href="#"><li class="sub-sub-nav" data-type="Staple" data-status="open">Staple</li></a>
+
+					    	<a href="#"><li class="sub-sub-nav" data-type="Soup" data-status="open">Soup</li></a>
+
+					    	<a href="#"><li class="sub-sub-nav" data-type="Dessert" data-status="open">Dessert</li></a>
+
+					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open">Drinks</li></a>
+
+					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open">Others</li></a>
+
 						</ul>
 
 					</li>
@@ -71,6 +64,56 @@ contents:
 		  	</ul>
 		</nav>
 		<!-- End Left transition menu to filter content-->
+
+
+			<!-- begin shopping cart -->
+			<div id="shoppingcart">
+				<div id="cart_left">
+					<li class="rotate">ShoppingCart</li>
+
+				</div>
+				<div id="cart">
+					<div id="rest_info">
+						<!-- to be inserted dynamincally -->
+						
+					</div>
+					<div id="dish_info">
+						<!--
+							<li class="dish_item" id="1"> item1 <button type="button"> - </button> 5 <button type="button"> + </button> price1 </li>
+							<li class="dish_item" id="2"> item2 <button type="button"> - </button> 5 <button type="button"> + </button> price2 </li>
+						-->
+					</div>
+					<hr>
+					<div id="other_fee">
+						Other Fee (not included in total price)
+					</div>
+					<div id="delivery_fee">
+						Deliver Fee: 0
+					</div>
+					<div id="order_note">
+						Note:
+					</div>
+					<div id="cart_summary">
+						Total Items: <span id="cart_sum_num" class="cart_sum_q"> 0 </span> <br>
+						Total Price: <span id="cart_sum_price" class="cart_sum_p"> 0.00 </span>
+					</div>
+					<div id="place_order">
+						<hr>
+						<hr>
+						<div>
+							Total Items (all orders): <span id="all_sum_num"></span> <br>
+							Total Price (all orders): <span id="all_sum_price"></span> <br>
+							Total Delivery Fee (all orders): <span id="all_sum_delivery">0</span>
+						</div>
+						<div>
+							<a href="pay.html">
+								<button type="submit" onclick=""> Place Your Order </button>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end shopping cart -->
 
 		<!-- Navbar on head of page-->
 		<div class="navbar navbar-custom navbar-fixed-top">
@@ -120,65 +163,18 @@ contents:
 			</a>
 		</div>
 
-		
+
 	<!-- begin container -->
 	<div class="container">
 
 		<div class="container-fluid" id="dishes">
-			<!-- relevant content will be inserted here after js files are executed -->	
+			<!-- relevant content will be inserted here after js files are executed -->
 		</div>
 
 	</div>
 	<!-- End Container-->
 
 
-	<!-- begin shopping cart -->
-	<div class="cart">
-		<div id="cart">
-			<div id="rest_info">
-				<!-- to be inserted dynamincally -->
-				Golden Drum 
-			</div>
-
-			<hr>
-
-			<ul id="dish_info">
-				<!--
-					<li class="dish_item" id="1"> item1 <button type="button"> - </button> 5 <button type="button"> + </button> price1 </li> 
-					<li class="dish_item" id="2"> item2 <button type="button"> - </button> 5 <button type="button"> + </button> price2 </li>
-				-->
-			</ul>
-
-			<hr>
-			<div id="other_fee">
-				Other Fee (not included in total price)
-			</div>
-
-			<div id="delivery_fee">
-				Deliver Fee: 0
-			</div>
-
-
-			<hr>
-			<div id="order_note">
-				Note:
-			</div>
-			<textarea rows="4" cols="45" placeholder="Add any notes here you may have..."></textarea>
-
-			<hr>
-			<div id="cart_summary"> 
-				Total Items: <span id="cart_sum_num"> 0 </span> <br>
-				Total price: <span id="cart_sum_price"> 0.00 </span>
-			</div>
-
-			<hr>
-			<div id="place_order">
-				<button type="submit" onclick="sendOrder()"> Place Your Order </button>
-			</div>
-
-		</div>
-	</div>
-	<!-- end shopping cart -->
 
 
 	<div id="info">
@@ -188,23 +184,18 @@ contents:
 <!-- script references -->
 <script src="js/webjars/jquery.min.js"></script>
 <script src="js/webjars/bootstrap.min.js"></script>
-<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
 <script src="js/commonRest.js"></script>
 <script src="js/commonPath.js"></script>
 <script src="js/restaurant.js"></script>
 <script>
-	//window.restaurantsType = {};
 
-	window.dishesType = {};
+	localStorage.setItem("userId", 1);
 
-	// global restaurant id used for this page:
-	var restaurantId = "";
-
-	//
+	var shopId = getUrlVars()["shopId"];
 	var dish_counter = {};
+	var total_count = 0;
 
 	$(document).ready(function(){
-
 	   	// Navigation Menu Slider
 	    $('#nav-expander').on('click',function(e){
 	  		e.preventDefault();
@@ -215,20 +206,16 @@ contents:
 	  		e.preventDefault();
 	  		$('body').toggleClass('nav-expanded');
 	  	});
-
     });
 
 	$(document).ready(function(){
-
 		$('.forder').on('click', function(){
 			var status = $(this).data('status');
 			if(status==='open'){
 				$(this).data('status','close');
-			//console.log($(this).parent().parent().find("ul"));
 				$(this).parent().parent().find("ul").slideUp();
 			}else if(status==='close'){
 				$(this).data('status','open');
-				// console.log(this);
 				$(this).parent().parent().find("ul").slideDown();
 			}
 		});
@@ -237,89 +224,63 @@ contents:
 			var status = $(this).data('status');
 			if(status==='close'){
 				$(this).data('status','open');
-				//console.log($(this).parent().parent().find(".dish_desc"));
 				$(this).parent().parent().find(".dish_desc").slideDown();
 				$(this).html("Hidden");
 			}else if(status==='open'){
 				$(this).data('status','close');
-				// console.log(this);
 				$(this).parent().parent().find(".dish_desc").slideUp();
 				$(this).html("Show More");
 			}
 		});
-
 	});
 
-
-	// Get restaurant information:
+	// Display restaurant general information:
 	$(window).load(function(){
-			restGet(TEXT_HOST+'/restaurants/allRestaurant',GET_METHOD, function(data){
-				$.each(data, function(i, restaurant){
-					if(restaurant.id == "2"){
-						setRestaurantInfo(restaurant);
-					}
-				});
-
-			}, '#info');
+		restGet(TEXT_HOST + "/restaurants/query/?id=" + shopId, GET_METHOD, function(data){
+			setRestaurantInfo(data);
+		});
 	});
 
-	// Append dishes after loading the whole page:
+	// Display all dishes:
 	$(window).load(function(){
-		restGet(TEXT_HOST+'/dishes/query/?shopId=2',GET_METHOD, function(data){
+		restGet(TEXT_HOST+'/dishes/query/?shopId='+shopId, GET_METHOD, function(data){
 			$.each(data, function(i, dish){
-
+				total_count += 1;
 				dishAppend(dish);
-				// count and update the number of items of the specific type:
+				// count and update the number of items of the chosen type:
 			    var dish_type = "" + dish.type;
-			    //alert(dish_type);
 			    if(dish_counter.dish_type == undefined) {
 			        dish_counter[dish_type] = 1;
 			    } else {
 			        dish_counter[dish_type] += 1;
 			    }
-
 			});
 
-		// Append dish counter information to corresponding types in the sidebar:
-		$(".sub-sub-nav").each(function(type_index, value){
-			value.innerHTML += "(" + dish_counter[value.innerHTML.trim()] + ")";
-		});
+			dish_counter["All"] = total_count;
 
-
+			// set dish counter information according to selected types in the sidebar:
+			$(".sub-sub-nav").each(function(type_index, value){
+				var count = dish_counter[value.innerHTML.trim()];
+				if(count == undefined) {
+					count = 0
+				}
+				value.innerHTML += "(" + count + ")";
+			});
 		}, '#info');
-
-		
-
 	});
 
-	// Append dish counter information to types in the sidebar:
-	// $(window).load(function(){
-	// 	//alert("test");
-	// 	$(".sub-sub-nav").each(function(type_index, value){
-	// 		value.innerHTML += dish_counter[""+value.innerHTML];
-	// 		alert('test' + value.innerHTML);
-	// 	});
-	// });
-
-
-	// TODO!
-	// dishes fillter by click left menu
+	// Dishes fillter by click left menu:
 	$(window).load(function(){
 		$(".sub-sub-nav").on('click', function(){
 			// get the current selected food type:
 			var current_type = $(this).data("type");
-			// alert("current type: "+current_type);
-
-			// apply filter and update the content inside the
-			// display area:
+			// apply filter and update the content inside the display area:
 			update(current_type);
 		});
 	});
 
 </script>
-
-
-
-	</body>
+	
+</body>
 
 </html>
