@@ -1,32 +1,25 @@
-var testOrder = 
-	{
-		"id": 1,
-		"userId": 1,
-		"restaurantId": 1,
-		"deliverId": 1,
-		"totalPrice": 70.0,
-		"deliveryFee": 10.0,
-		"paymentStatus": true,
-		"state": 1,
-		"creatTime": null,
-		"deliverTime": null,
-		"finishTime": null,
+function generateOrder(restId, userId, dishes, totalPrice) {
+	var Order = new Object();
 
-		"dishes" : 
-		[
-			{"id": 1, "orderId": 1, "dishId": 1, "amount": 3, "price": 70.0}
-		]
+	order.userId = userId;
+    order.restaurantId = restId;
+    order.addressId = 1;
+    order.totalPrice = totalPrice;
 
-	};
+    var order2dishes = new Object();
 
-function payInfo() {
-    $("#payInfo").append(localStorage.getItem("order"));
+    order2dishes.order = order;
+    order2dishes.dishes = dishes;
+
+    var postData = JSON.stringify(order2dishes);
+    var url = TEXT_HOST + "/orders/create";
+
+    console.log(postData);
+
+    restSet(url, POST_METHOD, postData, renderSendOrder(),"");
 }
 
-function pay() {
-	alert("not implemented yet(:");
-	// send order to server:
-	
 
-	// go to the payment page:
+function renderSendOrder() {
+	console.log("success");
 }
