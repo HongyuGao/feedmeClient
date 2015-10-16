@@ -127,7 +127,6 @@ function setRestaurantInfo(restaurant) {
   );
 }
 
-<< << << < HEAD
 
 function setCurrentDishType(type) {
   current_dish_type = type;
