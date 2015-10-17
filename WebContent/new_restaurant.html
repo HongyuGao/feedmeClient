@@ -10,6 +10,42 @@
 
   </head>
   <body>
+    <div id="popDiv" class="ontop"></div>
+        <div id="dish_popup">
+          <div class="pop_close" onclick="hide()">
+            x
+          </div>
+          <div class="pop_dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="pop_dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="add_shopping_cart">
+                <select class="" name="">
+                  <option value="option" default>One</option>
+                  <option value="option" default>Two</option>
+                  <option value="option" default>Three</option>
+                </select>
+
+                <button type="button" name="button" class="btn cust_btn btn-sm" onclick="hide()">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
 <div class="background-image"></div>
     <div id="cart">
       <div class="cart_logo">
@@ -97,10 +133,10 @@
         </div>
       </div>
       <div class="payment">
-        <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')">
+        <div class="go_back btn cust_btn btn-sm" onclick="slideOut('cart')">
           <i class="fa fa-angle-double-left"></i> Continue
         </div>
-        <div class="checkout btn btn-danger btn-sm">
+        <div class="checkout btn cust_btn btn-sm">
           Checkout <i class="fa fa-angle-double-right"></i>
         </div>
       </div>
@@ -151,7 +187,7 @@
       </div>
       <div id="other_restaurant">
         <i class="fa fa-chevron-left"></i>
-        <a href="">Looking others</a>
+        <a href="choose_res.html">Looking others</a>
       </div>
 
 
@@ -164,13 +200,13 @@
         ACT Gungahlin
       </div>
       <div class="search">
-        <input type="text" name="name" value="Search Dish">&nbsp;
-        <i class="fa fa-search fa-2x search_color"></i>
+        <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
+        <i class="fa fa-search fa-2x search_color" onclick="search()"></i>
       </div>
 
       </div>
       <div class="dishes">
-        <div class="dish">
+        <div class="dish" onclick="pop()">
           <div class="dish_photo">
             <img src="img/test1.jpg" alt="" />
           </div>
@@ -416,38 +452,9 @@
   	<script src="js/commonRest.js"></script>
   	<script src="js/commonPath.js"></script>
   	<script src="js/restaurant.js"></script>
+    <script src="js/actions.js"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-       //Navigation Menu Slider
-        $('#cart_info').on('click',function(e){
-          e.preventDefault();
-          $('#cart').toggleClass('slide_right');
-        });
-        $('#nav-close').on('click',function(e){
-          e.preventDefault();
-          $('#cart').removeClass('slide_right');
-        });
-       });
-       var slided = false;
-       function slideOut(e){
-         var elem = document.getElementById(e);
-         elem.style.transition = "right 0.3s linear 0s";
-         elem.style.right = "-300px";
-         slided = false;
-       }
-       function slideIn(e){
-         var elem = document.getElementById(e);
-         elem.style.transition = "right 0.3s linear 0s";
-         elem.style.right="0px";
-         slided = true;
-       }
-       function slide(e){
-         if(slided){
-           slideOut(e);
-         }else{
-           slideIn(e);
-         }
-       }
+
     </script>
   </body>
 </html>

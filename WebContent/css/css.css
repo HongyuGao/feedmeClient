@@ -13,7 +13,7 @@ body{
   right: 0;
   z-index: -1;
   display: block;
-  background: url('../img/bg.jpg') no-repeat right fixed;
+  background: url('../img/gourmet-667599.jpg') no-repeat right fixed;
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -24,39 +24,48 @@ body{
   filter: blur(5px);
 }
 .ontop {
-  				position: fixed;
-          left: 0;
-          right: 0;
-				z-index: 998;
-				width: 100%;
-				height: 100%;
-        background-color: rgb(255,255,255);
-				display: none;
-        /*-webkit-filter: blur(5px);
-        -moz-filter: blur(5px);
-        -o-filter: blur(5px);
-        -ms-filter: blur(5px);
-        filter: blur(5px);*/
-        opacity: .4;
-        filter: alpha(opacity = 50);
-			}
-  #popup {
-    z-index: 999;
-				width: 400px;
-				height: 400px;
-				position: absolute;
-        display: none;
-				color: #ffffff;
-				background-color: #c22d24;
-				/* To align popup window at the center of screen*/
-				top: 50%;
-				left: 50%;
-				margin-top: -250px;
-				margin-left: -200px;
-        opacity:0.8;
-        border: 5px solid #d46c65;
-			}
-
+	position: fixed;
+  left: 0;
+  right: 0;
+	z-index: 900;
+	width: 100%;
+	height: 100%;
+  background-color: rgb(255,255,255);
+	display: none;
+  opacity: .5;
+  filter: alpha(opacity = 60);
+}
+#popup {
+  z-index: 999;
+	width: 400px;
+	height: 400px;
+	position: absolute;
+  display: none;
+	color: #ffffff;
+	background-color: #c22d24;
+	/* To align popup window at the center of screen*/
+	top: 50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -200px;
+  border: 5px solid #d46c65;
+}
+#dish_popup {
+  z-index: 999;
+	width: 400px;
+	height: 180px;
+	position: absolute;
+  display: none;
+	color: #ffffff;
+	background-color: #c22d24;
+	/* To align popup window at the center of screen*/
+	top: 50%;
+	left: 50%;
+	margin-top: -90px;
+	margin-left: -200px;
+  opacity:0.8;
+  border: 5px solid #d46c65;
+}
 table{
   border-style:none;
   border:0px;
@@ -67,23 +76,25 @@ table{
 table td{
   padding: 5px;
 }
-      input {
-          font-size: 13px;
-          -webkit-border-radius: 3px;
-          -moz-border-radius: 5px;
-          border-radius: 5px;
-          padding: 3px;
-          background: #FFF;
-          border: 1px solid #aac;
-      }
+input {
+  font-size: 13px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 3px;
+  background: #FFF;
+  border: 1px solid #aac;
+  color: #000;
 
-      input.time {
-          width: 80px;
-      }
+}
 
-      input.date {
-          width: 90px;
-      }
+input.time {
+    width: 80px;
+}
+
+input.date {
+    width: 90px;
+}
 a{
   text-decoration: none;
   color: #ffffff;
@@ -102,12 +113,14 @@ a:hover{
   width: 160px;
   height: 40px;
   float: left;
-  margin: 7px;
   margin-left: 40px;
+  padding: 5px;
 }
 #brand img{
-  width: 120px;
+  width: 110px;
   height: 30px;
+  padding-top: 5px;
+
 }
 #personal_info{
   float: left;
@@ -179,13 +192,47 @@ a:hover{
   padding: 20px;
   font-size: 14px;
 }
+#share_cart{
+  height:100%;
+  width:300px;
+  position: fixed;
+  right:-300px;
+  top:40px;
+  background-color: #ffffff;
+  z-index: 10;
+  color: #c22d24;
+  padding: 20px;
+  font-size: 14px;
+}
+.share_block{
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: rgba(218,129,123,0.4);
+    border-radius: 2px;
+}
+.share_block input{
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: rgba(218,129,123,0.4);
+    border-radius: 2px;
+}
 .cart_shops{
   margin-top: 10px;
+  padding: 5px;
 }
 .cart_shops hr{
-  width: 260px;
+  width: 250px;
   margin-top: 4px;
   margin-bottom: 10px;
+
 }
 .cart_dishes{
   margin-left: 20px;
@@ -205,6 +252,10 @@ a:hover{
   text-align: center;
   margin: 10px;
   clear: both;
+}
+.return_bound{
+  font-size: 18px;
+  text-align: center;
 }
 .numbers_row{
   padding-left: 5px;
@@ -229,11 +280,41 @@ a:hover{
 .delivery_fee{
   clear:both;
   height: 20px;
-  margin-left: 20px;
+  margin-left: 22px;
 }
 .delivery_info{
   float: left;
 }
+.sub_total{
+  clear: both;
+  margin-left: 20px;
+  font-size: 18px;
+  height: 25px;
+}
+.total_member{
+  clear: both;
+  margin-left: 20px;
+  font-size: 18px;
+  height: 25px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.sharing_info{
+  clear: both;
+  text-align: left;
+  background-color: gold;
+  color: #C22d24;
+  height: 100%;
+  width: 860px;
+  padding: 5px;
+  font-size: 18px;
+  padding-left: 15px;
+}
+
+/*.sharing_info a{
+
+}*/
 .fee{
   float: right;
 }
@@ -247,6 +328,49 @@ a:hover{
 }
 .checkout{
   float:right;
+}
+.cust_btn{
+  background-color: #c22d24;
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+  color: #FFFFFF;
+  margin:5px;
+}
+.cust_btn:hover{
+  background-color: #d05b54;
+  border: 2px solid #cccccc;
+  border-radius: 5px;
+  color:#FFFFFF;
+  margin:5px;
+}
+.pop_close{
+  height: 10px;
+  padding-top: -10px;
+  text-align: right;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.add_shopping_cart select{
+  background-color: #c22d24;
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+  color: #FFFFFF;
+  margin:5px;
+  height: 31px;
+  font-size: 14px;
+}
+.add_shopping_cart select:hover{
+  background-color: #d05b54;
+  border: 2px solid #cccccc;
+  border-radius: 5px;
+  color:#FFFFFF;
+  margin:5px;
+}
+
+.add_shopping_cart{
+  clear: both;
+  text-align: right;
+  margin-top: 40px;
 }
 .total{
   clear: both;
@@ -265,6 +389,17 @@ a:hover{
   font-size: 16px;
 
 }
+#share_left_filter{
+  height: 100%;
+  width:200px;
+  position: absolute;
+  left: 0px;
+  background-color: #242526;
+  color: #FFFFFF;
+  font-size: 16px;
+
+}
+
 h4{
   text-align: center;
   margin-bottom: 5px;
@@ -276,6 +411,13 @@ hr{
   margin-bottom: 10px;
 }
 #left_filter li{
+  list-style: none;
+  margin: 0px;
+  text-align: center;
+  margin-top: 5px;
+  cursor: pointer;
+}
+#share_left_filter li{
   list-style: none;
   margin: 0px;
   text-align: center;
@@ -317,13 +459,16 @@ hr{
   clear: both;
   text-align: center;
   vertical-align: middle;
+  margin-left: 20px;
+  margin-right:20px;
 }
-#share_order li{
-  padding-left: 20px;
-  padding-right:20px;
+
+#share_order_filter li{
+  /*padding-left: 20px;
+  padding-right:20px;*/
   padding-top: 5px;
 }
-#share_order li:hover{
+#share_order_filter li:hover{
   background-color: #c22d24;
 }
 #main{
@@ -332,7 +477,12 @@ hr{
   margin-right:70px;
   margin-top: 70px;
 }
-
+#share_main{
+  height: 100%;
+  margin-left: 270px;
+  margin-right:70px;
+  margin-top: 70px;
+}
 .suburb{
   font-size: 36px;
   color: #AC140C;
@@ -358,7 +508,7 @@ hr{
     background: transparent;
     border-bottom: 1px solid #c22d24;
     width: 300px;
-    font-size: 24px;
+    font-size: 20px;
     color: #c22d24;
 
 }
@@ -371,7 +521,7 @@ hr{
   background-color: rgba(194, 45, 36, 0.6);
 }
 .shop:nth-of-type(even){
-  background-color: rgba(194, 45, 36, 0.7);
+  background-color: rgba(194, 45, 36, 0.8);
 }
 .shop:nth-of-type(odd):hover{
   background-color: rgba(200, 66, 57, 0.5);
@@ -402,6 +552,7 @@ hr{
 }
 .shop_name{
   font-size: 20px;
+  margin: 3px;
 }
 .open_time li{
   list-style: none;
@@ -439,17 +590,14 @@ hr{
 }
 .sharing li{
   list-style: none;
-  padding-top: 4px;
+  padding-top: 2px;
   font-size: 14px;
 }
 .left_shop{
   height: 270px;
   padding: 30px;
 }
-.shop_name{
-  text-align: center;
-  font-size: 20px;
-}
+
 .open_time li{
   text-align: left;
   font-size: 12px;
@@ -473,19 +621,25 @@ hr{
   font-size: 16px;
   width: 430px;
   float: left;
+  background-color: rgba(194, 45, 36, 0.6);
 }
 
-.dish{
-  background-color: rgba(194, 45, 36, 0.6);
+.pop_dish{
+  height: 160px;
+  color: #FFFFFF;
+  font-size: 16px;
+  width: 380px;
+  float: left;
+  background-color: #c22d24;
 }
 .dish:hover{
   background-color: rgba(200, 66, 57, 0.5);
 }
 .dish:nth-of-type(4n+2){
-  background-color: rgba(194, 45, 36, 0.7);
+  background-color: rgba(194, 45, 36, 0.8);
 }
 .dish:nth-of-type(4n+3){
-  background-color: rgba(194, 45, 36, 0.7);
+  background-color: rgba(194, 45, 36, 0.8);
 }
 .dish:nth-of-type(4n+2):hover{
   background-color: rgba(200, 66, 57, 0.6);
@@ -511,6 +665,13 @@ hr{
   height: 160px;
   padding: 15px;
   width: 270px;
+  cursor:pointer;
+}
+.pop_dish_info{
+  float: left;
+  height: 160px;
+  padding: 15px;
+  width: 220px;
   cursor:pointer;
 }
 .dish_name{

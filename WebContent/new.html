@@ -185,12 +185,95 @@
         ACT Gungahlin
       </div>
       <div class="search">
-        <input type="text" name="name" value="Search Dish">&nbsp;
+        <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
         <i class="fa fa-search fa-2x search_color"></i>
       </div>
 
       </div>
       <div class="shops">
+        <a href="new_restaurant.html?shopId=1">
+        <div class="shop">
+          <div class="shop_logo">
+            <img src="img/test1.jpg" alt="" />
+          </div>
+          <div class="shop_info">
+            <div class="group1">
+
+            <div class="shop_name">
+              Gao SHi Lin
+            </div>
+            <div class="open_time">
+                <li>Openning Time: </li>
+                <li class='fa fa-clock-o'> 11:00am - 01:00 pm</li>
+                <li class='fa fa-clock-o'> 04:00pm - 09:00 pm</li>
+            </div>
+            <div class="support_payment">
+              <i class='fa fa-cc-visa'></i>
+              <i class='fa fa-cc-mastercard'></i>
+              <i class='fa fa-cc-paypal'></i>
+            </div>
+
+          </div>
+            <div class="group2">
+            <div class="stars">
+              <span class='glyphicon glyphicon-star'></span>
+              <span class='glyphicon glyphicon-star'></span>
+              <span class='glyphicon glyphicon-star'></span>
+              <span class='glyphicon glyphicon-star-empty'></span>
+              <span class='glyphicon glyphicon-star-empty'></span>
+            </div>
+            <div class="delivery">
+              Estimated Delivery Fee A$16
+            </div>
+            </div>
+          </div>
+        </a>
+          <div class="sharing">
+            <li style="font-size:24px">Order Sharing</li>
+            <li><i>4</i>&nbsp people sharing</li>
+            <li><i>A$1</i>&nbsp; only to deliver</li>
+            <li><i>1</i>&nbsp; hours left</li>
+            <button class="btn cust_btn btn-sm" onclick="join_in_share('1')">Join In Now</button>
+          </div>
+        </div>
+        <div class="shop">
+          <a href="new_restaurant.html?shopId=1">
+          <div class="shop_logo">
+            <img src="img/test1.jpg" alt="" />
+          </div>
+          <div class="shop_info">
+            <div class="group1">
+
+            <div class="shop_name">
+              Gao SHi Lin
+            </div>
+            <div class="open_time">
+                <li>Openning Time: </li>
+                <li class='fa fa-clock-o'> 11:00am - 01:00 pm</li>
+                <li class='fa fa-clock-o'> 04:00pm - 09:00 pm</li>
+            </div>
+            <div class="support_payment">
+              <i class='fa fa-cc-visa'></i>
+              <i class='fa fa-cc-mastercard'></i>
+              <i class='fa fa-cc-paypal'></i>
+            </div>
+
+          </div>
+            <div class="group2">
+            <div class="stars">
+              <span class='glyphicon glyphicon-star'></span>
+              <span class='glyphicon glyphicon-star'></span>
+              <span class='glyphicon glyphicon-star'></span>
+              <span class='glyphicon glyphicon-star-empty'></span>
+              <span class='glyphicon glyphicon-star-empty'></span>
+            </div>
+            <div class="delivery">
+              Estimated Delivery Fee A$16
+            </div>
+            </div>
+          </div>
+          </a>
+        </div>
         <div class="shop">
           <div class="shop_logo">
             <img src="img/test1.jpg" alt="" />
@@ -231,93 +314,7 @@
             <li><i>4</i>&nbsp people sharing</li>
             <li><i>A$1</i>&nbsp; only to deliver</li>
             <li><i>1</i>&nbsp; hours left</li>
-            <button class="btn btn-danger btn-sm">Join In Now</button>
-          </div>
-        </div>
-        <div class="shop">
-          <div class="shop_logo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="shop_info">
-            <div class="group1">
-
-            <div class="shop_name">
-              Gao SHi Lin
-            </div>
-            <div class="open_time">
-                <li>Openning Time: </li>
-                <li class='fa fa-clock-o'> 11:00am - 01:00 pm</li>
-                <li class='fa fa-clock-o'> 04:00pm - 09:00 pm</li>
-            </div>
-            <div class="support_payment">
-              <i class='fa fa-cc-visa'></i>
-              <i class='fa fa-cc-mastercard'></i>
-              <i class='fa fa-cc-paypal'></i>
-            </div>
-
-          </div>
-            <div class="group2">
-            <div class="stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="delivery">
-              Estimated Delivery Fee A$16
-            </div>
-            </div>
-          </div>
-          <!-- <div class="sharing">
-            <li style="font-size:24px">Order Sharing</li>
-            <li><i>4</i>&nbsp people sharing</li>
-            <li><i>A$1</i>&nbsp; only to deliver</li>
-            <li><i>1</i>&nbsp; hours left</li>
-            <button class="btn btn-danger btn-sm">Join In Now</button>
-          </div> -->
-        </div>
-        <div class="shop">
-          <div class="shop_logo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="shop_info">
-            <div class="group1">
-
-            <div class="shop_name">
-              Gao SHi Lin
-            </div>
-            <div class="open_time">
-                <li>Openning Time: </li>
-                <li class='fa fa-clock-o'> 11:00am - 01:00 pm</li>
-                <li class='fa fa-clock-o'> 04:00pm - 09:00 pm</li>
-            </div>
-            <div class="support_payment">
-              <i class='fa fa-cc-visa'></i>
-              <i class='fa fa-cc-mastercard'></i>
-              <i class='fa fa-cc-paypal'></i>
-            </div>
-
-          </div>
-            <div class="group2">
-            <div class="stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="delivery">
-              Estimated Delivery Fee A$16
-            </div>
-            </div>
-          </div>
-          <div class="sharing">
-            <li style="font-size:24px">Order Sharing</li>
-            <li><i>4</i>&nbsp people sharing</li>
-            <li><i>A$1</i>&nbsp; only to deliver</li>
-            <li><i>1</i>&nbsp; hours left</li>
-            <button class="btn btn-danger btn-sm">Join In Now</button>
+            <button class="btn cust_btn btn-sm" onclick="join_in_share('1')">Join In Now</button>
           </div>
         </div>
       </div>
@@ -333,38 +330,11 @@
   	<script src="js/commonRest.js"></script>
   	<script src="js/commonPath.js"></script>
   	<script src="js/restaurant.js"></script>
+    <script src="js/actions.js"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-       //Navigation Menu Slider
-        $('#cart_info').on('click',function(e){
-          e.preventDefault();
-          $('#cart').toggleClass('slide_right');
-        });
-        $('#nav-close').on('click',function(e){
-          e.preventDefault();
-          $('#cart').removeClass('slide_right');
-        });
-       });
-       var slided = false;
-       function slideOut(e){
-         var elem = document.getElementById(e);
-         elem.style.transition = "right 0.3s linear 0s";
-         elem.style.right = "-300px";
-         slided = false;
-       }
-       function slideIn(e){
-         var elem = document.getElementById(e);
-         elem.style.transition = "right 0.3s linear 0s";
-         elem.style.right="0px";
-         slided = true;
-       }
-       function slide(e){
-         if(slided){
-           slideOut(e);
-         }else{
-           slideIn(e);
-         }
-       }
+      function join_in_share(shopId){
+        window.open('choose_dish.html?shopId='+shopId, '_self', false);
+      }
     </script>
   </body>
 </html>
