@@ -1,5 +1,10 @@
 body{
   margin:0px;
+
+}
+.blur{
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
 }
 
 .background-image {
@@ -7,7 +12,6 @@ body{
   left: 0;
   right: 0;
   z-index: -1;
-
   display: block;
   background: url('../img/bg.jpg') no-repeat right fixed;
   width: 100%;
@@ -19,7 +23,67 @@ body{
   -ms-filter: blur(5px);
   filter: blur(5px);
 }
+.ontop {
+  				position: fixed;
+          left: 0;
+          right: 0;
+				z-index: 998;
+				width: 100%;
+				height: 100%;
+        background-color: rgb(255,255,255);
+				display: none;
+        /*-webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        -o-filter: blur(5px);
+        -ms-filter: blur(5px);
+        filter: blur(5px);*/
+        opacity: .4;
+        filter: alpha(opacity = 50);
+			}
+  #popup {
+    z-index: 999;
+				width: 400px;
+				height: 400px;
+				position: absolute;
+        display: none;
+				color: #ffffff;
+				background-color: #c22d24;
+				/* To align popup window at the center of screen*/
+				top: 50%;
+				left: 50%;
+				margin-top: -250px;
+				margin-left: -200px;
+        opacity:0.8;
+        border: 5px solid #d46c65;
+			}
 
+table{
+  border-style:none;
+  border:0px;
+  font-size: 16px;
+  padding: 30px;
+
+}
+table td{
+  padding: 5px;
+}
+      input {
+          font-size: 13px;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+          padding: 3px;
+          background: #FFF;
+          border: 1px solid #aac;
+      }
+
+      input.time {
+          width: 80px;
+      }
+
+      input.date {
+          width: 90px;
+      }
 a{
   text-decoration: none;
   color: #ffffff;
@@ -250,12 +314,17 @@ hr{
 }
 
 #share_order{
-  margin-left: 20px;
-  margin-right:20px;
   clear: both;
-  padding-top: 5px;
   text-align: center;
   vertical-align: middle;
+}
+#share_order li{
+  padding-left: 20px;
+  padding-right:20px;
+  padding-top: 5px;
+}
+#share_order li:hover{
+  background-color: #c22d24;
 }
 #main{
   height: 100%;

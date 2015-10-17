@@ -4,13 +4,88 @@
     <meta charset="utf-8">
     <title>Feed Me</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="css/lib/jquery.timepicker.css" rel="stylesheet" type="text/css">
+
+
 
     <link href="css/css.css" rel="stylesheet">
 
   </head>
   <body>
+    <div id="popDiv" class="ontop"></div>
+
+          <table border="0" id="popup">
+            <tr>
+              <td style="text-align:center, font-size:28px padding-bottom:25px" colspan=2 class="shop_name" >
+                Create Sharing Order
+              </td>
+            </tr><tr>
+              <td style="text-align:right">
+                Max Members
+              </td>
+              <td>
+                <select class="" name="" style="width:180px">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:right">
+                Deliery Time
+              </td>
+              <td>
+                <p id="date_time">
+                <input type="text" class="time ui-timepicker-input" value="" style="width:90px" />
+                <input type="text" class="date" value="" style="width:90px" />
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="text-align:center" colspan=2 class="shop_name">
+                <hr style="width:340px">
+                Detail Delivery Address
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="height:60px">
+                Suburb&nbsp;
+                <select class="" name="">
+                  <option value="option">option</option>
+                </select>
+                &nbsp;Street&nbsp;
+                <select class="" name="">
+                  <option value="option">option</option>
+                </select>
+                <br/>
+                <br/>
+                Building&nbsp;
+                <input type="text" name="name" value="" size="35">
+              </td>
+            </tr>
+            <tr> <!--Empty row to separe confim button-->
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr  style="padding-top:40px">
+
+              <td colspan="2" style="text-align:right">
+                <button type="button" class="btn btn-success " name="Cancle" onclick="hide('popDiv')">Cancle</button>
+                <button type="button" class="btn btn-success "  name="Confirm">Confirm</button>
+              </td>
+            </tr>
+          </table>
+
     <div class="background-image"></div>
+
     <div id="cart">
       <div class="cart_logo">
         <i class="fa fa-shopping-cart fa-3x"></i><br/>
@@ -139,42 +214,11 @@
       <div id="share_order">
         <h4><a href="#">Share Order</a></h4>
         <hr>
-        <div class="hot">
-          <img src="img/test2.jpg" alt="" />
-        </div>
-        <div class="hot">
-          <a href="choose_res.html"><img src="img/plus.png" alt="" /></a>
-        </div>
+        <li>All Restaurants</li>
+        <li>Order Sharing</li>
+        <li>Not Sharning</li>
       </div>
-      <div id="hot_dish">
-        <h4><a href="#">Hot Dishes</a></h4>
-        <hr>
-        <div class="hot">
-          <img src="img/test2.jpg" alt="" />
-        </div>
-        <div class="hot">
-          <img src="img/test2.jpg" alt="" />
-        </div>
-        <div class="hot">
-          <img src="img/test2.jpg" alt="" />
-        </div>
-        <div class="hot">
-          <img src="img/test2.jpg" alt="" />
-        </div>
 
-        <div class="hot">
-          <img src="img/test2.jpg" alt="" />
-        </div>
-        <div class="hot">
-          <img src="img/test2.jpg" alt="" />
-        </div>
-        <div class="hot">
-          <img src="img/test2.jpg" alt="" />
-        </div>
-        <div class="hot">
-          <img src="img/more.png" alt="" />
-        </div>
-      </div>
 
     </div>
 
@@ -191,7 +235,9 @@
 
       </div>
       <div class="shops">
+
         <div class="shop">
+          <a href="#" onclick="pop('popDiv')">
           <div class="shop_logo">
             <img src="img/test1.jpg" alt="" />
           </div>
@@ -226,6 +272,7 @@
             </div>
             </div>
           </div>
+        </a>
           <div class="sharing">
             <li style="font-size:24px">Order Sharing</li>
             <li><i>4</i>&nbsp people sharing</li>
@@ -329,10 +376,16 @@
     <!-- script references -->
   	<script src="js/webjars/jquery.min.js"></script>
   	<script src="js/webjars/bootstrap.min.js"></script>
+    <script src="js/webjars/bootstrap-datepicker.js"></script>
+    <script src="js/webjars/jquery.timepicker.js"></script>
+    <script src="js/webjars/datepair.js"></script>
+    <script src="js/webjars/jquery.datepair.js"></script>
+
   	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
   	<script src="js/commonRest.js"></script>
   	<script src="js/commonPath.js"></script>
   	<script src="js/restaurant.js"></script>
+
     <script type="text/javascript">
     $(document).ready(function(){
        //Navigation Menu Slider
@@ -365,6 +418,34 @@
            slideIn(e);
          }
        }
+      function pop(div) {
+ 				document.getElementById(div).style.display = 'block';
+        document.getElementById("popup").style.display = 'block';
+ 			}
+ 			function hide(div) {
+ 				document.getElementById(div).style.display = 'none';
+        document.getElementById("popup").style.display = 'none';
+ 			}
+ 			//To detect escape button
+ 			document.onkeydown = function(evt) {
+ 				evt = evt || window.event;
+ 				if (evt.keyCode == 27) {
+ 					hide('popDiv');
+ 				}
+ 			};
+
+      // initialize input widgets first
+    $('#date_time .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+    $('#date_time .date').datepicker({
+        'format': 'm/d/yyyy',
+        'autoclose': true
+    });
+    // initialize datepair
+    $('#date_time').datepair();
+
     </script>
   </body>
 </html>
