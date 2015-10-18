@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Feed Me</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="css/lib/jquery.timepicker.css" rel="stylesheet" type="text/css">
+    <link href="css/css.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div id="popDiv" class="ontop"></div>
+    <div id="dish_popup">
+      <div class="pop_close" onclick="hide()">
+        x
+      </div>
+      <div class="pop_dish">
+        <div class="dish_photo">
+          <img src="img/test1.jpg" alt="" />
+        </div>
+        <div class="pop_dish_info">
+          <div class="dish_name">
+            Gao SHi Lin
+          </div>
+          <div class="dish_price">
+            A$21
+          </div>
+          <div class="dish_stars">
+            <span class='glyphicon glyphicon-star'></span>
+            <span class='glyphicon glyphicon-star'></span>
+            <span class='glyphicon glyphicon-star'></span>
+            <span class='glyphicon glyphicon-star-empty'></span>
+            <span class='glyphicon glyphicon-star-empty'></span>
+          </div>
+          <div class="add_shopping_cart">
+            <select class="" name="">
+              <option value="option" default>One</option>
+              <option value="option" default>Two</option>
+              <option value="option" default>Three</option>
+            </select>
+
+            <button type="button" name="button" class="btn cust_btn btn-sm" onclick="hide()">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="background-image"></div>
+
+    <div id="share_cart">
+      <div class="cart_logo">
+        <i class="fa fa-shopping-cart fa-3x"></i> &nbsp;<i class="fa fa-share-alt fa-3x"></i><br/>
+        <i>Sharing Shopping Cart</i>
+      </div>
+
+      <div class="return_bound">
+        <i>9</i> Bounds Returned
+      </div>
+      <div class="total_member">
+        <i>4</i> Member Join In
+      </div>
+      <div class="cart_shops">
+        <div class="shop_name">
+          Jevy
+        </div>
+        <hr>
+        <div class="cart_dishes">
+          <div class="numbers_row">
+            <div class="dish_name">Fry FIsh</div>
+            <div class="inc_dec">+</div>
+            <input type="text" name="french-hens" id="french-hens" value="3">
+              <div class="inc_dec">-</div>
+              <div class="price">
+                  $34
+              </div>
+            </div>
+            <div class="numbers_row">
+              <div class="dish_name">Fry FIsh</div>
+              <div class="inc_dec">+</div>
+              <input type="text" name="french-hens" id="french-hens" value="">
+                <div class="inc_dec">-</div>
+                <div class="price">
+                    $34
+                </div>
+              </div>
+        </div>
+        <div class="delivery_fee">
+          <div class="delivery_info">
+            Avg Delivery Fee
+          </div>
+          <div class="fee">
+            $10
+          </div>
+        </div>
+        <hr>
+        <div class="sub_total">
+          <div class="delivery_info">
+            Sub Total
+          </div>
+          <div class="fee">
+            $10
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="total">
+        <div class="delivery_info">
+          Total
+        </div>
+        <div class="fee">
+          A$50
+        </div>
+      </div>
+      <div class="payment">
+        <div class="go_back btn cust_btn btn-sm" onclick="slideOut('share_cart')">
+          <i class="fa fa-angle-double-left"></i> Continue
+        </div>
+        <div class="checkout btn cust_btn btn-sm">
+          Checkout <i class="fa fa-angle-double-right"></i>
+        </div>
+      </div>
+    </div>
+
+    <div id="nvabar">
+      <div id="brand">
+        <img src="img/LogoPure.png" alt="" />
+      </div>
+
+      <div id="menu">
+        <a href="#"><li>My Account</li></a>
+        <a href="#"><li>My Orders</li></a>
+        <a href="#"><li>My Favorite</li></a>
+        <a href="#"><li>Tracking Order </li></a>
+      </div>
+      <div id="personal_info">
+        Hello Jevy,
+      </div>
+      <div id="cart_info" onclick="slide('share_cart')">
+        <i class="fa fa-shopping-cart"></i>
+        &nbsp;A$35 / 5 Items
+
+      </div>
+    </div>
+
+    <div id="left_filter">
+      <div class="left_shop">
+        <div class="left_shop_img">
+          <img src="img/bg.jpg" alt="" />
+        </div>
+        <div class="shop_name">
+          Gao SHi Lin
+        </div>
+        <div class="open_time">
+            <li class='fa fa-clock-o'> 11:00am - 01:00 pm</li>
+            <li class='fa fa-clock-o'> 04:00pm - 09:00 pm</li>
+        </div>
+      </div>
+      <hr>
+      <div class="dish_filter">
+          <li>Hot Sale</li>
+          <li>Discount</li>
+          <li>Fresh</li>
+          <li>Fry</li>
+          <li>Soup</li>
+          <li>Drink</li>
+      </div>
+      <div id="other_restaurant">
+        <i class="fa fa-chevron-left"></i>
+        <a href="">Looking others</a>
+      </div>
+    </div>
+
+
+    <div id="main"> <!--Dishes show-->
+
+        <div class="main_header">
+
+        <div class="suburb">
+          ACT Gungahlin
+        </div>
+        <div class="search">
+          <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
+          <i class="fa fa-search fa-2x search_color"></i>
+        </div>
+
+        </div>
+        <div class="sharing_info">
+          <i>4</i> people are sharing the order that will delivery to <i>Gungahlin Shopping center 32</i>.
+          <a href="#" class="btn btn-sm cust_btn">Join Now</a>
+        </div>
+        <div class="dishes">
+          <div class="dish" onclick="pop()">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+          <div class="dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+          <div class="dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+
+          <div class="dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+
+          <div class="dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+          <div class="dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+          <div class="dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+          <div class="dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+          <div class="dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+          <div class="dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="sold">
+                <i>230</i> sold this week
+              </div>
+            </div>
+          </div>
+          <!--Dish Finish-->
+        </div>
+    </div>
+
+    <div id="foot">
+
+    </div>
+
+    <!-- script references -->
+  	<script src="js/webjars/jquery.min.js"></script>
+  	<script src="js/webjars/bootstrap.min.js"></script>
+    <script src="js/webjars/bootstrap-datepicker.js"></script>
+    <script src="js/webjars/jquery.timepicker.js"></script>
+    <script src="js/webjars/datepair.js"></script>
+    <script src="js/webjars/jquery.datepair.js"></script>
+
+  	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
+  	<script src="js/commonRest.js"></script>
+  	<script src="js/commonPath.js"></script>
+  	<script src="js/restaurant.js"></script>
+    <script src="js/actions.js"></script>
+
+    <script type="text/javascript">
+
+      // initialize input widgets first
+    $('#date_time .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+    $('#date_time .date').datepicker({
+        'format': 'm/d/yyyy',
+        'autoclose': true
+    });
+    // initialize datepair
+    var basicExampleEl = document.getElementById('date_time');
+    var datepair = new Datepair(basicExampleEl);
+    $('#date_time').datepair();
+
+
+    // Code for this page to control div show/hide
+    //
+    function join_in(shop_id){
+
+      //Save the user input sharing information should be done here
+    }
+
+
+    //Div pop hide code -- Customed for this page
+    function pop() {
+      document.getElementById('popDiv').style.display = 'block';
+      document.getElementById("dish_popup").style.display = 'block';
+    }
+
+    function hide() {
+      document.getElementById('popDiv').style.display = 'none';
+      document.getElementById("dish_popup").style.display = 'none';
+    }
+    //To detect escape button
+    document.onkeydown = function(evt) {
+      evt = evt || window.event;
+      if (evt.keyCode == 27) {
+        hide('popDiv');
+      }
+    };
+
+
+    </script>
+  </body>
+</html>
