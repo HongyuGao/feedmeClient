@@ -130,11 +130,11 @@
       <div class="dish_filter">
         <h4>Dish Filter</h4>
         <hr>
-          <li>China</li>
-          <li>India</li>
-          <li>Korea</li>
-          <li>Singapore</li>
-          <li>Australia</li>
+          <li data-type="China">China</li>
+          <li data-type="India">India</li>
+          <li data-type="Korea">Korea</li>
+          <li data-type="Singapore">Singapore</li>
+          <li data-type="Australia">Australia</li>
       </div>
       <div id="share_order">
         <h4><a href="#">Share Order</a></h4>
@@ -191,21 +191,22 @@
 
       </div>
       <div class="shops">
-        <a href="new_restaurant.html?shopId=1">
+      
         <div class="shop">
+          <a href="#">
           <div class="shop_logo">
-            <img src="img/test1.jpg" alt="" />
+            <img src="" alt="" />
           </div>
           <div class="shop_info">
             <div class="group1">
 
             <div class="shop_name">
-              Gao SHi Lin
+              
             </div>
             <div class="open_time">
                 <li>Openning Time: </li>
-                <li class='fa fa-clock-o'> 11:00am - 01:00 pm</li>
-                <li class='fa fa-clock-o'> 04:00pm - 09:00 pm</li>
+                <li class='fa fa-clock-o morning'></li>
+                <li class='fa fa-clock-o afternoon'></li>
             </div>
             <div class="support_payment">
               <i class='fa fa-cc-visa'></i>
@@ -236,89 +237,11 @@
             <button class="btn cust_btn btn-sm" onclick="join_in_share('1')">Join In Now</button>
           </div>
         </div>
-        <div class="shop">
-          <a href="new_restaurant.html?shopId=1">
-          <div class="shop_logo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="shop_info">
-            <div class="group1">
 
-            <div class="shop_name">
-              Gao SHi Lin
-            </div>
-            <div class="open_time">
-                <li>Openning Time: </li>
-                <li class='fa fa-clock-o'> 11:00am - 01:00 pm</li>
-                <li class='fa fa-clock-o'> 04:00pm - 09:00 pm</li>
-            </div>
-            <div class="support_payment">
-              <i class='fa fa-cc-visa'></i>
-              <i class='fa fa-cc-mastercard'></i>
-              <i class='fa fa-cc-paypal'></i>
-            </div>
 
-          </div>
-            <div class="group2">
-            <div class="stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="delivery">
-              Estimated Delivery Fee A$16
-            </div>
-            </div>
-          </div>
-          </a>
-        </div>
-        <div class="shop">
-          <div class="shop_logo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="shop_info">
-            <div class="group1">
-
-            <div class="shop_name">
-              Gao SHi Lin
-            </div>
-            <div class="open_time">
-                <li>Openning Time: </li>
-                <li class='fa fa-clock-o'> 11:00am - 01:00 pm</li>
-                <li class='fa fa-clock-o'> 04:00pm - 09:00 pm</li>
-            </div>
-            <div class="support_payment">
-              <i class='fa fa-cc-visa'></i>
-              <i class='fa fa-cc-mastercard'></i>
-              <i class='fa fa-cc-paypal'></i>
-            </div>
-
-          </div>
-            <div class="group2">
-            <div class="stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="delivery">
-              Estimated Delivery Fee A$16
-            </div>
-            </div>
-          </div>
-          <div class="sharing">
-            <li style="font-size:24px">Order Sharing</li>
-            <li><i>4</i>&nbsp people sharing</li>
-            <li><i>A$1</i>&nbsp; only to deliver</li>
-            <li><i>1</i>&nbsp; hours left</li>
-            <button class="btn cust_btn btn-sm" onclick="join_in_share('1')">Join In Now</button>
-          </div>
-        </div>
       </div>
     </div>
+
     <div id="foot">
 
     </div>
@@ -331,10 +254,33 @@
   	<script src="js/commonPath.js"></script>
   	<script src="js/restaurant.js"></script>
     <script src="js/actions.js"></script>
+    <script src="js/home.js"></script>
     <script type="text/javascript">
+
       function join_in_share(shopId){
         window.open('choose_dish.html?shopId='+shopId, '_self', false);
       }
+
+
+      // load and display all restaurants:
+      $(window).load(function(){
+        restGet(TEXT_HOST + '/restaurants/allRestaurant', GET_METHOD, function(data){
+          $.each(data, function(i, restaurant){
+            appendShop(restaurant);
+            addTypesInfo(restaurant.name, restaurant.type);
+          });
+        }, '#info');
+      });
+
+
+      // apply restaurants fillter by clicking left menu:
+      $(window).load(function(){
+        $(".dish_filter li").on('click', function(){
+          console.log($(this).data("type"));
+          applyFilter($(this).data("type"));
+        });
+      });
+
     </script>
   </body>
 </html>

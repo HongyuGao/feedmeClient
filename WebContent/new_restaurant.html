@@ -230,7 +230,7 @@
     <script src="js/actions.js"></script>
 
     <!-- to be changed-->
-    <script src="new_rest.js"></script>
+    <script src="js/restaurant/restaurant.js"></script>
     <script type="text/javascript">
 
       localStorage.setItem("userId", 1);
@@ -242,7 +242,7 @@
       // general restaurant information:
       $(window).load(function() {
           restGet(TEXT_HOST + "/restaurants/query/?id=" + shopId, GET_METHOD, function(data){
-            console.log(data);
+
             $(".left_shop_img img").attr("src", PICTURE_HOST + "/img/logo/" + data.logo);
             $(".left_shop .shop_name").text(data.name);
             $(".open_time .morning").text(data.openTimeMorning);
@@ -257,7 +257,6 @@
       $(window).load(function(){
         restGet(TEXT_HOST+'/dishes/query/?shopId='+shopId, GET_METHOD, function(data){
           $.each(data, function(i, dish){
-            console.log(dish);
             total_count += 1;
             appendDish(dish);
             // count and update the number of items of the chosen type:

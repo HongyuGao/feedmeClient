@@ -59,6 +59,6 @@ function applyFilter(currentType) {
                     appendDish(dish); 
                 }
             });
-    }, '#info');
+    }, '.dishes');
 }
 
