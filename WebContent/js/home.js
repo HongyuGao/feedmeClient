@@ -23,7 +23,6 @@ function addTypesInfo(restaurantName, restaurantType) {
 	restaurantTypes[restaurantName] = restaurantType;
 }
 
-
 function applyFilter(currentType) {
 	$(".shop").each(function() {
 		if(restaurantTypes[$(this).find(".shop_name").text()] == currentType) {

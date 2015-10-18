@@ -47,27 +47,33 @@
         </div>
 
 <div class="background-image"></div>
+    
+
+    <!-- begin of shopping cart -->
     <div id="cart">
       <div class="cart_logo">
         <i class="fa fa-shopping-cart fa-3x"></i><br/>
         <i>Hi, You booked these dishes:</i>
       </div>
 
+  
       <div class="cart_shops">
+        <!--
         <div class="shop_name">
-          Gao Shi Lin
         </div>
         <hr>
         <div class="cart_dishes">
+
           <div class="numbers_row">
-            <div class="dish_name">Fry FIsh</div>
+            <div class="dish_name"></div>
             <div class="inc_dec">+</div>
             <input type="text" name="french-hens" id="french-hens" value="3">
               <div class="inc_dec">-</div>
               <div class="price">
-                  34
               </div>
             </div>
+
+            
             <div class="numbers_row">
               <div class="dish_name">Fry FIsh</div>
               <div class="inc_dec">+</div>
@@ -77,6 +83,8 @@
                     34
                 </div>
               </div>
+            
+
 
         </div>
         <div class="delivery_fee">
@@ -87,51 +95,21 @@
             A$10
           </div>
         </div>
+        -->
       </div>
-      <div class="cart_shops">
-        <div class="shop_name">
-          Gao Shi Lin
-        </div>
-        <hr>
-        <div class="cart_dishes">
-          <div class="numbers_row">
-            <div class="dish_name">Fry FIsh</div>
-            <div class="inc_dec">+</div>
-            <input type="text" name="french-hens" id="french-hens" value="3">
-              <div class="inc_dec">-</div>
-              <div class="price">
-                  34
-              </div>
-            </div>
-            <div class="numbers_row">
-              <div class="dish_name">Fry FIsh</div>
-              <div class="inc_dec">+</div>
-              <input type="text" name="french-hens" id="french-hens" value="">
-                <div class="inc_dec">-</div>
-                <div class="price">
-                    34
-                </div>
-              </div>
+    
 
-        </div>
-        <div class="delivery_fee">
-          <div class="delivery_info">
-            Delivery Fee
-          </div>
-          <div class="fee">
-            A$10
-          </div>
-        </div>
-      </div>
+
 
       <div class="total">
         <div class="delivery_info">
           Total
         </div>
         <div class="fee">
-          A$50
+          A$0.0
         </div>
       </div>
+
       <div class="payment">
         <div class="go_back btn cust_btn btn-sm" onclick="slideOut('cart')">
           <i class="fa fa-angle-double-left"></i> Continue
@@ -140,11 +118,16 @@
           Checkout <i class="fa fa-angle-double-right"></i>
         </div>
       </div>
+
     </div>
+
+    <!-- end of shopping cart -->
 
     <div id="nvabar">
       <div id="brand">
-        <img src="img/LogoPure.png" alt="" />
+        <a href="new.html">
+          <img src="img/LogoPure.png" alt="" />
+        </a>
       </div>
 
       <div id="menu">
@@ -158,7 +141,7 @@
       </div>
       <div id="cart_info" onclick="slide('cart')">
         <i class="fa fa-shopping-cart"></i>
-        &nbsp;A$35 / 5 Items
+         &nbsp;<span class="cart-top-sum">A$0.0 / 0 Item(s) </span>
 
       </div>
     </div>
@@ -249,6 +232,15 @@
             $(".open_time .afternoon").text(data.openTimeAfternoon);
 
             setRestaurantInfo(data);
+
+            var url = TEXT_HOST + "/shoppingCart/queryCart?userId=" + localStorage.getItem("userId");
+            restGet(url, GET_METHOD, function(data){
+                var items = data["items"];
+                if(items.trim().length != 0) {
+                    parseCart(items);
+                }
+            });
+
           });
       });
 
