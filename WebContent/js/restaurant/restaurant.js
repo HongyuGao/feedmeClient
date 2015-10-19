@@ -44,44 +44,47 @@ function parseCart(items) {
             
         }    
     }
-
-    
     
     setCart();
 }
 
 function setCart() {
 	// current shop:
-	$(".cart_shops").append(
-			'<div class="shop_name">' +
-          	restaurantName + 
-        	'</div>' +
-        	'<hr>'	
-		);
-	$(".cart_shops").append('<div class="cart_dishes">');
-	if(order[restaurantId] != undefined) {
-		var dishes = order[restaurantId];
-		for(var dishName in dishes) {
-			$(".cart_shops").append(
+    if(restaurantName != undefined) {
+        $(".cart_shops").append(
+            '<div class="shop_name">' +
+            restaurantName + 
+            '</div>' +
+            '<hr>'  
+        );
+        $(".cart_shops").append('<div class="cart_dishes">');
+        if(order[restaurantId] != undefined) {
+            var dishes = order[restaurantId];
+            for(var dishName in dishes) {
+                $(".cart_shops").append(
 
-				'<div class="numbers_row">' +
-            	'<div class="dish_name">' + dishName + '</div>' +
+                    '<div class="numbers_row">' +
+                    '<div class="dish_name">' + dishName + '</div>' +
 
-            	'<div class="inc_dec">'+ 
-            	'<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (-1) + ', ' + (1) + ', ' +(restaurantId) + ')"' +
-        		'> - </button>'+
-        		' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[dishName]["count"] + '</span>' +
-        		'<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (1) + ', ' + (1) + ',' + (restaurantId) +  ')"' +
-        		'> + </button>'+
-            	'</div>' +
-            	
-              	'<div class="price">' + dishes[dishName]["price"] + '</div>' +
-            	'</div>' 
+                    '<div class="inc_dec">'+ 
+                    '<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (-1) + ', ' + (1) + ', ' +(restaurantId) + ')"' +
+                    '> - </button>'+
+                    ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[dishName]["count"] + '</span>' +
+                    '<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (1) + ', ' + (1) + ',' + (restaurantId) +  ')"' +
+                    '> + </button>'+
+                    '</div>' +
+                    
+                    '<div class="price">' + dishes[dishName]["price"] + '</div>' +
+                    '</div>' 
 
-				);
-		}
-	}
-	$(".cart_shops").append('</div>');
+                    );
+            }
+        }
+        $(".cart_shops").append('</div>');
+    }
+	
+
+    console.log(order);
 
 	// other shops:
 	for(var restId in order) {
@@ -118,6 +121,8 @@ function setCart() {
 				);
 		}
 	}
+
+    console.log(order);
 
 	$(".cart_shops").append('</div>');
 
