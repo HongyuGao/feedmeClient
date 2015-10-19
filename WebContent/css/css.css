@@ -306,15 +306,16 @@ a:hover{
   background-color: gold;
   color: #C22d24;
   height: 100%;
-  width: 860px;
-  padding: 5px;
-  font-size: 18px;
+  width: 800px;
+  padding: 3px;
+  font-size: 16px;
   padding-left: 15px;
 }
 
-/*.sharing_info a{
-
-}*/
+.sharing_info a{
+  font-weight: bold;
+  font-size: 16px;
+}
 .fee{
   float: right;
 }
@@ -476,6 +477,7 @@ hr{
   margin-left: 270px;
   margin-right:70px;
   margin-top: 70px;
+  min-width: 800px;
 }
 #share_main{
   height: 100%;
@@ -491,7 +493,7 @@ hr{
 }
 .main_header{
   height: 40px;
-  width: 100%;
+  min-width: 800px;
   margin-bottom: 5px;
 }
 .search{
@@ -516,6 +518,7 @@ hr{
   height: 160px;
   color: #FFFFFF;
   font-size: 16px;
+  min-width: 800px;
 }
 .shop:nth-of-type(odd){
   background-color: rgba(194, 45, 36, 0.6);
@@ -547,7 +550,7 @@ hr{
   float: left;
   height: 160px;
   padding: 15px;
-  width: 500px;
+  width: 400px;
   cursor:pointer;
 }
 .shop_name{
@@ -586,13 +589,24 @@ hr{
   height: 160px;
   padding: 10px;
   text-align: center;
-  background: url();
+  background: url('../img/sharedeliver_bg.png') no-repeat;
 }
 .sharing li{
   list-style: none;
   padding-top: 2px;
   font-size: 14px;
+  color: #C22d24;
+  font-weight: bold;
+  text-align: center;
 }
+.sharing li:first-child {
+  font-size: 24px;
+  text-align: center;
+  margin: 5px;
+  color: #FFFFFF;
+  list-style: none;
+}
+
 .left_shop{
   height: 270px;
   padding: 30px;
@@ -619,9 +633,12 @@ hr{
   height: 160px;
   color: #FFFFFF;
   font-size: 16px;
-  width: 430px;
+  min-width: 400px;
   float: left;
   background-color: rgba(194, 45, 36, 0.6);
+}
+.dishes{
+  min-width: 800px;
 }
 
 .pop_dish{
@@ -664,7 +681,7 @@ hr{
   float: left;
   height: 160px;
   padding: 15px;
-  width: 270px;
+  width: 240px;
   cursor:pointer;
 }
 .pop_dish_info{
@@ -688,6 +705,38 @@ hr{
 
 }
 
+#confirm_order{
+  margin-left: 250px;
+  margin-right: 250px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  color: #FFFFFF;
+}
+.order_content{
+  padding: 20px;
+}
+.order_content hr{
+  width: 100%;
+}
+#confirm_order .total{
+  color: #C22D24;
+  padding: 20px;
+}
+
+.order_content:nth-of-type(odd){
+  background-color: rgba(194, 45, 36, 0.6);
+}
+.order_content:nth-of-type(even){
+  background-color: rgba(194, 45, 36, 0.8);
+}
+.order_content:nth-of-type(odd):hover{
+  background-color: rgba(200, 66, 57, 0.5);
+  /*border: solid 1px #ffffff;*/
+}
+.order_content:nth-of-type(even):hover{
+  background-color: rgba(200, 66, 57, 0.6);
+  /*border: solid 1px #ffffff;*/
+}
 
 
 #foot{

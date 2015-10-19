@@ -40,7 +40,7 @@
                   <option value="option" default>Three</option>
                 </select>
 
-                <button type="button" name="button" class="btn cust_btn btn-sm" onclick="hide()">Add</button>
+                <button type="button" name="button" class="btn cust_btn btn-sm" onclick="redirect_restaurant()">Add</button>
               </div>
             </div>
           </div>
@@ -164,18 +164,7 @@
     </div>
 
     <div id="left_filter">
-      <div class="left_shop">
-        <div class="left_shop_img">
-          <img src="img/bg.jpg" alt="" />
-        </div>
-        <div class="shop_name">
-          Gao SHi Lin
-        </div>
-        <div class="open_time">
-            <li class='fa fa-clock-o'> 11:00am - 01:00 pm</li>
-            <li class='fa fa-clock-o'> 04:00pm - 09:00 pm</li>
-        </div>
-      </div>
+      <h4><a href="#">Hot Dishes</a></h4>
       <hr>
       <div class="dish_filter">
           <li>Hot Sale</li>
@@ -205,12 +194,9 @@
       </div>
 
       </div>
-      <div class="sharing_info">
-        <i>4</i> people are joined in the <a href="#" onclick="slide('share_cart')"> group delivery </a>, which will deliver to <i>No. 32, Gungahlin Shopping center, Act</i>. <br>
-        Your can join in the group delivery by clicking <a href="#"> Join In</a>
-      </div>
+
       <div class="dishes">
-        <div class="dish" onclick="pop()">
+        <div class="dish" onclick="pop('shopId')"> <!--Add dish to shopping cart and go to the restaurant , which provide this dish-->
           <div class="dish_photo">
             <img src="img/test1.jpg" alt="" />
           </div>
@@ -459,6 +445,33 @@
     <script src="js/actions.js"></script>
     <script type="text/javascript">
 
+        var choosed_shopId
+        //Div pop hide code -- Customed for this page
+        function pop(shopId) {
+          document.getElementById('popDiv').style.display = 'block';
+          document.getElementById("dish_popup").style.display = 'block';
+          choosed_shopId = shopId;
+        }
+
+        function hide() {
+          document.getElementById('popDiv').style.display = 'none';
+          document.getElementById("dish_popup").style.display = 'none';
+        }
+        //To detect escape button
+        document.onkeydown = function(evt) {
+          evt = evt || window.event;
+          if (evt.keyCode == 27) {
+            hide('popDiv');
+          }
+        };
+
+        function redirect_restaurant(){
+          hide();
+
+          //Save create share order information to database
+
+          window.open('new_restaurant.html?shopId='+choosed_shopId, '_self', false);
+        }
     </script>
   </body>
 </html>
