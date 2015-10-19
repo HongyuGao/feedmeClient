@@ -37,10 +37,19 @@ $(document).ready(function() {
 
 
 //Div pop out and close code
-function pop() {
+function pop(photo, name, id, price) {
+  setPopInfo(photo, name, id, price);
   document.getElementById('popDiv').style.display = 'block';
   document.getElementById("dish_popup").style.display = 'block';
 }
+
+function setPopInfo(photo, name, id, price) {
+  $(".pop_dish .dish_photo img").attr("src", photo);
+  $(".pop_dish .dish_name").text(name);
+  $(".pop_dish_info .dish_name").data("dishId", id);
+  $(".pop_dish .dish_price").text("A$" + price);
+}
+
 
 function hide() {
   document.getElementById('popDiv').style.display = 'none';

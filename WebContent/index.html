@@ -1,251 +1,236 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link href="css/lib/bootstrap.min.css" rel="stylesheet">
-		<link href="css/left_menu.css" rel="stylesheet">
-		<link href="css/styles.css" rel="stylesheet">
-		<title>Feed Me</title>
-		<style type="text/css">object,embed{-webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;-ms-animation-duration:.001s;-ms-animation-name:playerInserted;-o-animation-duration:.001s;-o-animation-name:playerInserted;animation-duration:.001s;animation-name:playerInserted;}@-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style>
-	</head>
-	<body>
-		<!-- Left transition menu to filter content-->
-		<nav>
-		  <ul class="list-unstyled main-menu">
-		    <!--Include your navigation here-->
-		    <a href="#" id="nav-close"><li class="text-right">Filter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-times"></i> &nbsp;</li></a>
-				<a href="#"><li> Online Pay <span class="icon"></span></li></a>
-				<a href="#"><li> Deals <span class="icon"></span></li></a><hr/>
-				<a href="#">
-					<li class="sub-nav" >
-						<i class="forder" data-status="open"> Food with country
-							<i class="fa fa-angle-down"></i>
-						</i>
-					<ul class="list-unstyled" data-index="0" style="display:block" >
-		    	<a href="#"><li class="sub-sub-nav" data-type="china" data-status="open"> China <span class="icon"></span></li></a>
-		    	<a href="#"><li class="sub-sub-nav" data-type="india" data-status="open"> India <span class="icon"></span></li></a>
-		    	<a href="#"><li class="sub-sub-nav" data-type="korea" data-status="open"> Korea <span class="icon"></span></li></a>
-					<a href="#"><li class="sub-sub-nav" data-type="singapore" data-status="open"> Singapore <span class="icon"></span></li></a>
-					</ul>
-				</li>
-				</a>
-		    <a href="#"><li class="sub-nav" data-status="open">
-					<i class="forder" data-status="open">
-						Australia <i class="fa fa-angle-down"></i>
-					</i>
-					<ul class="list-unstyled" data-index="1" style="display:block" >
-						<!-- style="display: none;" -->
-		          <a href="#"><li class="sub-sub-nav"> Pizza <span class="icon"></span></li></a>
-		          <a href="#"><li class="sub-sub-nav"> Burge <span class="icon"></span></li></a>
-		      </ul>
-				</li></a>
-		    <!-- </li></a> -->
-		  </ul>
-		</nav>
-		<!-- End Left transition menu to filter content-->
+  <head>
+    <meta charset="utf-8">
+    <title>Feed Me</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
 
-		<!-- Navbar on head of page-->
-		<div class="navbar navbar-custom navbar-fixed-top">
-				<div class="navbar-header ">
-				<!-- <a class="navbar-brand nav-expander glyphicon glyphicon-list" href="#">  &nbsp;</a> -->
-				<span class="navbar-brand">
-					Brand
-				</span>
-			</div>
-				<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<!-- <li class="active"><a href="#">&nbsp; &nbsp; &nbsp;</a></li> -->
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Login</a></li>
-						<li><a href="#">Contact</a></li>
-						<li>&nbsp;</li>
-					</ul>
-					<form class="navbar-form">
-						<div class="form-group" style="display:inline;">
-							<div class="input-group">
-								<div class="input-group-btn">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-										Category <span class="caret"></span></button>
-									<ul class="dropdown-menu">
-										<li><a href="#">China</a></li>
-										<li><a href="#">India</a></li>
-										<li><a href="#">Korea</a></li>
-										<li><a href="#">Singapore</a></li>
-										<li><a href="#">Australia</a></li>
-									</ul>
-								</div>
-								<input type="text" class="form-control" placeholder="Search resturants and foods here">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">Search</button>
-								</span>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- End Navbar on head of page-->
+    <link href="css/css.css" rel="stylesheet">
 
-		<div class="float_left">
-			<a id="nav-expander">
-				 <i class="fa fa-bars fa-lg white"></i>
-			</a>
-		</div>
+  </head>
+  <body>
+    <div class="background-image"></div>
+    <div id="cart">
+      <div class="cart_logo">
+        <i class="fa fa-shopping-cart fa-3x"></i><br/>
+        <i>Hi, You booked these dishes:</i>
+      </div>
 
 
-	<!-- begin template -->
-	<div class="container">
-	<div class="container-fluid" id="choice">
-	<ul class="nav nav-tabs nav-justified">
-			<li role="presentation" id="restaurant" class="active"><a href="#" onclick="active_tab('#restaurant')">Restaurants Near you</a></li>
-			<li role="presentation" id="hot" calss=""><a href="#" onclick="active_tab('#hot')">Hot Dishes Today</a></li>
-			<li role="presentation" id="together" calss=""><a href="#"onclick="active_tab('#together')">Delivery Together</a></li>
-	</ul>
-	</div>
-
-	<!-- Main container of shops-->
-	<div class="container-fluid" id="shops"></div><!-- End container-fluid of shops-->
-
-	<!-- Main container of hotest dishes-->
-	<div class="container-fluid" id="dishes"></div> <!-- End Main container of hotest dishes-->
-
-	<!-- Main container of hotest dishes-->
-	<div class="container-fluid" id="delivery_together"></div> <!-- End Main container of hotest dishes-->
+      
+      <div class="cart_shops">
+        
+      </div>
 
 
-</div>
-<!-- End Container-->
+    
 
-<div id="foot">
+      <div class="total">
+        <div class="delivery_info">
+          Total
+        </div>
+        <div class="fee">
+          A$0.0
+        </div>
+      </div>
+      <div class="payment">
+        <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')">
+          <i class="fa fa-angle-double-left"></i> Continue
+        </div>
+        <div class="checkout btn btn-danger btn-sm" onclick="sendOrder()">
+          Checkout <i class="fa fa-angle-double-right"></i>
+        </div>
+      </div>
+    </div>
 
-</div>
-<div id="info">
+    <div id="nvabar">
+      <div id="brand">
+        <a href="index.html">
+          <img src="img/LogoPure.png" alt="" />
+        </a>
+      </div>
 
-</div>
+      <div id="menu">
+        <a href="#"><li>My Account</li></a>
+        <a href="#"><li>My Orders</li></a>
+        <a href="#"><li>My Favorite</li></a>
+        <a href="#"><li>Tracking Order </li></a>
+      </div>
+      <div id="personal_info">
+        Hello Jevy,
+      </div>
+      <div id="cart_info" onclick="slide('cart')">
+        <i class="fa fa-shopping-cart"></i>
+        &nbsp;<span class="cart-top-sum">A$0.0 / 0 Item(s) </span>
 
-	<!-- script references -->
-	<script src="js/webjars/jquery.min.js"></script>
-	<script src="js/webjars/bootstrap.min.js"></script>
-	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
-	<script src="js/commonRest.js"></script>
-	<script src="js/commonPath.js"></script>
-	<script src="js/restaurant.js"></script>
-	<script>
+      </div>
+    </div>
+    <div id="left_filter">
+      <div class="dish_filter">
+        <h4>Dish Filter</h4>
+        <hr>
+          <li data-type="China">China</li>
+          <li data-type="India">India</li>
+          <li data-type="Korea">Korea</li>
+          <li data-type="Singapore">Singapore</li>
+          <li data-type="Australia">Australia</li>
+      </div>
+      <div id="share_order">
+        <h4><a href="#">Share Order</a></h4>
+        <hr>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <a href="choose_res.html"><img src="img/plus.png" alt="" /></a>
+        </div>
+      </div>
+      <div id="hot_dish">
+        <h4><a href="#">Hot Dishes</a></h4>
+        <hr>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
 
-	window.s = "hello";
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/more.png" alt="" />
+        </div>
+      </div>
 
-	window.restaurantsType = {};
-		$(document).ready(function(){
-       //Navigation Menu Slider
-        $('#nav-expander').on('click',function(e){
-      		e.preventDefault();
-      		$('body').removeClass('nav-expanded');
-      	});
-      	$('#nav-close').on('click',function(e){
-      		e.preventDefault();
-      		$('body').toggleClass('nav-expanded');
-      	});
-       });
+    </div>
 
-		$(window).load(function(){
-			// $('#shops').load('restaurants.html');
-			// $('#dishes').load('dishes.html');
-			// $('#delivery_together').load('delivery_together.html');
-			//
-			// $("#shops").hide();
-			$("#dishes").hide();
-			// $("#delivery_together").hide();
+    <div id="main">
+      <div class="main_header">
 
-		});
+      <div class="suburb">
+        ACT Gungahlin
+      </div>
+      <div class="search">
+        <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
+        <i class="fa fa-search fa-2x search_color"></i>
+      </div>
 
-	$(document).ready(function(){
+      </div>
+      <div class="shops">
+      
+        <div class="shop">
+          <a href="#">
+          <div class="shop_logo">
+            <img src="" alt="" />
+          </div>
+          <div class="shop_info">
+            <div class="group1">
 
-		$('.forder').on('click', function(){
-			var status = $(this).data('status');
-			if(status==='open'){
-				$(this).data('status','close');
-			//console.log($(this).parent().parent().find("ul"));
-				$(this).parent().parent().find("ul").slideUp();
-			}else if(status==='close'){
-				$(this).data('status','open');
-				// console.log(this);
-				$(this).parent().parent().find("ul").slideDown();
-			}
-		});
+            <div class="shop_name">
+              
+            </div>
+            <div class="open_time">
+                <li>Openning Time: </li>
+                <li class='fa fa-clock-o morning'></li>
+                <li class='fa fa-clock-o afternoon'></li>
+            </div>
+            <div class="support_payment">
+              <i class='fa fa-cc-visa'></i>
+              <i class='fa fa-cc-mastercard'></i>
+              <i class='fa fa-cc-paypal'></i>
+            </div>
 
-		$('.show_dish_detail').on('click', function(){
-			var status = $(this).data('status');
-			if(status==='close'){
-				$(this).data('status','open');
-				//console.log($(this).parent().parent().find(".dish_desc"));
-				$(this).parent().parent().find(".dish_desc").slideDown();
-				$(this).html("Hidden");
-			}else if(status==='open'){
-				$(this).data('status','close');
-				// console.log(this);
-				$(this).parent().parent().find(".dish_desc").slideUp();
-				$(this).html("Show More");
-			}
-		});
+          </div>
+            <div class="group2">
+            <div class="stars">
+              <span class='glyphicon glyphicon-star'></span>
+              <span class='glyphicon glyphicon-star'></span>
+              <span class='glyphicon glyphicon-star'></span>
+              <span class='glyphicon glyphicon-star-empty'></span>
+              <span class='glyphicon glyphicon-star-empty'></span>
+            </div>
+            <div class="delivery">
+              Estimated Delivery Fee A$16
+            </div>
+            </div>
+          </div>
+        </a>
+          <div class="sharing">
+            <li style="font-size:24px">Order Sharing</li>
+            <li><i>4</i>&nbsp people sharing</li>
+            <li><i>A$1</i>&nbsp; only to deliver</li>
+            <li><i>1</i>&nbsp; hours left</li>
+            <button class="btn cust_btn btn-sm" onclick="join_in_share('1')">Join In Now</button>
+          </div>
+        </div>
 
-	});
 
-	function active_tab(e){
-		$(".nav-tabs li").removeClass("active");
-		$(e).addClass( "active");
-		//alert(e);
-		$("#shops").hide();
-		$("#dishes").hide();
-		$("#delivery_together").hide();
-		if(e ==="#restaurant"){
-			$("#shops").show();
-		}
-		else if(e ==="#hot"){
-			$("#dishes").show();
-		}else if(e ==="#together"){
-			$("#delivery_together").show();
-		}
-	}
+      </div>
+    </div>
 
-		$(window).load(function(){
-			restGet(TEXT_HOST+'/restaurants/allRestaurant',GET_METHOD, function(data){
-				$.each(data, function(i, restaurant){
-					shopAppend(restaurant);
-					if(restaurant.type!=null || restaurant.type != ''){
-					window.restaurantsType[restaurant.type] = restaurant.type;
-					// $('#shops').append('DDDDD:'+restaurant.name);
-				}
-				});
+    <div id="foot">
 
-			}, '#info');
-		});
+    </div>
 
-		//restaurants fillter by click left menu
-		$(window).load(function(){
-			$(".sub-sub-nav").on('click', function(){
-				//get all of type of restaurants
-				//var types = ["type2", "type3"];
-				console.log(window.restaurantsType);
-				var current_type = $(this).data("type");
-				console.log("current type: "+current_type);
-				$.each(window.restaurantsType, function(i, type){
-					console.log("iterator type: "+type);
-					var status = $("."+type).data("status");
-					console.log("iterator status: "+status);
-					if(type!==current_type && status==="open"){
-						console.log("hide type: "+type);
-						$("."+type).hide(300);
-						$("."+type).data('status', 'close');
-					}
-					if(type===current_type && status==="close"){
-						$("."+current_type).show(300);
-						$("."+current_type).data('status', 'open');
-					}
+    <!-- script references -->
+  	<script src="js/webjars/jquery.min.js"></script>
+  	<script src="js/webjars/bootstrap.min.js"></script>
+  	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
+  	<script src="js/commonRest.js"></script>
+  	<script src="js/commonPath.js"></script>
+  	<script src="js/restaurant/restaurant.js"></script>
+    <script src="js/actions.js"></script>
+    <script src="js/home.js"></script>
+    <script type="text/javascript">
 
-				});
-			})
-		});
-  </script>
-	</body>
+      function join_in_share(shopId){
+        window.open('choose_dish.html?shopId='+shopId, '_self', false);
+      }
+
+
+      // load and display all restaurants:
+      $(window).load(function(){
+        restGet(TEXT_HOST + '/restaurants/allRestaurant', GET_METHOD, function(data){
+          $.each(data, function(i, restaurant){
+            appendShop(restaurant);
+            addTypesInfo(restaurant.name, restaurant.type);
+          });
+        }, '#info');
+      });
+
+
+      // apply restaurants fillter by clicking left menu:
+      $(window).load(function(){
+        $(".dish_filter li").on('click', function(){
+          applyFilter($(this).data("type"));
+        });
+      });
+
+
+      $(window).load(function() {
+          var url = TEXT_HOST + "/shoppingCart/queryCart?userId=" + localStorage.getItem("userId");
+            restGet(url, GET_METHOD, function(data){
+                var items = data["items"]; 
+                if(items.trim().length != 0) {
+                    parseCart(items);
+                }
+          });
+      });
+
+    </script>
+  </body>
 </html>
