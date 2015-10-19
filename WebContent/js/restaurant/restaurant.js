@@ -9,7 +9,6 @@ var restid2Name = Object();
 
 //
 function parseCart(items) {
-	console.log("items:" + items);
     var items_arr = items.split("#");
     for(var i = 0; i < items_arr.length; i++) {
         if(items_arr[i].trim().length != 0) {
@@ -24,7 +23,7 @@ function parseCart(items) {
 
             var dishes = Object();
             var dish_arr = tmp.substring(pos+1).trim().split(",");
-            console.log(dish_arr);
+            
 
             var j = 0;
             for(j = 0; j < dish_arr.length - 3; j += 4) {
@@ -46,8 +45,8 @@ function parseCart(items) {
         }    
     }
 
-    console.log("order: " + JSON.stringify(order));
-    console.log("restid2Name: " + JSON.stringify(restid2Name));
+    
+    
     setCart();
 }
 
@@ -301,7 +300,7 @@ function updateSummary() {
 function updateDBCart(userId) {
     var cart = new Object();
     cart.userId = localStorage.getItem("userId");
-    console.log("userId = " + userId);
+    
 
     var info = "";
     var flag = true;
@@ -326,7 +325,7 @@ function updateDBCart(userId) {
     	}
     	info += item;
     }
-    // console.log(info);
+    
 
     cart.items = info;
     var postData = JSON.stringify(cart);
@@ -335,5 +334,71 @@ function updateDBCart(userId) {
 }
 
 function renderTestFunction(){
-    console.log("update shopping cart successful!");
+    
+}
+
+function sendOrder(){
+    for(var restId in order) {
+        var newOrder = Object();
+        newOrder.userId = localStorage.getItem("userId");
+        newOrder.restaurantId = restId;
+        newOrder.addressId = 1;
+        newOrder.deliverId = 1;
+        newOrder.totalPrice = 0;
+
+        var dishes = Array();
+        for(var dishObj in order[restId]) {
+            var dish = Object();
+            dish.dishId = dishObj["id"];
+            dish.amount = dishObj["count"];
+            dish.price = dishObj["price"];
+            newOrder.totalPrice += Number(dish.price) * Number(dish.amount);
+            dishes.push(dish);
+        }
+
+        var order2dishes = Object();
+        order2dishes.order = newOrder;
+        order2dishes.dishes = dishes;
+
+        var postData = JSON.stringify(order2dishes);
+
+        var url = TEXT_HOST+"/orders/create";
+        restSet(url, POST_METHOD, postData, renderSendOrder(),"");
+    }
+
+
+    // var order = new Object();
+
+    // order.userId = 1;
+    // order.restaurantId = 1;
+    // order.totalPrice = 1;
+    // order.deliveryFee = 1;
+    // order.deliverId = 1;
+    // order.paymentStatus = "";
+    // order.state = "";
+    // order.creatTime = new Date();
+    // order.deliverTime = null;
+    // order.finishTime = null;
+    // //order.addressId = 1;
+
+    // var dishes= Array();
+    // for(var i=0;i<2;i++){//遍历dish的数量
+    //   var dish=new Object();
+    //   dish.dishId=i+1;
+    //   dish.amount=i;
+    //   dish.price=i;
+    //   dishes.push(dish);
+    // }
+    // //
+    
+    // var order2dishes=new Object();
+    // order2dishes.order=order;
+    // order2dishes.dishes=dishes;
+    // var postData = JSON.stringify(order2dishes);
+    // var url=TEXT_HOST+"/orders/create";
+    // restSet(url, POST_METHOD, postData, renderSendOrder(),"");
+}
+
+function renderSendOrder(){
+  alert("sent successful!");
 }
