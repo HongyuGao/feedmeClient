@@ -11,7 +11,7 @@ function appendShop(restaurant) {
 		newShop.appendTo(".shops");	
 	}
 
-	newShop.find("a").attr("href", "new_restaurant.html?shopId=" + restaurant.id);	
+	newShop.find("a").attr("href", "restaurant.html?shopId=" + restaurant.id);	
 	newShop.find("img").attr("src", PICTURE_HOST + "/img/logo/" + restaurant.logo);	
 	newShop.find(".shop_name").text(restaurant.name);	
 	newShop.find(".morning").text(restaurant.openTimeMorning);	
