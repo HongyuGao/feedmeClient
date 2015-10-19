@@ -66,3 +66,40 @@ document.onkeydown = function(evt) {
 function empty_input() {
   $('#search_field').val('');
 }
+
+//Dropdown plugin data
+var ddData = [{
+  text: "ACT",
+  value: 1,
+  selected: true,
+}, {
+  text: "NWS",
+  value: 2,
+  selected: false,
+}, {
+  text: "Other",
+  value: 3,
+  selected: false,
+
+}];
+
+// var states = function() {
+//   restGet(TEXT_HOST + , GET_METHOD, function(data) {
+//     return data;
+//   }, '');
+// };
+
+function location_slick(id, w, text) {
+  $(id).ddslick({
+    data: ddData,
+    width: w,
+    imagePosition: "left",
+    background: "rgba(255,255,255,0.1)",
+    selectText: text,
+    border: 'none',
+    onSelected: function(data) {
+      console.log(data);
+    }
+  });
+
+}
