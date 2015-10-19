@@ -37,10 +37,19 @@ $(document).ready(function() {
 
 
 //Div pop out and close code
-function pop() {
+function pop(photo, name, id, price) {
+  setPopInfo(photo, name, id, price);
   document.getElementById('popDiv').style.display = 'block';
   document.getElementById("dish_popup").style.display = 'block';
 }
+
+function setPopInfo(photo, name, id, price) {
+  $(".pop_dish .dish_photo img").attr("src", photo);
+  $(".pop_dish .dish_name").text(name);
+  $(".pop_dish_info .dish_name").data("dishId", id);
+  $(".pop_dish .dish_price").text("A$" + price);
+}
+
 
 function hide() {
   document.getElementById('popDiv').style.display = 'none';
@@ -56,4 +65,35 @@ document.onkeydown = function(evt) {
 
 function empty_input() {
   $('#search_field').val('');
+}
+
+//Dropdown plugin data
+var ddData = [{
+  text: "ACT",
+  value: 1,
+  selected: true,
+}, {
+  text: "NWS",
+  value: 2,
+  selected: false,
+}, {
+  text: "Other",
+  value: 3,
+  selected: false,
+
+}];
+
+function location_slick(id, w, text) {
+  $(id).ddslick({
+    data: ddData,
+    width: w,
+    imagePosition: "left",
+    selectText: text,
+    background: '#d05b54',
+    border: 'none',
+    onSelected: function(data) {
+      console.log(data);
+    }
+  });
+
 }
