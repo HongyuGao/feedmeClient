@@ -67,54 +67,76 @@
 
     <div id="confirm_order">
       <div class="main_header">
-      <div class="suburb">
+      <div class="order_head">
         First, Choose your delivery address and method:
       </div>
       </div>
 
       <div class="order_content">
          <!--Use order_content style, but delivery address change function-->
-        <div class="my_address">
-          Deliver To: 2 Mary Gungahlin, Act
-        </div>
-        <div class="change_address">
-          <a href="#">Change Delivery Address</a>
-          <!--Click this, hide my_address, and show choose_address to choose new address-->
-        </div>
-        <div class="choose_new_address">
-          <div id="state">
-            <!--Use ddslick tools to add select data-->
-            <div class="state">
+         <table>
+           <tr>
+             <td>
+               Deliver To:
+             </td>
+             <td>
+               Delivery Fee
+             </td>
+           </tr>
+           <tr>
+             <td>
+               <div class="choose_new_address">
+                 <div id="state">
+                   <!--Use ddslick tools to add select data-->
+                   <div class="state">
 
-            </div>
-          </div>
-          <div id="suburbs">
-            <div class="suburbs">
+                   </div>
+                 </div>
+                 <div id="suburbs">
+                   <div class="suburbs">
 
-            </div>
-          </div>
-          <div id="building">
-            <div class="building">
+                   </div>
+                 </div>
+                 <div id="building">
+                   <div class="building">
 
-            </div>
-          </div>
-          <div id="detail_address">
-            <input type="text" name="name" value="">
-            <a href="#" class="btn btn-default btn-lg">Add</a>
-          </div>
-        </div>
+                   </div>
+                 </div>
+                 <div id="detail_address">
+                   <input type="text" name="name" value="Detail">
+                 </div>
 
-        <div id="delivery_method">
-          Share Delivery Options (save delivery fee):
-          <div class="delivery_method">
+               </div>
+             </td>
+             <td>
+               <div class="fee">
+                 A$10
+               </div>
+             </td>
+           </tr>
+           <tr>
+             <td colspan="2">
+               Share Delivery Options (save delivery fee):
+             </td>
+           </tr>
+           <tr>
+             <td>
+               <div class="delivery_method">
 
-          </div>
-        </div>
+               </div>
+             </td>
+             <td>
+               <div class="fee">
+                 A$10
+               </div>
+             </td>
+           </tr>
+         </table>
       </div>
 
 
       <div class="main_header">
-      <div class="suburb">
+      <div class="order_head">
         Confirm Your Order
       </div>
       </div>
@@ -218,17 +240,12 @@
   	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
   	<script src="js/commonRest.js"></script>
   	<script src="js/commonPath.js"></script>
-  	<script src="js/restaurant.js"></script>
     <script src="js/actions.js"></script>
     <script type="text/javascript">
       location_slick(".state", '80px', 'State');
       location_slick(".suburbs", '120px', 'Suburb');
-      location_slick(".building", '180px', 'Building');
+      location_slick(".building", '140px', 'Building');
       location_slick(".delivery_method", '600px', 'Delivery Method');
-      $(".change_address").on('click',function(){
-        $(".change_address").hide(5);
-        $(".choose_new_address").show(5);
-      });
     </script>
   </body>
 </html>

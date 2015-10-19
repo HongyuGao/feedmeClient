@@ -380,44 +380,46 @@ a:hover{
   font-size: 18px;
   float: left;
 }
-.choose_address{
-  clear: both;
-  font-size: 28px;
-  margin-top: 20px;
-  height: 60px;
-}
 .choose_new_address{
   clear: both;
-  font-size: 18px;
-  margin-top: 40px;
-  height: 60px;
-  display:none;
+  font-size: 16px;
+  height: 40px;
+  /*color: #C03F3E;*/
 }
 #state{
   float: left;
-  background-color: #C22d24;
+  padding: 3px;
 }
 #suburbs{
   float: left;
-  background-color: #C22d24;
+    padding: 3px;
 }
 #building{
   float: left;
-  background-color: #C22d24;
+  padding: 3px;
 }
 #detail_address{
   float: left;
+  padding: 3px;
 
 }
 #detail_address input{
   height: 45px;
   width: 150px;
+    padding: 3px;
 }
 #delivery_method{
   width: 600px;
   clear:both;
   font-size: 18px;
   margin-top: 20px;
+
+}
+.dd-pointer{
+  color: #FFF;
+}
+.dd-pointer-down{
+  color: #FFF;
 }
 .change_address{
   float: left;
@@ -536,15 +538,27 @@ hr{
   margin-top: 70px;
 }
 .suburb{
-  font-size: 36px;
-  color: #AC140C;
+  font-size: 18px;
+  /*color: #AC140C;*/
+
   float: left;
-  height: 40px;
+  height: 60px;
+}
+.dd-select{
+  background-color: rgba(255, 0, 0, 0.5);
+  color: #FFF;
 }
 .main_header{
-  height: 40px;
+  height: 60px;
   min-width: 800px;
   margin-bottom: 5px;
+}
+.order_head{
+  height: 40px;
+  min-width: 800px;
+  margin-top: 20px;
+  font-size: 30px;
+  color: #c22d24;
 }
 .search{
   float:right;
@@ -758,8 +772,8 @@ hr{
 }
 
 #confirm_order{
-  margin-left: 250px;
-  margin-right: 250px;
+  margin-left: 220px;
+  margin-right: 220px;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 20px;
   color: #FFFFFF;

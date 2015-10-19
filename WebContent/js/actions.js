@@ -83,13 +83,19 @@ var ddData = [{
 
 }];
 
+// var states = function() {
+//   restGet(TEXT_HOST + , GET_METHOD, function(data) {
+//     return data;
+//   }, '');
+// };
+
 function location_slick(id, w, text) {
   $(id).ddslick({
     data: ddData,
     width: w,
     imagePosition: "left",
+    background: "rgba(255,255,255,0.1)",
     selectText: text,
-    background: '#d05b54',
     border: 'none',
     onSelected: function(data) {
       console.log(data);

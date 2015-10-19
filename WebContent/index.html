@@ -18,13 +18,13 @@
       </div>
 
 
-      
+
       <div class="cart_shops">
-        
+
       </div>
 
 
-    
+
 
       <div class="total">
         <div class="delivery_info">
@@ -83,7 +83,13 @@
           <img src="img/test2.jpg" alt="" />
         </div>
         <div class="hot">
-          <a href="choose_res.html"><img src="img/plus.png" alt="" /></a>
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/more.png" alt="" />
         </div>
       </div>
       <div id="hot_dish">
@@ -122,7 +128,22 @@
       <div class="main_header">
 
       <div class="suburb">
-        ACT Gungahlin
+        <div id="state">
+          <!--Use ddslick tools to add select data-->
+          <div class="state">
+
+          </div>
+        </div>
+        <div id="suburbs">
+          <div class="suburbs">
+
+          </div>
+        </div>
+        <div id="building">
+          <div class="building">
+
+          </div>
+        </div>
       </div>
       <div class="search">
         <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
@@ -131,7 +152,7 @@
 
       </div>
       <div class="shops">
-      
+
         <div class="shop">
           <a href="#">
           <div class="shop_logo">
@@ -141,7 +162,7 @@
             <div class="group1">
 
             <div class="shop_name">
-              
+
             </div>
             <div class="open_time">
                 <li>Openning Time: </li>
@@ -189,12 +210,18 @@
     <!-- script references -->
   	<script src="js/webjars/jquery.min.js"></script>
   	<script src="js/webjars/bootstrap.min.js"></script>
-  	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
+    <script src="js/webjars/ddslick.js"></script>
   	<script src="js/commonRest.js"></script>
   	<script src="js/commonPath.js"></script>
   	<script src="js/restaurant/restaurant.js"></script>
     <script src="js/actions.js"></script>
     <script src="js/home.js"></script>
+    <script type="text/javascript">
+      location_slick(".state", '80px', 'State');
+      location_slick(".suburbs", '120px', 'Suburb');
+      location_slick(".building", '180px', 'Building');
+      location_slick(".delivery_method", '600px', 'Delivery Method');
+    </script>
     <script type="text/javascript">
 
       function join_in_share(shopId){
@@ -224,7 +251,7 @@
       $(window).load(function() {
           var url = TEXT_HOST + "/shoppingCart/queryCart?userId=" + localStorage.getItem("userId");
             restGet(url, GET_METHOD, function(data){
-                var items = data["items"]; 
+                var items = data["items"];
                 if(items.trim().length != 0) {
                     parseCart(items);
                 }
