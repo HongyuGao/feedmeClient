@@ -17,14 +17,13 @@
           </div>
           <div class="pop_dish">
             <div class="dish_photo">
-              <img src="img/test1.jpg" alt="" />
+              <img src="" alt="" />
             </div>
+
             <div class="pop_dish_info">
-              <div class="dish_name">
-                Gao SHi Lin
+              <div class="dish_name" data-dishId="">
               </div>
               <div class="dish_price">
-                A$21
               </div>
               <div class="dish_stars">
                 <span class='glyphicon glyphicon-star'></span>
@@ -34,15 +33,20 @@
                 <span class='glyphicon glyphicon-star-empty'></span>
               </div>
               <div class="add_shopping_cart">
-                <select class="" name="">
-                  <option value="option" default>One</option>
-                  <option value="option" default>Two</option>
-                  <option value="option" default>Three</option>
+                <select class="options" name="" id="select">
+                  <option value="1" default>One</option>
+                  <option value="2" default>Two</option>
+                  <option value="3" default>Three</option>
                 </select>
 
-                <button type="button" name="button" class="btn cust_btn btn-sm" onclick="hide()">Add</button>
+                <!-- <button type="button" name="button" class="btn cust_btn btn-sm" onclick="hide()">Add</button> -->
+                <button type="button" name="button" class="btn cust_btn btn-sm" onclick="addFromPop()">
+                  Add
+                </button>
+
               </div>
             </div>
+
           </div>
         </div>
 
@@ -58,44 +62,7 @@
 
   
       <div class="cart_shops">
-        <!--
-        <div class="shop_name">
-        </div>
-        <hr>
-        <div class="cart_dishes">
-
-          <div class="numbers_row">
-            <div class="dish_name"></div>
-            <div class="inc_dec">+</div>
-            <input type="text" name="french-hens" id="french-hens" value="3">
-              <div class="inc_dec">-</div>
-              <div class="price">
-              </div>
-            </div>
-
-            
-            <div class="numbers_row">
-              <div class="dish_name">Fry FIsh</div>
-              <div class="inc_dec">+</div>
-              <input type="text" name="french-hens" id="french-hens" value="">
-                <div class="inc_dec">-</div>
-                <div class="price">
-                    34
-                </div>
-              </div>
-            
-
-
-        </div>
-        <div class="delivery_fee">
-          <div class="delivery_info">
-            Delivery Fee
-          </div>
-          <div class="fee">
-            A$10
-          </div>
-        </div>
-        -->
+        
       </div>
     
 

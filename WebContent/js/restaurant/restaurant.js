@@ -139,7 +139,9 @@ function getUrlVars() {
 
 function appendDish(dish) {
 	$(".dishes").append(
-		'<div class="dish" onclick="pop()">' +
+		'<div class="dish" onclick="pop(\'' + PICTURE_HOST + '/img/photo/' + dish.photo + '\', \'' + dish.name + '\', ' + dish.id + ', ' + dish.price 
+		 	+ ')">' 
+			+
           '<div class="dish_photo">' +
             '<img src="' + PICTURE_HOST + '/img/photo/' + dish.photo + '" alt="" />' +
           '</div>' +
@@ -192,6 +194,17 @@ function applyFilter(currentType) {
 }
 
 
+
+function addFromPop() {
+    var name = $(".pop_dish .dish_name").text();
+    var id = $(".pop_dish_info .dish_name").data("dishId");
+    var price = Number($(".pop_dish .dish_price").text().substring(2));
+    var quantity = Number(document.getElementById("select").value);
+
+    addToCart(name, id, price, quantity);
+    hide();
+}
+
 /**
  * Add an item to shopping cart.
  *
@@ -216,12 +229,37 @@ function addToCart(name, id, price, quantity) {
     	order[restaurantId][name]["id"] = id;
     	order[restaurantId][name]["price"] = price;
     	order[restaurantId][name]["count"] = quantity;
+
+        var dishes = order[restaurantId];
+        var dishName = name;
+        var restId = restaurantId;
+
+        $(".cart_shops .cart_dishes").first().append(
+            '<div class="numbers_row">' +
+            '<div class="dish_name">' + dishName + '</div>' +
+
+            '<div class="inc_dec">'+ 
+            '<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (-1) + ', ' + (1) + ', ' + restId + ')"' +
+            '> - </button>'+
+            ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[dishName]["count"] + '</span>' +
+            '<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (1) + ', ' + (1) + ', ' + restId + ')"' +
+            '> + </button>'+
+            '</div>' +
+            
+            '<div class="price">' + dishes[dishName]["price"] + '</div>' +
+            '</div>' 
+        );
+
     } else {
     	order[restaurantId][name]["count"]  = Number(order[restaurantId][name]["count"]) + quantity;
+        document.getElementById(id).innerHTML = order[restaurantId][name]["count"];
     }
 
     // update the current order:
-    //updateOrder(flag, name, id, price);
+
+    totalNum += quantity;
+    totalPrice += price * quantity;
+    updateSummary();
 }
 
 function updateOrder(name, id, price, quantity, flag, restId) {
