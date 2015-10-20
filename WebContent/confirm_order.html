@@ -10,51 +10,17 @@
 
   </head>
   <body>
-    <!--
+
     <div id="popDiv" class="ontop"></div>
-        <div id="dish_popup">
-          <div class="pop_close" onclick="hide()">
-            x
-          </div>
-          <div class="pop_dish">
-            <div class="dish_photo">
-              <img src="img/test1.jpg" alt="" />
-            </div>
-            <div class="pop_dish_info">
-              <div class="dish_name">
-                Gao SHi Lin
-              </div>
-              <div class="dish_price">
-                A$21
-              </div>
-              <div class="dish_stars">
-                <span class='glyphicon glyphicon-star'></span>
-                <span class='glyphicon glyphicon-star'></span>
-                <span class='glyphicon glyphicon-star'></span>
-                <span class='glyphicon glyphicon-star-empty'></span>
-                <span class='glyphicon glyphicon-star-empty'></span>
-              </div>
-              <div class="add_shopping_cart">
-                <select class="" name="">
-                  <option value="option" default>One</option>
-                  <option value="option" default>Two</option>
-                  <option value="option" default>Three</option>
-                </select>
 
-                <button type="button" name="button" class="btn cust_btn btn-sm" onclick="hide()">Add</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      -->
 
-    
+
     <div class="background-image"></div>
 
 
     <div id="nvabar">
       <div id="brand">
-        <img src="img/LogoWhite.png" alt="" />
+        <a href="index.html"><img src="img/LogoWhite.png" alt="" /></a>
       </div>
 
       <div id="menu">
@@ -76,83 +42,188 @@
           First, Choose your delivery address and method:
         </div>
       </div>
+      <div class="choose_delivery">
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="tab_ac"><a href="#">Just Delivery Normally</a></li>
+          <li role="presentation" class="tab_nac"><a href="#">Group Delivery </a></li>
+          <li role="presentation" class="tab_nac"><a href="#">Share My Delivery </a></li>
+        </ul>
+      </div>
 
       <div class="order_content">
          <!--Use order_content style, but delivery address change function-->
-         <table>
-           <tr>
-             <td>
-               Deliver To:
-             </td>
-             <td>
-               Delivery Fee
-             </td>
-           </tr>
+         <div class="delivery_myself">
+           <table>
+             <tr>
+               <td colspan="2">
+                 Just as delivery your food as sone as possible. <br/>
+                 You will undertake your delivery fee.
+               </td>
+             </tr>
+             <tr>
+               <td>
+                 Deliver To:
+               </td>
+               <td>
+                 Delivery Fee
+               </td>
+             </tr>
 
-           <tr>
-             <td>
-               <div class="choose_new_address">
-                 <div id="state">
-                   <!--Use ddslick tools to add select data-->
-                   <div class="state">
+             <tr>
+               <td>
+                 <div class="choose_new_address">
+                   <div id="state">
+                     <!--Use ddslick tools to add select data-->
+                     <div class="state">
 
+                     </div>
                    </div>
-                 </div>
-                 <div id="suburbs">
-                   <div class="suburbs">
+                   <div id="suburbs">
+                     <div class="suburbs">
 
+                     </div>
                    </div>
-                 </div>
-                 <div id="building">
-                   <div class="building">
+                   <div id="building">
+                     <div class="building">
 
+                     </div>
                    </div>
+                   <div id="detail_address">
+                     <input type="text" name="name" value="Detail">
+                   </div>
+
                  </div>
-                 <div id="detail_address">
-                   <input type="text" name="name" value="Detail">
+               </td>
+               <td>
+                 <div class="fee">
+                   A$10
                  </div>
+               </td>
+             </tr>
+           </table>
+         </div>
+         <div class="delivery_share_other">
+           <table>
+             <tr>
+               <td colspan="2">
+                 Choose a shared delivery service to save your delivery fee. <br/>
+                 Many people share one delivery fee.<br/>
+                 You can save your money, <br/>
+                 But you have to pickup your food at specific time and address.
+               </td>
+             </tr>
+             <tr>
+               <td>
+                 Deliver To:
+               </td>
+               <td>
+                 Delivery Fee
+               </td>
+             </tr>
+                        <tr>
+                          <td colspan="2">
+                            Share Delivery Options (save delivery fee):
+                          </td>
+                        </tr>
 
-               </div>
-             </td>
-             <td>
-               <div class="fee">
-                 A$10
-               </div>
-             </td>
-           </tr>
+                        <tr>
+                          <td>
+                            <div class="delivery_method">
 
-           <tr>
-             <td colspan="2">
-               Share Delivery Options (save delivery fee):
-             </td>
-           </tr>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="fee">
+                              A$10
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+         </div>
+         <div class="delivery_create_share">
+           <table border="0">
+             <tr>
+               <td  colspan=2  >
+                 Create a Share delivery to allow others share your delivery fee.<br/>
+                 In order to let your pickup place convenient for more people, <br/>
+                 Please fill suitable pickup address and pickup time.
+               </td>
+             </tr>
+             <tr>
+               <td style="text-align:right">
+                 Deliery Time
+               </td>
+               <td>
+                 <p id="date_time">
+                 <input type="text" class="time ui-timepicker-input"  style="width:90px" >
+               </input>
+                 <input type="text" class="date"  style="width:90px" >
+               </input>
+                 </p>
+               </td>
+             </tr>
 
-           <tr>
-             <td>
-               <div class="delivery_method">
+             <tr>
+               <td style="text-align:center" colspan=2 class="shop_name">
+                 <hr style="width:340px">
+                  Pick Up Address (Detail):
+               </td>
+             </tr>
+             <tr>
+               <td colspan="2" style="height:60px">
+                 <div class="choose_new_address">
+                   <div id="state">
+                     <!--Use ddslick tools to add select data-->
+                     <div class="state">
 
-               </div>
-             </td>
-             <td>
-               <div class="fee">
-                 A$10
-               </div>
-             </td>
-           </tr>
+                     </div>
+                   </div>
+                   <div id="suburbs">
+                     <div class="suburbs">
 
-         </table>
+                     </div>
+                   </div>
+                   <div id="building">
+                     <div class="building">
+
+                     </div>
+                   </div>
+                   <div id="detail_address">
+                     <input type="text" name="name" value="Detail">
+                   </div>
+
+                 </div>
+               </td>
+             </tr>
+             <tr> <!--Empty row to separe confim button-->
+               <td>
+               </td>
+               <td>
+               </td>
+             </tr>
+             <tr  style="padding-top:40px">
+
+               <td colspan="2" style="text-align:right">
+                 <button type="button" class="btn cust_btn btn-sm" name="Cancle" onclick="hide()">Cancle</button>
+                 <!--Call join_in function, param: shopId-->
+                 <button type="button" class="btn cust_btn btn-sm"  name="Confirm" onclick="create_share_order()">Confirm</button>
+               </td>
+             </tr>
+           </table>
+         </div>
+
       </div>
 
 
       <div class="main_header">
         <div class="order_head">
-          Confirm Your Order
+          Second, Confirm Your Order and payment
         </div>
       </div>
 
       <div class="order_content confirm">
         <div class="shop_name">
-          <input type="checkbox" name="vehicle1" value="Bike" checked="true"> 
+          <input type="checkbox" name="vehicle1" value="Bike" checked="true">
           <span>Gao Shi Lin</span>
         </div>
 
@@ -221,7 +292,7 @@
       </div>
 
       <div class="payment">
-        <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')">
+        <div class="go_back btn btn-danger btn-sm" onclick="go_back()">
           <i class="fa fa-angle-double-left"></i> Continue Shopping
         </div>
         <div class="checkout btn btn-danger btn-sm">
@@ -240,15 +311,55 @@
     <script src="js/webjars/ddslick.js"></script>
     <script src="js/commonRest.js"></script>
     <script src="js/commonPath.js"></script>
+    <script src="js/webjars/bootstrap-datepicker.js"></script>
+    <script src="js/webjars/jquery.timepicker.js"></script>
+    <script src="js/webjars/datepair.js"></script>
+    <script src="js/webjars/jquery.datepair.js"></script>
+
     <script src="js/actions.js"></script>
     <script src="js/pay.js"></script>
     <script type="text/javascript">
-      location_slick(".state", '80px', 'State');
-      location_slick(".suburbs", '120px', 'Suburb');
-      location_slick(".building", '140px', 'Building');
-      location_slick(".delivery_method", '600px', 'Delivery Method');
+    var suburbsData = [];
+    $(window).load(function() {
+      // var location = getUrlVars()["location"];
+      restGet(TEXT_HOST + "/address/querySuburb?stateId=1", GET_METHOD,
+        function(data) {
+          $.each(data, function(i, row) {
+            var suburb = new Object();
+            suburb.text = row.name;
+            // suburb.postcode = row.postcode;
+            suburb.value = row.id;
+            if(location==row.name){
+              suburb.selected = true;
+            }else{
+              suburb.selected = false;
+            }
+            suburbsData.push(suburb);
+          });
+        location_slick(".suburbs", '160px', 'Suburb', suburbsData);
+        }, 'tt');
+    });
+      location_slick(".state", '80px', 'State', stateData);
+      location_slick(".delivery_method", '600px', 'Delivery Method', groupData);
 
       displayOrder();
+
+      function go_back(){
+        window.open('index.html', '_self', 'false');
+      }
+      // initialize input widgets first
+    $('#date_time .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+    $('#date_time .date').datepicker({
+        'format': 'm/d/yyyy',
+        'autoclose': true
+    });
+    // initialize datepair
+    var basicExampleEl = document.getElementById('date_time');
+    var datepair = new Datepair(basicExampleEl);
+    $('#date_time').datepair();
 
     </script>
   </body>

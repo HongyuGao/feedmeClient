@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Feed Me</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="css/lib/easy-autocomplete.css" rel="stylesheet">
+    <link href="css/lib/easy-autocomplete.themes.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="background-image"></div>
+    <div id="nvabar">
+      <div class="login">
+        <a href="#">Login</a>
+        <a href="#">Regiest</a>
+      </div>
+    </div>
+
+    <div id="home">
+      <div class="feedme">
+        <div class="feedme_logo">
+          <img src="img/LogoRed.png" alt="" />
+        </div>
+        <div class="ele">
+          Hangry?<br/>
+          Let <img src="img/LogoFullRed.png" alt="" />
+          Serve you!
+
+        </div>
+      </div>
+      <div class="locate">
+        <div class="locate_s">
+
+        <input type="text" name="name" value="Input Subrub or Postcode" id="search_field" onclick="empty_input()">&nbsp;
+
+      </div>
+      <div class="locate_b">
+
+        <button type="button" name="button" class="btn btn-lg cust_btn" onclick="locate()">Feed Me</button>
+
+      </div>
+      </div>
+
+    </div>
+    <div class="services">
+      <div class="service">
+        <h2>Group Delivery</h2>
+        <i>Share Delivery Fee With a Group</i>
+      </div>
+      <div class="hh">
+
+      </div>
+      <div class="service">
+        <h2>Hot Dishes</h2>
+        <i>Find Hot Sale Dishes</i>
+      </div>
+      <div class="hh">
+
+      </div>
+      <div class="service">
+        <h2>Everything You Want</h2>
+        <i>100+ Restaurants Hosted </i><br/>
+        <i>Find What You Want at FeedME</i>
+      </div>
+    </div>
+    <div id="foot">
+
+    </div>
+
+    <!-- script references -->
+  	<script src="js/webjars/jquery.min.js"></script>
+    <script src="js/webjars/jquery.min.js"></script>
+  	<script src="js/webjars/bootstrap.min.js"></script>
+    <script src="js/webjars/jquery.easy-autocomplete.min.js"></script>
+  	<script src="js/commonRest.js"></script>
+  	<script src="js/commonPath.js"></script>
+    <script src="js/actions.js"></script>
+
+    <script type="text/javascript">
+  
+  var options = {
+    url: 'temp/suburb.json',
+    getValue: "name",
+    list:{
+      match:{
+        enabled:true
+      },
+      maxNumberOfElements:8
+    },
+    theme:"square",
+  };
+  $('input').easyAutocomplete(options);
+
+  function locate(){
+    var location = $('#search_field').val();
+    window.open('index.html?location='+location, '_self', false);
+  }
+    </script>
+  </body>
+</html>
