@@ -51,7 +51,7 @@
         </div>
 
 <div class="background-image"></div>
-    
+
 
     <!-- begin of shopping cart -->
     <div id="cart">
@@ -60,11 +60,11 @@
         <i>Hi, You booked these dishes:</i>
       </div>
 
-  
+
       <div class="cart_shops">
-        
+
       </div>
-    
+
 
 
 
@@ -115,13 +115,13 @@
 
     <div id="left_filter">
       <div class="left_shop">
-        
+
         <div class="left_shop_img">
           <img src="" alt="" />
         </div>
 
         <div class="shop_name">
-      
+
         </div>
 
         <div class="open_time">
@@ -152,9 +152,24 @@
     <div id="main">
       <div class="main_header">
 
-      <div class="suburb">
-        ACT Gungahlin
-      </div>
+        <div class="suburb">
+          <div id="state">
+            <!--Use ddslick tools to add select data-->
+            <div class="state">
+
+            </div>
+          </div>
+          <div id="suburbs">
+            <div class="suburbs">
+
+            </div>
+          </div>
+          <div id="building">
+            <div class="building">
+
+            </div>
+          </div>
+        </div>
       <div class="search">
         <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
         <i class="fa fa-search fa-2x search_color" onclick="search()"></i>
@@ -162,7 +177,7 @@
 
       </div>
       <div class="dishes">
-        
+
         <!--Dish Finish-->
       </div>
     </div>
@@ -173,13 +188,18 @@
     <!-- script references -->
   	<script src="js/webjars/jquery.min.js"></script>
   	<script src="js/webjars/bootstrap.min.js"></script>
-  	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
-  	<script src="js/commonRest.js"></script>
-  	<script src="js/commonPath.js"></script>
-    <script src="js/actions.js"></script>
-
-    <!-- to be changed-->
+    <script src="js/webjars/ddslick.js"></script>
+    <script src="js/commonRest.js"></script>
+    <script src="js/commonPath.js"></script>
     <script src="js/restaurant/restaurant.js"></script>
+    <script src="js/actions.js"></script>
+    <script src="js/home.js"></script>
+    <script type="text/javascript">
+      location_slick(".state", '80px', 'State');
+      location_slick(".suburbs", '120px', 'Suburb');
+      location_slick(".building", '180px', 'Building');
+      location_slick(".delivery_method", '600px', 'Delivery Method');
+    </script>
     <script type="text/javascript">
 
       localStorage.setItem("userId", 1);
