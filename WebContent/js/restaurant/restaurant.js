@@ -80,11 +80,21 @@ function setCart() {
                     );
             }
         }
+        
+        $(".cart_shops").append(
+            '<div class="delivery_fee">' +
+            '<div class="delivery_info">' +
+            'Delivery Fee' +
+            '</div>' +
+            '<div class="fee">' +
+            'A$10' +
+            '</div>' +
+            '</div>'
+        );
+
         $(".cart_shops").append('</div>');
     }
 	
-
-    console.log(order);
 
 	// other shops:
 	for(var restId in order) {
@@ -122,7 +132,16 @@ function setCart() {
 		}
 	}
 
-    console.log(order);
+    $(".cart_shops").append(
+            '<div class="delivery_fee">' +
+            '<div class="delivery_info">' +
+            'Delivery Fee' +
+            '</div>' +
+            '<div class="fee">' +
+            'A$10' +
+            '</div>' +
+            '</div>'
+        );
 
 	$(".cart_shops").append('</div>');
 
@@ -342,6 +361,12 @@ function renderTestFunction(){
     
 }
 
+
+function processOrder() {
+    window.sessionStorage.setItem("order", JSON.stringify(order));
+    window.sessionStorage.setItem("restid2Name", JSON.stringify(restid2Name));  
+}
+
 function sendOrder(){
     for(var restId in order) {
         var newOrder = Object();
@@ -407,3 +432,5 @@ function sendOrder(){
 function renderSendOrder(){
   alert("sent successful!");
 }
+
+
