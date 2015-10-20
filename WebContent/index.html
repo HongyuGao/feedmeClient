@@ -16,15 +16,8 @@
         <i class="fa fa-shopping-cart fa-3x"></i><br/>
         <i>Hi, You booked these dishes:</i>
       </div>
-
-
-
       <div class="cart_shops">
-
       </div>
-
-
-
 
       <div class="total">
         <div class="delivery_info">
@@ -93,7 +86,7 @@
         </div>
       </div>
       <div id="hot_dish">
-        <h4><a href="#">Hot Dishes</a></h4>
+        <h4><a href="hot_dishes.html">Hot Dishes</a></h4>
         <hr>
         <div class="hot">
           <img src="img/test2.jpg" alt="" />
@@ -190,13 +183,16 @@
             </div>
           </div>
         </a>
+        <div class="sharing_detail">
+
+        </div>
           <div class="sharing">
-            <li style="font-size:24px">Order Sharing</li>
-            <li><i>4</i>&nbsp people sharing</li>
-            <li><i>A$1</i>&nbsp; only to deliver</li>
-            <li><i>1</i>&nbsp; hours left</li>
-            <button class="btn cust_btn btn-sm" onclick="join_in_share('1')">Join In Now</button>
+            <li style="font-size:24px">Group Delivery</li>
+            <li><i>4</i>&nbsp Group Delivery</li>
+
+            <!-- <button class="btn cust_btn btn-sm" onclick="join_in_share('1')">Join In Now</button> -->
           </div>
+
         </div>
 
 
@@ -258,6 +254,35 @@
           });
       });
 
+
+
+      var sharing_slided = false;
+      function slideOpen(elem, e2){
+        $(elem).show( 600);
+        $(e2).hide(600);
+        sharing_slided = true;
+      }
+      function slideClose(elem, e2){
+        console.log(elem);
+        $(elem).hide( 600);
+        $(e2).show(600);
+        sharing_slided = false;
+      }
+
+      function sharing_slide(e, e2) {
+        if (sharing_slided) {
+          slideClose(e, e2);
+        } else {
+          slideOpen(e, e2);
+        }
+      }
+
+      $('.sharing').on('click',function(){
+        var ele = $(this).parent().find('.sharing_detail');
+        var ele2 = $(this).parent().find('.shop_info');
+        sharing_slide(ele, ele2);
+
+      });
     </script>
   </body>
 </html>
