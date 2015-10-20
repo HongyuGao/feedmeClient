@@ -81,9 +81,11 @@
         <div class="go_back btn cust_btn btn-sm" onclick="slideOut('cart')">
           <i class="fa fa-angle-double-left"></i> Continue
         </div>
-        <div class="checkout btn cust_btn btn-sm" onclick="sendOrder()">
-          Checkout <i class="fa fa-angle-double-right"></i>
-        </div>
+        <a href="confirm_order.html">
+          <div class="checkout btn cust_btn btn-sm" onclick="processOrder()">
+            Checkout <i class="fa fa-angle-double-right"></i>
+          </div>
+        </a>
       </div>
 
     </div>
@@ -171,15 +173,15 @@
     </div>
 
     <!-- script references -->
-  	<script src="js/webjars/jquery.min.js"></script>
-  	<script src="js/webjars/bootstrap.min.js"></script>
-  	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
-  	<script src="js/commonRest.js"></script>
-  	<script src="js/commonPath.js"></script>
+    <script src="js/webjars/jquery.min.js"></script>
+    <script src="js/webjars/bootstrap.min.js"></script>
+    <!-- <script src="js/lib/jquery.navgoco.js"></script> -->
+    <script src="js/commonRest.js"></script>
+    <script src="js/commonPath.js"></script>
     <script src="js/actions.js"></script>
 
-    <!-- to be changed-->
     <script src="js/restaurant/restaurant.js"></script>
+    <!-- <script src="js/pay.js"></script> -->
     <script type="text/javascript">
 
       localStorage.setItem("userId", 1);
@@ -198,6 +200,7 @@
             $(".open_time .afternoon").text(data.openTimeAfternoon);
 
             setRestaurantInfo(data);
+            $("title").append(" - " + restaurantName);
 
             var url = TEXT_HOST + "/shoppingCart/queryCart?userId=" + localStorage.getItem("userId");
             restGet(url, GET_METHOD, function(data){
@@ -247,7 +250,6 @@
           applyFilter($(this).data("type"));
         });
       });
-
 
     </script>
 

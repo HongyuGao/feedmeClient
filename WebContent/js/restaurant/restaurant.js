@@ -84,8 +84,6 @@ function setCart() {
     }
 	
 
-    console.log(order);
-
 	// other shops:
 	for(var restId in order) {
 		if(restId == restaurantId) {
@@ -121,8 +119,6 @@ function setCart() {
 				);
 		}
 	}
-
-    console.log(order);
 
 	$(".cart_shops").append('</div>');
 
@@ -342,6 +338,12 @@ function renderTestFunction(){
     
 }
 
+
+function processOrder() {
+    window.sessionStorage.setItem("order", JSON.stringify(order));
+    window.sessionStorage.setItem("restid2Name", JSON.stringify(restid2Name));  
+}
+
 function sendOrder(){
     for(var restId in order) {
         var newOrder = Object();
@@ -407,3 +409,5 @@ function sendOrder(){
 function renderSendOrder(){
   alert("sent successful!");
 }
+
+
