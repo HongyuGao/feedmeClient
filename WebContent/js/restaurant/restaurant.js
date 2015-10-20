@@ -80,6 +80,18 @@ function setCart() {
                     );
             }
         }
+        
+        $(".cart_shops").append(
+            '<div class="delivery_fee">' +
+            '<div class="delivery_info">' +
+            'Delivery Fee' +
+            '</div>' +
+            '<div class="fee">' +
+            'A$10' +
+            '</div>' +
+            '</div>'
+        );
+
         $(".cart_shops").append('</div>');
     }
 	
@@ -119,6 +131,17 @@ function setCart() {
 				);
 		}
 	}
+
+    $(".cart_shops").append(
+            '<div class="delivery_fee">' +
+            '<div class="delivery_info">' +
+            'Delivery Fee' +
+            '</div>' +
+            '<div class="fee">' +
+            'A$10' +
+            '</div>' +
+            '</div>'
+        );
 
 	$(".cart_shops").append('</div>');
 
