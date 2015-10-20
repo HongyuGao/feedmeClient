@@ -57,91 +57,185 @@ function setCart() {
       '</div>' +
       '<hr>'
     );
-    $(".cart_shops").append('<div class="cart_dishes">');
-    if (order[restaurantId] != undefined) {
-      var dishes = order[restaurantId];
-      for (var dishName in dishes) {
+//    $(".cart_shops").append('<div class="cart_dishes">');
+//    if (order[restaurantId] != undefined) {
+//      var dishes = order[restaurantId];
+//      for (var dishName in dishes) {
+//        $(".cart_shops").append(
+//
+//          '<div class="numbers_row">' +
+//          '<div class="dish_name">' + dishName +
+//          '</div><div class="inc_dec_price">' +
+//
+//          '<div class="inc_dec">' +
+//          '<button type="button" onclick="updateOrder(' + '\'' + dishName +
+//          '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
+//          ', ' + (-1) + ', ' + (1) + ', ' + (restaurantId) + ')"' +
+//          '> - </button>' +
+//          ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[
+//            dishName]["count"] + '</span>' +
+//          '<button type="button" onclick="updateOrder(' + '\'' + dishName +
+//          '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
+//          ', ' + (1) + ', ' + (1) + ',' + (restaurantId) + ')"' +
+//          '> + </button>' +
+//          '</div>' +
+//
+//          '<div class="price">' + dishes[dishName]["price"] + '</div>' +
+//          '</div></div>'
+//
+//        );
+//<<<<<<< HEAD
+//      }
+//    }
+//    $(".cart_shops").append('</div>');
+//  }
+//
+//
+//  console.log(order);
+//
+//  // other shops:
+//  for (var restId in order) {
+//    if (restId == restaurantId) {
+//      continue;
+//    }
+//
+//    $(".cart_shops").append(
+//      '<hr>' +
+//      '<div class="shop_name">' +
+//      restid2Name[restId] +
+//      '</div>' +
+//      '<hr>'
+//    );
+//    $(".cart_shops").append('<div class="cart_dishes">');
+//    var dishes = order[restId];
+//    for (var dishName in dishes) {
+//      $(".cart_shops").append(
+//
+//        '<div class="numbers_row">' +
+//        '<div class="dish_name">' + dishName +
+//        '</div><div class="inc_dec_price">' +
+//
+//        '<div class="inc_dec">' +
+//        '<button type="button" onclick="updateOrder(' + '\'' + dishName +
+//        '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
+//        ', ' + (-1) + ', ' + (1) + ', ' + restId + ')"' +
+//        '> - </button>' +
+//        ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[
+//          dishName]["count"] + '</span>' +
+//        '<button type="button" onclick="updateOrder(' + '\'' + dishName +
+//        '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
+//        ', ' + (1) + ', ' + (1) + ', ' + restId + ')"' +
+//        '> + </button>' +
+//        '</div>' +
+//
+//        '<div class="price">' + dishes[dishName]["price"] + '</div>' +
+//        '</div></div>'
+//
+//      );
+//    }
+//  }
+//
+//  console.log(order);
+//
+//  $(".cart_shops").append('</div>');
+//
+//  $(".total .fee").text("A$" + totalPrice);
+//
+//  $("#cart_info .cart-top-sum").text("A$" + totalPrice + " / " + totalNum +
+//    " Item(s)");
+//=======
+        $(".cart_shops").append('<div class="cart_dishes">');
+        if(order[restaurantId] != undefined) {
+            var dishes = order[restaurantId];
+            for(var dishName in dishes) {
+                $(".cart_shops").append(
+
+                    '<div class="numbers_row">' +
+                    '<div class="dish_name">' + dishName + '</div><div class="inc_dec_price">' +
+
+                    '<div class="inc_dec">'+ 
+                    '<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (-1) + ', ' + (1) + ', ' +(restaurantId) + ')"' +
+                    '> - </button>'+
+                    ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[dishName]["count"] + '</span>' +
+                    '<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (1) + ', ' + (1) + ',' + (restaurantId) +  ')"' +
+                    '> + </button>'+
+                    '</div>' +
+                    
+                    '<div class="price">' + dishes[dishName]["price"] + '</div>' +
+                    '</div></div>' 
+
+                    );
+            }
+        }
+        
         $(".cart_shops").append(
-
-          '<div class="numbers_row">' +
-          '<div class="dish_name">' + dishName +
-          '</div><div class="inc_dec_price">' +
-
-          '<div class="inc_dec">' +
-          '<button type="button" onclick="updateOrder(' + '\'' + dishName +
-          '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
-          ', ' + (-1) + ', ' + (1) + ', ' + (restaurantId) + ')"' +
-          '> - </button>' +
-          ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[
-            dishName]["count"] + '</span>' +
-          '<button type="button" onclick="updateOrder(' + '\'' + dishName +
-          '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
-          ', ' + (1) + ', ' + (1) + ',' + (restaurantId) + ')"' +
-          '> + </button>' +
-          '</div>' +
-
-          '<div class="price">' + dishes[dishName]["price"] + '</div>' +
-          '</div></div>'
-
+            '<div class="delivery_fee">' +
+            '<div class="delivery_info">' +
+            'Delivery Fee' +
+            '</div>' +
+            '<div class="fee">' +
+            'A$10' +
+            '</div>' +
+            '</div>'
         );
-      }
+
+        $(".cart_shops").append('</div>');
     }
-    $(".cart_shops").append('</div>');
-  }
+	
 
+	// other shops:
+	for(var restId in order) {
+		if(restId == restaurantId) {
+			continue;
+		}
 
-  console.log(order);
+		$(".cart_shops").append(
+			'<hr>' +
+			'<div class="shop_name">' +
+          	restid2Name[restId] + 
+        	'</div>' +
+        	'<hr>'	
+		);
+		$(".cart_shops").append('<div class="cart_dishes">');
+		var dishes = order[restId];
+		for(var dishName in dishes) {
+			$(".cart_shops").append(
 
-  // other shops:
-  for (var restId in order) {
-    if (restId == restaurantId) {
-      continue;
-    }
+				'<div class="numbers_row">' +
+            	'<div class="dish_name">' + dishName + '</div><div class="inc_dec_price">' +
+
+            	'<div class="inc_dec">'+ 
+            	'<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (-1) + ', ' + (1) + ', ' + restId + ')"' +
+        		'> - </button>'+
+        		' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[dishName]["count"] + '</span>' +
+        		'<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (1) + ', ' + (1) + ', ' + restId + ')"' +
+        		'> + </button>'+
+            	'</div>' +
+            	
+              	'<div class="price">' + dishes[dishName]["price"] + '</div>' +
+            	'</div></div>' 
+
+				);
+		}
+	}
 
     $(".cart_shops").append(
-      '<hr>' +
-      '<div class="shop_name">' +
-      restid2Name[restId] +
-      '</div>' +
-      '<hr>'
-    );
-    $(".cart_shops").append('<div class="cart_dishes">');
-    var dishes = order[restId];
-    for (var dishName in dishes) {
-      $(".cart_shops").append(
+            '<div class="delivery_fee">' +
+            '<div class="delivery_info">' +
+            'Delivery Fee' +
+            '</div>' +
+            '<div class="fee">' +
+            'A$10' +
+            '</div>' +
+            '</div>'
+        );
 
-        '<div class="numbers_row">' +
-        '<div class="dish_name">' + dishName +
-        '</div><div class="inc_dec_price">' +
+	$(".cart_shops").append('</div>');
 
-        '<div class="inc_dec">' +
-        '<button type="button" onclick="updateOrder(' + '\'' + dishName +
-        '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
-        ', ' + (-1) + ', ' + (1) + ', ' + restId + ')"' +
-        '> - </button>' +
-        ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[
-          dishName]["count"] + '</span>' +
-        '<button type="button" onclick="updateOrder(' + '\'' + dishName +
-        '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
-        ', ' + (1) + ', ' + (1) + ', ' + restId + ')"' +
-        '> + </button>' +
-        '</div>' +
+	$(".total .fee").text("A$" + totalPrice);
 
-        '<div class="price">' + dishes[dishName]["price"] + '</div>' +
-        '</div></div>'
-
-      );
-    }
-  }
-
-  console.log(order);
-
-  $(".cart_shops").append('</div>');
-
-  $(".total .fee").text("A$" + totalPrice);
-
-  $("#cart_info .cart-top-sum").text("A$" + totalPrice + " / " + totalNum +
-    " Item(s)");
+	$("#cart_info .cart-top-sum").text("A$" + totalPrice + " / " + totalNum + " Item(s)");
+//>>>>>>> 7bb97c2a2cd5a55d066f96f4210258ab4e95e5cc
 
 }
 
@@ -360,6 +454,13 @@ function updateDBCart(userId) {
     renderTestFunction(), "");
 
 }
+
+
+function processOrder() {
+    window.sessionStorage.setItem("order", JSON.stringify(order));
+    window.sessionStorage.setItem("restid2Name", JSON.stringify(restid2Name));  
+}
+
 
 function renderTestFunction() {
 

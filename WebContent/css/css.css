@@ -543,7 +543,7 @@ width: 100%;
     padding: 3px;
 }
 #delivery_method{
-  width: 600px;
+  width: 400px;
   clear:both;
   font-size: 18px;
   margin-top: 20px;
@@ -925,6 +925,30 @@ hr{
 .order_content hr{
   width: 100%;
 }
+.choose_delivery{
+  font-size: 18px;
+}
+ul.nav > li > a:hover {
+    background-color: #C22d24;
+    border-style: none;
+}
+ul.nav > li:hover{
+      border-style: none;
+  background-color: #C22d24;
+}
+.tab_nac{
+  background-color: #d05b54;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-right: 1px;
+}
+.tab_ac{
+  background-color: #C22d24;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-right: 1px;
+}
+
 #confirm_order .total{
   color: #C22D24;
   padding: 20px;
