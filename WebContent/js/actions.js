@@ -68,7 +68,7 @@ function empty_input() {
 }
 
 //Dropdown plugin data
-var ddData = [{
+var stateData = [{
   text: "ACT",
   value: 1,
   selected: true,
@@ -83,15 +83,32 @@ var ddData = [{
 
 }];
 
+var otherData = [{
+  text: "Other",
+  value: 1,
+  selected: true,
+}];
+
+var groupData = [{
+  text: "06:00pm, 23 Gillespie, Gungahlin",
+  value: 23,
+  selected: true,
+}, {
+  text: "06:30pm, 12 Mary, Gungahlin",
+  value: 24,
+  selected: true,
+}];
+
+
 // var states = function() {
 //   restGet(TEXT_HOST + , GET_METHOD, function(data) {
 //     return data;
 //   }, '');
 // };
 
-function location_slick(id, w, text) {
+function location_slick(id, w, text, dd) {
   $(id).ddslick({
-    data: ddData,
+    data: dd,
     width: w,
     imagePosition: "left",
     background: "rgba(255,255,255,0.1)",

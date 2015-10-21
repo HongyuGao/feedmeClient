@@ -40,7 +40,7 @@
     <div id="nvabar">
       <div id="brand">
         <a href="index.html">
-          <img src="img/LogoPure.png" alt="" />
+          <img src="img/LogoWhite.png" alt="" />
         </a>
       </div>
 
@@ -186,7 +186,11 @@
         <div class="sharing_detail">
 
         </div>
-          <div class="sharing">
+          <div class="sharing" onclick="
+              var ele = $(this).parent().find('.sharing_detail');
+              var ele2 = $(this).parent().find('.shop_info');
+              sharing_slide(ele, ele2);
+          ">
             <li style="font-size:24px">Group Delivery</li>
             <li><i>4</i>&nbsp Group Delivery</li>
 
@@ -213,16 +217,38 @@
     <script src="js/actions.js"></script>
     <script src="js/home.js"></script>
     <script type="text/javascript">
-      location_slick(".state", '80px', 'State');
-      location_slick(".suburbs", '120px', 'Suburb');
-      location_slick(".building", '180px', 'Building');
-      location_slick(".delivery_method", '600px', 'Delivery Method');
+      location_slick(".state", '80px', 'State', stateData);
+      // location_slick(".building", '180px', 'Building', otherData);
+      // location_slick(".delivery_method", '600px', 'Delivery Method', groupData);
     </script>
     <script type="text/javascript">
 
-      function join_in_share(shopId){
-        window.open('choose_dish.html?shopId='+shopId, '_self', false);
-      }
+      // function join_in_share(shopId){
+      //   window.open('choose_dish.html?shopId='+shopId, '_self', false);
+      // }
+
+      var suburbsData = [];
+      $(window).load(function() {
+        var location = getUrlVars()["location"];
+        restGet(TEXT_HOST + "/address/querySuburb?stateId=1", GET_METHOD,
+          function(data) {
+            $.each(data, function(i, row) {
+              var suburb = new Object();
+              suburb.text = row.name;
+              // suburb.postcode = row.postcode;
+              suburb.value = row.id;
+              if(location==row.name){
+                suburb.selected = true;
+              }else{
+                suburb.selected = false;
+              }
+              suburbsData.push(suburb);
+            });
+          console.log(suburbsData);
+          location_slick(".suburbs", '160px', 'Suburb', suburbsData);
+          }, 'tt');
+      });
+
 
 
       // load and display all restaurants:
@@ -258,14 +284,14 @@
 
       var sharing_slided = false;
       function slideOpen(elem, e2){
-        $(elem).show( 600);
-        $(e2).hide(600);
+        $(elem).show( 100);
+        $(e2).hide(100);
         sharing_slided = true;
       }
       function slideClose(elem, e2){
-        console.log(elem);
-        $(elem).hide( 600);
-        $(e2).show(600);
+        //console.log(elem);
+        $(elem).hide( 100);
+        $(e2).show(100);
         sharing_slided = false;
       }
 
@@ -277,12 +303,6 @@
         }
       }
 
-      $('.sharing').on('click',function(){
-        var ele = $(this).parent().find('.sharing_detail');
-        var ele2 = $(this).parent().find('.shop_info');
-        sharing_slide(ele, ele2);
-
-      });
     </script>
   </body>
 </html>

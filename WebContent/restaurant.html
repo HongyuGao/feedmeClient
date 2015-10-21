@@ -51,7 +51,7 @@
         </div>
 
 <div class="background-image"></div>
-    
+
 
     <!-- begin of shopping cart -->
     <div id="cart">
@@ -60,11 +60,11 @@
         <i>Hi, You booked these dishes:</i>
       </div>
 
-  
+
       <div class="cart_shops">
-        
+
       </div>
-    
+
 
 
 
@@ -117,13 +117,13 @@
 
     <div id="left_filter">
       <div class="left_shop">
-        
+
         <div class="left_shop_img">
           <img src="" alt="" />
         </div>
 
         <div class="shop_name">
-      
+
         </div>
 
         <div class="open_time">
@@ -145,7 +145,7 @@
       </div>
       <div id="other_restaurant">
         <i class="fa fa-chevron-left"></i>
-        <a href="choose_res.html">Looking others</a>
+        <a href="index.html">Looking others</a>
       </div>
 
 
@@ -154,9 +154,24 @@
     <div id="main">
       <div class="main_header">
 
-      <div class="suburb">
-        ACT Gungahlin
-      </div>
+        <div class="suburb">
+          <div id="state">
+            <!--Use ddslick tools to add select data-->
+            <div class="state">
+
+            </div>
+          </div>
+          <div id="suburbs">
+            <div class="suburbs">
+
+            </div>
+          </div>
+          <div id="building">
+            <div class="building">
+
+            </div>
+          </div>
+        </div>
       <div class="search">
         <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
         <i class="fa fa-search fa-2x search_color" onclick="search()"></i>
@@ -164,7 +179,7 @@
 
       </div>
       <div class="dishes">
-        
+
         <!--Dish Finish-->
       </div>
     </div>
@@ -173,15 +188,18 @@
     </div>
 
     <!-- script references -->
-    <script src="js/webjars/jquery.min.js"></script>
-    <script src="js/webjars/bootstrap.min.js"></script>
-    <!-- <script src="js/lib/jquery.navgoco.js"></script> -->
+
+  	<script src="js/webjars/jquery.min.js"></script>
+  	<script src="js/webjars/bootstrap.min.js"></script>
+    <script src="js/webjars/ddslick.js"></script>
     <script src="js/commonRest.js"></script>
     <script src="js/commonPath.js"></script>
-    <script src="js/actions.js"></script>
-
     <script src="js/restaurant/restaurant.js"></script>
-    <!-- <script src="js/pay.js"></script> -->
+    <script src="js/actions.js"></script>
+    <script src="js/home.js"></script>
+    <script type="text/javascript">
+      location_slick(".state", '80px', 'State', stateData);
+    </script>
     <script type="text/javascript">
     
       localStorage.setItem("userId", 1);
@@ -253,6 +271,27 @@
 
       slide('cart');
 
+      var suburbsData = [];
+      $(window).load(function() {
+        var location = getUrlVars()["location"];
+        restGet(TEXT_HOST + "/address/querySuburb?stateId=1", GET_METHOD,
+          function(data) {
+            $.each(data, function(i, row) {
+              var suburb = new Object();
+              suburb.text = row.name;
+              // suburb.postcode = row.postcode;
+              suburb.value = row.id;
+              if(location==row.name){
+                suburb.selected = true;
+              }else{
+                suburb.selected = false;
+              }
+              suburbsData.push(suburb);
+            });
+          console.log(suburbsData);
+          location_slick(".suburbs", '160px', 'Suburb', suburbsData);
+          }, 'tt');
+      });
     </script>
 
   </body>
