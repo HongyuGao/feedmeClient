@@ -54,7 +54,9 @@
 
     <div id="nvabar">
       <div id="brand">
-        <img src="img/LogoWhite.png" alt="" />
+        <a href="index.html">
+          <img src="img/LogoWhite.png" alt="" />
+        </a>
       </div>
 
       <div id="menu">
@@ -221,7 +223,8 @@
       </div>
 
       <div class="payment">
-        <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')">
+        <!-- <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')"> -->
+        <div class="go_back btn btn-danger btn-sm" onclick="history.go(-1)">
           <i class="fa fa-angle-double-left"></i> Continue Shopping
         </div>
         <div class="checkout btn btn-danger btn-sm">
