@@ -105,13 +105,14 @@
         <a href="#"><li>My Favorite</li></a>
         <a href="#"><li>Tracking Order </li></a>
       </div>
-      <div id="personal_info">
-        Hello Jevy,
-      </div>
+
       <div id="cart_info" onclick="slide('cart')">
         <i class="fa fa-shopping-cart"></i>
          &nbsp;<span class="cart-top-sum">A$0.0 / 0 Item(s) </span>
 
+      </div>
+      <div id="personal_info">
+        Hello Jevy,
       </div>
     </div>
 
@@ -201,7 +202,7 @@
       location_slick(".state", '80px', 'State', stateData);
     </script>
     <script type="text/javascript">
-    
+
       localStorage.setItem("userId", 1);
 
       var shopId = getUrlVars()["shopId"];

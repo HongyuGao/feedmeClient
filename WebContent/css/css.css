@@ -108,6 +108,9 @@ a:hover{
   height: 40px;
   color: #ffffff;
   font-size: 16px;
+  position: fixed;
+  top: 0px;
+  z-index: 50;
 }
 #brand{
   width: 160px;
@@ -123,11 +126,11 @@ a:hover{
 
 }
 #personal_info{
-  float: left;
+  float: right;
   padding-top: 10px;
   padding-bottom: 8px;
   padding-left: 40px;
-  padding-right: 10px;
+  padding-right: 30px;
   height: 40px;
 }
 
@@ -517,7 +520,7 @@ width: 100%;
 .choose_new_address{
   clear: both;
   font-size: 16px;
-  height: 40px;
+  height: 30px;
   /*color: #C22d24;*/
 }
 #state{
@@ -526,7 +529,7 @@ width: 100%;
 }
 #suburbs{
   float: left;
-    padding: 3px;
+  padding: 3px;
 }
 #building{
   float: left;
@@ -549,6 +552,13 @@ width: 100%;
   margin-top: 20px;
 
 }
+.table_share{
+  width: 100%;
+  text-align: center;
+}
+.table_share hr{
+  width: 100%;
+}
 .dd-pointer{
   color: #FFF;
 }
@@ -569,12 +579,12 @@ width: 100%;
 #left_filter{
   height: 100%;
   width:200px;
-  position: absolute;
   left: 0px;
+  top:40px;
   background-color: #242526;
   color: #FFFFFF;
   font-size: 16px;
-
+  position: fixed;
 }
 #share_left_filter{
   height: 100%;
@@ -662,14 +672,14 @@ hr{
   height: 100%;
   margin-left: 270px;
   margin-right:70px;
-  margin-top: 70px;
+  margin-top: 110px;
   min-width: 800px;
   min-height: 600px;
 }
 #share_main{
   height: 100%;
   margin-left: 270px;
-  margin-right:70px;
+  margin-right:110px;
   margin-top: 70px;
 }
 .suburb{
@@ -811,7 +821,9 @@ hr{
 
 .left_shop{
   height: 270px;
-  padding: 30px;
+  padding: 10px;
+  text-align: center;
+  padding-top: 30px;
 }
 
 .open_time li{
@@ -820,7 +832,7 @@ hr{
 }
 
 .left_shop_img img{
-    width: 120px;
+    width: 160px;
     height: 120px;
     margin: 10px;
     border: 1px solid #c22d24;
@@ -937,13 +949,13 @@ ul.nav > li:hover{
   background-color: #C22d24;
 }
 .tab_nac{
-  background-color: #d05b54;
+  background-color: #e29c98;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   margin-right: 1px;
 }
 .tab_ac{
-  background-color: #C22d24;
+  background-color: #d05b54;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   margin-right: 1px;
@@ -954,10 +966,10 @@ ul.nav > li:hover{
   padding: 20px;
 }
 
-.order_content:nth-of-type(odd){
+.order_content:nth-of-type(even){
   background-color: rgba(194, 45, 36, 0.6);
 }
-.order_content:nth-of-type(even){
+.order_content:nth-of-type(odd){
   background-color: rgba(194, 45, 36, 0.8);
 }
 /*.order_content:nth-of-type(odd):hover{

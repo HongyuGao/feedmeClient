@@ -46,9 +46,9 @@
       </div>
       <div class="choose_delivery">
         <ul class="nav nav-tabs">
-          <li role="presentation" class="tab_ac"><a href="#">Just Delivery Normally</a></li>
-          <li role="presentation" class="tab_nac"><a href="#">Group Delivery </a></li>
-          <li role="presentation" class="tab_nac"><a href="#">Share My Delivery </a></li>
+          <li role="presentation" class="tab_ac" onclick="show_hide('delivery_myself')"><a href="#">Just Delivery Normally</a></li>
+          <li role="presentation" class="tab_nac" onclick="show_hide('delivery_share_other')"><a href="#">Group Delivery </a></li>
+          <li role="presentation" class="tab_nac" onclick="show_hide('delivery_create_share')"><a href="#">Share My Delivery </a></li>
         </ul>
       </div>
 
@@ -143,7 +143,7 @@
                       </table>
          </div>
          <div class="delivery_create_share">
-           <table border="0">
+           <table border="0" class="table_share">
              <tr>
                <td  colspan=2  >
                  Create a Share delivery to allow others share your delivery fee.<br/>
@@ -285,6 +285,10 @@
     <script src="js/actions.js"></script>
     <script src="js/pay.js"></script>
     <script type="text/javascript">
+    $(window).load(function(){
+      $('.delivery_share_other').hide();
+      $('.delivery_create_share').hide();
+    });
     var suburbsData = [];
     $(window).load(function() {
       // var location = getUrlVars()["location"];
@@ -327,6 +331,22 @@
     var datepair = new Datepair(basicExampleEl);
     $('#date_time').datepair();
 
+
+    // delivery_myself')"><a href="#">Just Delivery Normally</a></li>
+    // <li role="presentation" class="tab_nac" onclick="show_hide('delivery_share_other')"><a href="#">Group Delivery </a></li>
+    // <li role="presentation" class="tab_nac" onclick="show_hide('delivery_create_share'
+    //
+    //
+    function show_hide(ele){
+        $('.delivery_myself').hide();
+        $('.delivery_share_other').hide();
+        $('.delivery_create_share').hide();
+        $('.'+ele).show();
+        $('.nav-tabs li').removeClass('.tab_ac');
+        $('.nav-tabs li').addClass('.tab_nac');
+        $(this).removeClass('.tab_nac');
+        $(this).addClass('.tab_ac');
+    }
     </script>
   </body>
 </html>
