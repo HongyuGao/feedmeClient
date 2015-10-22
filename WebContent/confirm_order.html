@@ -20,7 +20,9 @@
 
     <div id="nvabar">
       <div id="brand">
-        <a href="index.html"><img src="img/LogoWhite.png" alt="" /></a>
+        <a href="index.html">
+          <img src="img/LogoWhite.png" alt="" />
+        </a>
       </div>
 
       <div id="menu">
@@ -243,44 +245,6 @@
         </div>
       </div>
 
-      <!--
-      <div class="order_content">
-        <div class="shop_name">
-          <input type="checkbox" name="vehicle1" value="Bike" checked=""> Gao Shi Lin
-        </div>
-        <hr>
-        <div class="cart_dishes">
-          <div class="numbers_row">
-            <div class="dish_name">Fry FIsh</div>
-            <div class="inc_dec">+</div>
-            <input type="text" name="french-hens" id="french-hens" value="3">
-              <div class="inc_dec">-</div>
-              <div class="price">
-                  34
-              </div>
-            </div>
-            <div class="numbers_row">
-              <div class="dish_name">Fry FIsh</div>
-              <div class="inc_dec">+</div>
-              <input type="text" name="french-hens" id="french-hens" value="">
-                <div class="inc_dec">-</div>
-                <div class="price">
-                    34
-                </div>
-              </div>
-
-        </div>
-        <div class="delivery_fee">
-          <div class="delivery_info">
-            Delivery Fee
-          </div>
-          <div class="fee">
-            A$10
-          </div>
-        </div>
-      </div>
-      -->
-
 
       <div class="total">
         <div class="delivery_info">
@@ -292,7 +256,9 @@
       </div>
 
       <div class="payment">
-        <div class="go_back btn btn-danger btn-sm" onclick="go_back()">
+
+        <!-- <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')"> -->
+        <div class="go_back btn btn-danger btn-sm" onclick="history.go(-1)">
           <i class="fa fa-angle-double-left"></i> Continue Shopping
         </div>
         <div class="checkout btn btn-danger btn-sm">
