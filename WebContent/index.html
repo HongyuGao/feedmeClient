@@ -31,9 +31,11 @@
         <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')">
           <i class="fa fa-angle-double-left"></i> Continue
         </div>
-        <div class="checkout btn btn-danger btn-sm" onclick="sendOrder()">
-          Checkout <i class="fa fa-angle-double-right"></i>
-        </div>
+        <a href="confirm_order.html">
+          <div class="checkout btn btn-danger btn-sm" onclick="processOrder()">
+            Checkout <i class="fa fa-angle-double-right"></i>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -216,6 +218,7 @@
   	<script src="js/restaurant/restaurant.js"></script>
     <script src="js/actions.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/pay.js"></script>
     <script type="text/javascript">
       location_slick(".state", '80px', 'State', stateData);
       // location_slick(".building", '180px', 'Building', otherData);
