@@ -47,104 +47,35 @@
         </div>
 
 <div class="background-image"></div>
-    <div id="cart">
-      <div class="cart_logo">
-        <i class="fa fa-shopping-cart fa-3x"></i><br/>
-        <i>Hi, You booked these dishes:</i>
-      </div>
+<div id="cart">
+  <div class="cart_logo">
+    <i class="fa fa-shopping-cart fa-3x"></i><br/>
+    <i>Hi, You booked these dishes:</i>
+  </div>
+  <div class="cart_shops">
+  </div>
 
-      <div class="cart_shops">
-        <div class="shop_name">
-          Gao Shi Lin
-        </div>
-        <hr>
-        <div class="cart_dishes">
-          <div class="numbers_row">
-            <div class="dish_name">Fry FIsh</div>
-            <div class="inc_dec">+</div>
-            <input type="text" name="french-hens" id="french-hens" value="3">
-              <div class="inc_dec">-</div>
-              <div class="price">
-                  34
-              </div>
-            </div>
-            <div class="numbers_row">
-              <div class="dish_name">Fry FIsh</div>
-              <div class="inc_dec">+</div>
-              <input type="text" name="french-hens" id="french-hens" value="">
-                <div class="inc_dec">-</div>
-                <div class="price">
-                    34
-                </div>
-              </div>
-
-        </div>
-        <div class="delivery_fee">
-          <div class="delivery_info">
-            Delivery Fee
-          </div>
-          <div class="fee">
-            A$10
-          </div>
-        </div>
-      </div>
-      <div class="cart_shops">
-        <div class="shop_name">
-          Gao Shi Lin
-        </div>
-        <hr>
-        <div class="cart_dishes">
-          <div class="numbers_row">
-            <div class="dish_name">Fry FIsh</div>
-            <div class="inc_dec">+</div>
-            <input type="text" name="french-hens" id="french-hens" value="3">
-              <div class="inc_dec">-</div>
-              <div class="price">
-                  34
-              </div>
-            </div>
-            <div class="numbers_row">
-              <div class="dish_name">Fry FIsh</div>
-              <div class="inc_dec">+</div>
-              <input type="text" name="french-hens" id="french-hens" value="">
-                <div class="inc_dec">-</div>
-                <div class="price">
-                    34
-                </div>
-              </div>
-
-        </div>
-        <div class="delivery_fee">
-          <div class="delivery_info">
-            Delivery Fee
-          </div>
-          <div class="fee">
-            A$10
-          </div>
-        </div>
-      </div>
-
-      <div class="total">
-        <div class="delivery_info">
-          Total
-        </div>
-        <div class="fee">
-          A$50
-        </div>
-      </div>
-      <div class="payment">
-        <div class="go_back btn cust_btn btn-sm" onclick="slideOut('cart')">
-          <i class="fa fa-angle-double-left"></i> Continue
-        </div>
-        <div class="checkout btn cust_btn btn-sm">
-          Checkout <i class="fa fa-angle-double-right"></i>
-        </div>
-      </div>
+  <div class="total">
+    <div class="delivery_info">
+      Total
     </div>
+    <div class="fee">
+      A$0.0
+    </div>
+  </div>
+  <div class="payment">
+    <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')">
+      <i class="fa fa-angle-double-left"></i> Continue
+    </div>
+    <div class="checkout btn btn-danger btn-sm" onclick="sendOrder()">
+      Checkout <i class="fa fa-angle-double-right"></i>
+    </div>
+  </div>
+</div>
 
     <div id="nvabar">
       <div id="brand">
-        <img src="img/LogoWhite.png" alt="" />
+        <a href="index.html"><img src="img/LogoWhite.png" alt="" /></a>
       </div>
 
       <div id="menu">
@@ -153,13 +84,14 @@
         <a href="#"><li>My Favorite</li></a>
         <a href="#"><li>Tracking Order </li></a>
       </div>
-      <div id="personal_info">
-        Hello Jevy,
-      </div>
+
       <div id="cart_info" onclick="slide('cart')">
         <i class="fa fa-shopping-cart"></i>
         &nbsp;A$35 / 5 Items
 
+      </div>
+      <div id="personal_info">
+        Hello Jevy,
       </div>
     </div>
 
@@ -185,9 +117,24 @@
     <div id="main">
       <div class="main_header">
 
-      <div class="suburb">
-        ACT Gungahlin
-      </div>
+        <div class="suburb">
+          <div id="state">
+            <!--Use ddslick tools to add select data-->
+            <div class="state">
+
+            </div>
+          </div>
+          <div id="suburbs">
+            <div class="suburbs">
+
+            </div>
+          </div>
+          <div id="building">
+            <div class="building">
+
+            </div>
+          </div>
+        </div>
       <div class="search">
         <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
         <i class="fa fa-search fa-2x search_color" onclick="search()"></i>
@@ -196,238 +143,7 @@
       </div>
 
       <div class="dishes">
-        <div class="dish" onclick="pop('shopId')"> <!--Add dish to shopping cart and go to the restaurant , which provide this dish-->
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
-        <div class="dish">
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
-        <div class="dish">
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
 
-        <div class="dish">
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
-
-        <div class="dish">
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
-        <div class="dish">
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
-        <div class="dish">
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
-        <div class="dish">
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
-        <div class="dish">
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
-        <div class="dish">
-          <div class="dish_photo">
-            <img src="img/test1.jpg" alt="" />
-          </div>
-          <div class="dish_info">
-            <div class="dish_name">
-              Gao SHi Lin
-            </div>
-            <div class="dish_price">
-              A$21
-            </div>
-            <div class="dish_stars">
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-              <span class='glyphicon glyphicon-star-empty'></span>
-            </div>
-            <div class="sold">
-              <i>230</i> sold this week
-            </div>
-          </div>
-        </div>
         <!--Dish Finish-->
       </div>
     </div>
@@ -435,43 +151,103 @@
 
     </div>
 
-    <!-- script references -->
-  	<script src="js/webjars/jquery.min.js"></script>
-  	<script src="js/webjars/bootstrap.min.js"></script>
-  	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
-  	<script src="js/commonRest.js"></script>
-  	<script src="js/commonPath.js"></script>
-  	<script src="js/restaurant.js"></script>
-    <script src="js/actions.js"></script>
-    <script type="text/javascript">
 
-        var choosed_shopId
-        //Div pop hide code -- Customed for this page
-        function pop(shopId) {
-          document.getElementById('popDiv').style.display = 'block';
-          document.getElementById("dish_popup").style.display = 'block';
-          choosed_shopId = shopId;
-        }
+        <!-- script references -->
+      	<script src="js/webjars/jquery.min.js"></script>
+      	<script src="js/webjars/bootstrap.min.js"></script>
+        <script src="js/webjars/ddslick.js"></script>
+      	<script src="js/commonRest.js"></script>
+      	<script src="js/commonPath.js"></script>
+      	<script src="js/restaurant/restaurant.js"></script>
+        <script src="js/actions.js"></script>
+        <script src="js/home.js"></script>
+        <script type="text/javascript">
+          location_slick(".state", '80px', 'State', stateData);
+          // location_slick(".building", '180px', 'Building', otherData);
+          // location_slick(".delivery_method", '600px', 'Delivery Method', groupData);
+        </script>
+        <script type="text/javascript">
 
-        function hide() {
-          document.getElementById('popDiv').style.display = 'none';
-          document.getElementById("dish_popup").style.display = 'none';
-        }
-        //To detect escape button
-        document.onkeydown = function(evt) {
-          evt = evt || window.event;
-          if (evt.keyCode == 27) {
-            hide('popDiv');
+        // display all dishes and calculate counter of dishes:
+                $(window).load(function(){
+                  restGet(TEXT_HOST+'/dishes/query/?shopId='+shopId, GET_METHOD, function(data){
+                    $.each(data, function(i, dish){
+                      total_count += 1;
+                      appendDish(dish);
+                      // count and update the number of items of the chosen type:
+                        var dish_type = dish.type;
+                        if(dish_counter.dish_type == undefined) {
+                            dish_counter[dish_type] = 1;
+                        } else {
+                            dish_counter[dish_type] += 1;
+                        }
+                    });
+
+                    dish_counter["All"] = total_count;
+
+                    // set dish counter information according to selected types in the sidebar:
+                    $(".dish_filter li").each(function(type_index, value){
+                      var count = dish_counter[value.innerHTML];
+                      if(count == undefined) {
+                        count = 0
+                      }
+                      value.innerHTML += "(" + count + ")";
+                    });
+
+                  }, '.dishes'); // ?
+                });
+
+
+                // Dishes fillter by click left menu:
+                $(window).load(function(){
+                  $(".dish_filter li").on('click', function(){
+                    applyFilter($(this).data("type"));
+                  });
+                });
+
+
+
+          // apply restaurants fillter by clicking left menu:
+          $(window).load(function(){
+            $(".dish_filter li").on('click', function(){
+              applyFilter($(this).data("type"));
+            });
+          });
+
+
+          $(window).load(function() {
+              var url = TEXT_HOST + "/shoppingCart/queryCart?userId=" + localStorage.getItem("userId");
+                restGet(url, GET_METHOD, function(data){
+                    var items = data["items"];
+                    if(items.trim().length != 0) {
+                        parseCart(items);
+                    }
+              });
+          });
+
+
+
+          var sharing_slided = false;
+          function slideOpen(elem, e2){
+            $(elem).show( 100);
+            $(e2).hide(100);
+            sharing_slided = true;
           }
-        };
+          function slideClose(elem, e2){
+            //console.log(elem);
+            $(elem).hide( 100);
+            $(e2).show(100);
+            sharing_slided = false;
+          }
 
-        function redirect_restaurant(){
-          hide();
+          function sharing_slide(e, e2) {
+            if (sharing_slided) {
+              slideClose(e, e2);
+            } else {
+              slideOpen(e, e2);
+            }
+          }
 
-          //Save create share order information to database
-
-          window.open('new_restaurant.html?shopId='+choosed_shopId, '_self', false);
-        }
-    </script>
+        </script>
   </body>
 </html>
