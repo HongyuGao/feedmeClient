@@ -21,7 +21,10 @@ function displayOrder() {
 
         var restName = restid2Name[restId];
         orderContent.find(".shop_name span").text(restName);
+
+
         var dishes = order[restId];
+
         var cartDishes = orderContent.find(".cart_dishes");
 
         for(var dishName in dishes) {
@@ -33,20 +36,20 @@ function displayOrder() {
                     '<div class="numbers_row">' +
                     '<div class="dish_name">' + dishName + '</div>' +
 
-                    '<div class="inc_dec">'+ 
+                    '<div class="inc_dec_price"><div class="inc_dec">'+
                     '<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (-1) + ', ' + (1) + ', ' +(restId) + ')"' +
                     '> - </button>'+
                     //'</div>' +
 
                     ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[dishName]["count"] + '</span>' +
 
-                    //'<div class="inc_dec">'+ 
+                    //'<div class="inc_dec">'+
                     '<button type="button" onclick="updateOrder(' + '\'' + dishName + '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] + ', ' + (1) + ', ' + (1) + ',' + (restId) +  ')"' +
                     '> + </button>'+
                     '</div>' +
-                    
-                    '<div class="price">' + dishes[dishName]["price"] + '</div>' +
-                    '</div>' 
+
+                    '<div class="price">' + dishes[dishName]["price"] + '</div></div>' +
+                    '</div>'
             );
         }
 
@@ -72,7 +75,7 @@ function updateOrder(name, id, price, quantity, flag, restId) {
         dishes = order[restId];
         // update quantity:
         var qty = Number(document.getElementById(id).innerHTML);
-        var new_quantity = quantity + qty;         
+        var new_quantity = quantity + qty;
         document.getElementById(id).innerHTML = new_quantity;
         // update the total count of the dish:
         dishes[name]["count"] += quantity;
@@ -99,7 +102,7 @@ function updateSummary() {
 function updateDBCart(userId) {
     var cart = new Object();
     cart.userId = localStorage.getItem("userId");
-    
+
 
     var info = "";
     var flag = true;
@@ -128,7 +131,7 @@ function updateDBCart(userId) {
     cart.items = info;
     var postData = JSON.stringify(cart);
     restSet(TEXT_HOST + "/shoppingCart/saveCart", POST_METHOD, postData, "", "");
-    
+
 }
 
 
@@ -176,6 +179,7 @@ function generateOrder() {
     
 }
 
-function renderSendOrder(data){
-  console.log(data.statusInfo);
+
+function renderSendOrder() {
+    console.log("success");
 }

@@ -5,14 +5,19 @@
     <title>Feed Me - Payment</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="css/lib/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="css/lib/jquery.timepicker.css" rel="stylesheet" type="text/css">
     <link href="css/css.css" rel="stylesheet">
-
+    <style media="screen">
+      .inc_dec button{
+        background-color: #d05b54;
+        border-style: none;
+      }
+    </style>
   </head>
   <body>
 
     <div id="popDiv" class="ontop"></div>
-
 
 
     <div class="background-image"></div>
@@ -46,33 +51,27 @@
       </div>
       <div class="choose_delivery">
         <ul class="nav nav-tabs">
-          <li role="presentation" class="tab_ac" onclick="show_hide('delivery_myself')"><a href="#">Just Delivery Normally</a></li>
-          <li role="presentation" class="tab_nac" onclick="show_hide('delivery_share_other')"><a href="#">Group Delivery </a></li>
-          <li role="presentation" class="tab_nac" onclick="show_hide('delivery_create_share')"><a href="#">Share My Delivery </a></li>
+          <li role="presentation" class="tab_ac" onclick="show_hide(this,'delivery_myself')"><a href="#">Just Delivery Normally</a></li>
+          <li role="presentation" class="tab_nac" onclick="show_hide(this, 'delivery_share_other')"><a href="#">Group Delivery </a></li>
+          <li role="presentation" class="tab_nac" onclick="show_hide(this,'delivery_create_share')"><a href="#">Share My Delivery </a></li>
         </ul>
       </div>
 
       <div class="order_content">
          <!--Use order_content style, but delivery address change function-->
          <div class="delivery_myself">
-           <table>
-             <tr>
-               <td colspan="2">
-                 Just as delivery your food as sone as possible. <br/>
+                 <h4>Delivery your food as soon as possible. </h4>
                  You will undertake your delivery fee.
-               </td>
-             </tr>
-             <tr>
-               <td>
-                 Deliver To:
-               </td>
-               <td>
-                 Delivery Fee
-               </td>
-             </tr>
+          <div class="float_left_right">
+            <div class="float_left">
+              Deliver To
+            </div>
+              <div class="float_right">
+                Delivery Fee
+              </div>
+          </div>
 
-             <tr>
-               <td>
+          <div class="choose_new_address">
                  <div class="choose_new_address">
                    <div id="state">
                      <!--Use ddslick tools to add select data-->
@@ -93,86 +92,64 @@
                    <div id="detail_address">
                      <input type="text" name="name" value="Detail">
                    </div>
+                   <div class="fee">
+                     A$10
+                   </div>
+                 </div>
 
-                 </div>
-               </td>
-               <td>
-                 <div class="fee">
-                   A$10
-                 </div>
-               </td>
-             </tr>
-           </table>
+
+               </div>
          </div>
          <div class="delivery_share_other">
-           <table>
-             <tr>
-               <td colspan="2">
-                 Choose a shared delivery service to save your delivery fee. <br/>
-                 Many people share one delivery fee.<br/>
-                 You can save your money, <br/>
-                 But you have to pickup your food at specific time and address.
-               </td>
-             </tr>
-             <tr>
-               <td>
-                 Deliver To:
-               </td>
-               <td>
-                 Delivery Fee
-               </td>
-             </tr>
-                        <tr>
-                          <td colspan="2">
-                            Share Delivery Options (save delivery fee):
-                          </td>
-                        </tr>
 
-                        <tr>
-                          <td>
+                 <h4>Share delivery service with others to save your money. </h4>
+                 Group share one delivery fee.<br/>
+                 You have to pickup your food at specific time and address.
+                 <div class="float_left_right">
+                   <div class="float_left">
+                     Deliver To
+                   </div>
+                     <div class="float_right">
+                       Delivery Fee
+                     </div>
+                 </div>
+                  <div class="choose_new_address">
+                    <div class="choose_new_address">
                             <div class="delivery_method">
 
                             </div>
-                          </td>
-                          <td>
                             <div class="fee">
                               A$10
                             </div>
-                          </td>
-                        </tr>
-                      </table>
+                          </div>
+
+                </div>
          </div>
          <div class="delivery_create_share">
-           <table border="0" class="table_share">
-             <tr>
-               <td  colspan=2  >
-                 Create a Share delivery to allow others share your delivery fee.<br/>
-                 In order to let your pickup place convenient for more people, <br/>
-                 Please fill suitable pickup address and pickup time.
-               </td>
-             </tr>
-             <tr>
-               <td style="text-align:right">
-                 Deliery Time
-               </td>
-               <td>
-                 <p id="date_time">
-                 <input type="text" class="time ui-timepicker-input"  style="width:90px" >
-               </input>
-                 <input type="text" class="date"  style="width:90px" >
-               </input>
-                 </p>
-               </td>
-             </tr>
 
-             <tr>
-               <td style="text-align:center" colspan=2 class="shop_name">
-                 <hr style="width:340px">
-                  Pick Up Address (Detail):
-               </td>
-             </tr>
-             <tr>
-               <td colspan="2" style="height:60px">
+                 <h4>Create a Share delivery</h4>
+                Allow other people to share delivery fee with you. <br/>
+                 In order to let your pickup place convenient for more people, <br/>
+                 <h4>Please fill suitable pickup address and pickup time</h4>
+                 <div class="float_left_right">
+                   <div class="float_left">
+                     Deliver Time
+                   </div>
+                     <div class="float_left">
+                         <p id="date_time">
+                         <input type="text" class="time ui-timepicker-input"  style="width:90px" >
+                       </input>
+                         <input type="text" class="date"  style="width:90px" >
+                       </input>
+                         </p>
+                     </div>
+                 </div>
+
+
+            <div class="pick_up_addr">
+              Pick Up Address (Detail):
+            </div>
+
                  <div class="choose_new_address">
                    <div id="state">
                      <!--Use ddslick tools to add select data-->
@@ -195,23 +172,12 @@
                    </div>
 
                  </div>
-               </td>
-             </tr>
-             <tr> <!--Empty row to separe confim button-->
-               <td>
-               </td>
-               <td>
-               </td>
-             </tr>
-             <tr  style="padding-top:40px">
-
-               <td colspan="2" style="text-align:right">
+               <div class="confirm_create_share">
                  <button type="button" class="btn cust_btn btn-sm" name="Cancle" onclick="hide()">Cancle</button>
                  <!--Call join_in function, param: shopId-->
                  <button type="button" class="btn cust_btn btn-sm"  name="Confirm" onclick="create_share_order()">Confirm</button>
-               </td>
-             </tr>
-           </table>
+               </div>
+
          </div>
 
       </div>
@@ -310,7 +276,7 @@
         }, 'tt');
     });
       location_slick(".state", '80px', 'State', stateData);
-      location_slick(".delivery_method", '600px', 'Delivery Method', groupData);
+      location_slick(".delivery_method", '500px', 'Delivery Method', groupData);
 
       displayOrder();
 
@@ -337,15 +303,16 @@
     // <li role="presentation" class="tab_nac" onclick="show_hide('delivery_create_share'
     //
     //
-    function show_hide(ele){
+    function show_hide(self, ele){
         $('.delivery_myself').hide();
         $('.delivery_share_other').hide();
         $('.delivery_create_share').hide();
         $('.'+ele).show();
-        $('.nav-tabs li').removeClass('.tab_ac');
-        $('.nav-tabs li').addClass('.tab_nac');
-        $(this).removeClass('.tab_nac');
-        $(this).addClass('.tab_ac');
+        $('.nav-tabs li').removeClass('tab_ac');
+        $('.nav-tabs li').addClass('tab_nac');
+        console.log(self);
+        $(self).removeClass('tab_nac');
+        $(self).addClass('tab_ac');
     }
 
     
