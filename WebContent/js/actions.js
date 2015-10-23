@@ -1,6 +1,9 @@
 //Shopping cart slid in and slide out code
 var slided = false;
 
+
+// var selectedDeliveryOption = 1;
+
 function slideOut(e) {
   var elem = document.getElementById(e);
   elem.style.transition = "right 0.3s linear 0s";
@@ -118,5 +121,4 @@ function location_slick(id, w, text, dd) {
       console.log(data);
     }
   });
-
 }
