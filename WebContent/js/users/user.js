@@ -25,7 +25,7 @@ function emailVal(email){
 	else{
 		reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
 		if(!reg.test(emailStr)){
-			validationInfo(email.name,"Email is invalid");		
+			validationInfo(email.name,"Email is invalid");
 			emailValidate=false;
 		}
 		else{
@@ -33,7 +33,7 @@ function emailVal(email){
 			restGet(restUrl, "GET", renderEmailCheck,"#eVal")
 		}
 	}
-}	
+}
 
 function pwdVal(cpwd){
 	if(cpwd.value!=jQuery("#pwd").val()){
@@ -43,25 +43,25 @@ function pwdVal(cpwd){
 	else{
 		validationInfo(cpwd.name,"");
 		return true;
-	}	
+	}
 }
 
 function validationInfo(disDiv,disInfo){
 	document.getElementById(disDiv).style.display="block";
-	document.getElementById(disDiv).innerHTML=disInfo; //jQuery("#"+disDiv).html(disInfo);		
+	document.getElementById(disDiv).innerHTML=disInfo; //jQuery("#"+disDiv).html(disInfo);
 }
 
 /**POST**/
 function signUp() {
 	var titleValue=jQuery("#title option:selected").val();
 	var bodValue=jQuery("#bod").val();
-	var plValue=jQuery("#pl option:selected").val();	
+	var plValue=jQuery("#pl option:selected").val();
 	var fname=document.getElementById("fname");
 	var lname=document.getElementById("lname");
 	var email=document.getElementById("email");
 	var pwd=document.getElementById("pwd");
 	var cpwd=document.getElementById("cpwd");
-	var tel=document.getElementById("tel");	
+	var tel=document.getElementById("tel");
 	emailVal(email);
 	if(emailValidate==true&&emptyVal(fname)&&emptyVal(lname)&&emptyVal(pwd)&&emptyVal(tel)&&pwdVal(cpwd)){
 		var hashpwd=md5(pwd.value);
@@ -80,7 +80,7 @@ function signUp() {
 	else{
 		var errorInfo="There were problems creating your account";
 		validationInfo("signInfo",errorInfo);
-	}    
+	}
 }
 
 /**GET**/
@@ -88,7 +88,7 @@ function signIn() {
     var userEmail = jQuery.trim(jQuery("#inputEmail").val());
     var password = jQuery.trim(jQuery("#inputPassword").val());
     if(userEmail!=""&&password!=""){
-    	console.log(userEmail);   	
+    	console.log(userEmail);
     	var hashPassword = md5(password);
     	console.log(hashPassword);
         //var url = ATUP_USER_URI + SIGNIN_PATH + "?user=" + userName + "&password=" + hashPassword;
@@ -97,7 +97,7 @@ function signIn() {
     else{
     	validationInfo("resultDiv","Username and password can't be empty");
     }
-    
+
 }
 
 /*PUT*/
@@ -121,7 +121,7 @@ function renderEmailCheck(data){
 	}else{
 		emailValidate=false;
 		validationInfo(email.name,"Unkown Error");
-	}	
+	}
 }
 
 function renderSignUp(data) {
@@ -135,11 +135,11 @@ function renderSignIn(data) {
     	validationInfo("resultDiv","Success");
     	console.log("enter renderSignIn If branch");
         storage.setItem("userId", data.id);
-        storage.setItem("userName", data.firstname);
-        storage.setItem("userRole", data.lastname);
+        storage.setItem("userFname", data.firstname);
+        storage.setItem("userLname", data.lastname);
         window.location.href = "index.html";
     }else if(data.statusInfo=="N"){
-    	validationInfo("resultDiv","Incorrect email address or password"); 
+    	validationInfo("resultDiv","Incorrect email address or password");
     }else{
     	//need error page
     }
