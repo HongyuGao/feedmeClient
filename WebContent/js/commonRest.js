@@ -107,9 +107,11 @@ function checkPic(paramId) {
 function checkSignIn() {
     var storageUserId = storage.getItem("userId");
     if (storageUserId == null) {
-       window.location.href = ATUP_PAGE_URI + "signIn.html";
+       //window.location.href = ATUP_PAGE_URI + "signIn.html";
+       return false;
     } else {
-        var user = storage.getItem("userName");
-        jQuery('#topDiv').html("Welcome " + user);
+        //var user = storage.getItem("userLname");
+        //jQuery('#topDiv').html("Welcome " + user);
+        return true;
     }
 }
