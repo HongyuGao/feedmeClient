@@ -31,6 +31,7 @@ function emailVal(email) {
 			console.log("HOST>>>" + TEXT_HOST);
 			var restUrl = TEXT_HOST + "/users/checkEmail?email=" + emailStr;
 			restGet(restUrl, "GET", renderEmailCheck, "#eVal")
+
 		}
 	}
 }
@@ -45,10 +46,12 @@ function pwdVal(cpwd) {
 	}
 }
 
+
 function validationInfo(disDiv, disInfo) {
 	console.log("==== Div displan:" + disDiv);
 	document.getElementById(disDiv).style.display = "block";
 	document.getElementById(disDiv).innerHTML = disInfo; //jQuery("#"+disDiv).html(disInfo);
+
 }
 
 /**POST**/
@@ -62,6 +65,7 @@ function signUp() {
 	var pwd = document.getElementById("pwd");
 	var cpwd = document.getElementById("cpwd");
 	var tel = document.getElementById("tel");
+
 	emailVal(email);
 	if (emailValidate == true && emptyVal(fname) && emptyVal(lname) && emptyVal(
 			pwd) && emptyVal(tel) && pwdVal(cpwd)) {
@@ -122,11 +126,11 @@ function renderEmailCheck(data) {
 		validationInfo(email.name, "Email is already token");
 	} else if (data.statusInfo == "Y") {
 		emailValidate = true;
-		console.log("+++++++");
 		validationInfo(email.name, "");
 	} else {
 		emailValidate = false;
 		validationInfo(email.name, "Unkown Error");
+
 	}
 }
 
@@ -136,7 +140,7 @@ function renderSignUp(data) {
 }
 
 function renderSignIn(data) {
-	console.log("enter renderSignIn");
+
 	if (data.statusInfo == "Y") {
 		validationInfo("resultDiv", "Success");
 		console.log("enter renderSignIn If branch");
@@ -166,4 +170,5 @@ function renderUpdate(data) {
 	usersDiv.append("</span><span style='width:100px;display:inline-block;'>");
 	usersDiv.append(data.userRole);
 	usersDiv.append("</span></div>");
+
 }

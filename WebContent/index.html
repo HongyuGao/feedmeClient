@@ -53,6 +53,10 @@
         <a href="#"><li>Tracking Order </li></a>
       </div>
 
+      <div id="personal_info">
+      </div>
+
+
       <div id="cart_info" onclick="slide('cart')">
         <i class="fa fa-shopping-cart"></i>
         &nbsp;<span class="cart-top-sum">A$0.0 / 0 Item(s) </span>
@@ -62,6 +66,7 @@
         Hello Jevy,
       </div>
     </div>
+
     <div id="left_filter">
       <div class="dish_filter">
         <h4>Dish Filter</h4>
@@ -137,7 +142,6 @@
         </div>
         <div id="building">
           <div class="building">
-
           </div>
         </div>
       </div>
@@ -255,8 +259,6 @@
           }, 'tt');
       });
 
-
-
       // load and display all restaurants:
       $(window).load(function(){
         restGet(TEXT_HOST + '/restaurants/allRestaurant', GET_METHOD, function(data){
@@ -286,7 +288,14 @@
           });
       });
 
-
+      $(window).load(function(){
+        console.log("into CheckSignIn");
+        if(checkSignIn()){
+          document.getElementById("personal_info").innerHTML="Hello, "+storage.getItem("userLname")
+        }else{
+          document.getElementById("personal_info").innerHTML="<button id='signin' onclick='signIn()'>SignIn</button>/<button id='signup' onclick='signUp()'>SignUp</button>"
+        }
+      })
 
       var sharing_slided = false;
       function slideOpen(elem, e2){
