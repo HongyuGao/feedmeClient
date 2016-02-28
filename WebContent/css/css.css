@@ -104,6 +104,12 @@ a{
 }
 a:hover{
   color: #FFFFFF;
+
+}
+
+#login_signup{
+  display: block;
+  padding: 0px;
 }
 #nvabar{
   background-color: #c22d24;
@@ -121,13 +127,15 @@ a:hover{
   float: right;
   height: 40px;
   text-align: center;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 #nvabar li:hover{
   background-color: #d05b54;
 }
+
+
 #login-content {
   display: none;
     position: absolute;
@@ -176,11 +184,12 @@ a:hover{
 }
 #personal_info{
   float: right;
-  padding-top: 10px;
+  /*padding-top: 10px;*/
   padding-bottom: 8px;
   padding-left: 40px;
   padding-right: 30px;
   height: 40px;
+  font-size: 14px;
 }
 
 #home{

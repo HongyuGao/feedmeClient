@@ -53,12 +53,12 @@
         </div>
       </li>
       <li>
-        <a href="#" id="login-trigger">SignIn</a>
+        <a href="#" id="login-trigger">Login</a>
         <div id="login-content">
           <div id="resultDiv"></div>
           <input type="email" id="inputEmail" placeholder="Email address" required="required"  autofocus="autofocus">
           <input type="password" id="inputPassword" placeholder="Password" required="required">
-          <button class="btn cust_btn btn-sm" id="signin" onclick="signIn()">Sign In</button>
+          <button class="btn cust_btn btn-sm" id="signin" onclick="signIn()">Login</button>
         </div>
       </li>
 
@@ -149,21 +149,23 @@
 //Pop up login
 $(document).ready(function(){
   $('#login-trigger').click(function(){
+    if($('#signUp-content').is(':visible')){
+      $('#signUp-trigger').next('#signUp-content').slideToggle(1);
+      $('#signUp-trigger').toggleClass('active');
+    }
+
     $(this).next('#login-content').slideToggle();
     $(this).toggleClass('active');
-
-    // if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
-    //   else $(this).find('span').html('&#x25BC;')
   });
   $('#signUp-trigger').click(function(){
+    if($('#login-content').is(':visible')){
+      $('#login-trigger').next('#login-content').slideToggle(1);
+      $('#login-trigger').toggleClass('active');
+    }
+
     $(this).next('#signUp-content').slideToggle();
     $(this).toggleClass('active');
-
-    // if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
-    //   else $(this).find('span').html('&#x25BC;')
     })
-
-
 });
 
     </script>
