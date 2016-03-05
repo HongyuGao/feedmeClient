@@ -227,7 +227,7 @@
         <div class="go_back btn btn-danger btn-sm" onclick="history.go(-1)">
           <i class="fa fa-angle-double-left"></i> Continue Shopping
         </div>
-        <div class="checkout btn btn-danger btn-sm">
+        <div class="checkout btn btn-danger btn-sm" onclick="generateOrder()">
           Confirm & Payment <i class="fa fa-angle-double-right"></i>
         </div>
       </div>
@@ -314,6 +314,9 @@
         $(self).removeClass('tab_nac');
         $(self).addClass('tab_ac');
     }
+
+    
+
     </script>
   </body>
 </html>

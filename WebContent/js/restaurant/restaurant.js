@@ -57,93 +57,7 @@ function setCart() {
       '</div>' +
       '<hr>'
     );
-//    $(".cart_shops").append('<div class="cart_dishes">');
-//    if (order[restaurantId] != undefined) {
-//      var dishes = order[restaurantId];
-//      for (var dishName in dishes) {
-//        $(".cart_shops").append(
-//
-//          '<div class="numbers_row">' +
-//          '<div class="dish_name">' + dishName +
-//          '</div><div class="inc_dec_price">' +
-//
-//          '<div class="inc_dec">' +
-//          '<button type="button" onclick="updateOrder(' + '\'' + dishName +
-//          '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
-//          ', ' + (-1) + ', ' + (1) + ', ' + (restaurantId) + ')"' +
-//          '> - </button>' +
-//          ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[
-//            dishName]["count"] + '</span>' +
-//          '<button type="button" onclick="updateOrder(' + '\'' + dishName +
-//          '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
-//          ', ' + (1) + ', ' + (1) + ',' + (restaurantId) + ')"' +
-//          '> + </button>' +
-//          '</div>' +
-//
-//          '<div class="price">' + dishes[dishName]["price"] + '</div>' +
-//          '</div></div>'
-//
-//        );
-//<<<<<<< HEAD
-//      }
-//    }
-//    $(".cart_shops").append('</div>');
-//  }
-//
-//
-//  console.log(order);
-//
-//  // other shops:
-//  for (var restId in order) {
-//    if (restId == restaurantId) {
-//      continue;
-//    }
-//
-//    $(".cart_shops").append(
-//      '<hr>' +
-//      '<div class="shop_name">' +
-//      restid2Name[restId] +
-//      '</div>' +
-//      '<hr>'
-//    );
-//    $(".cart_shops").append('<div class="cart_dishes">');
-//    var dishes = order[restId];
-//    for (var dishName in dishes) {
-//      $(".cart_shops").append(
-//
-//        '<div class="numbers_row">' +
-//        '<div class="dish_name">' + dishName +
-//        '</div><div class="inc_dec_price">' +
-//
-//        '<div class="inc_dec">' +
-//        '<button type="button" onclick="updateOrder(' + '\'' + dishName +
-//        '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
-//        ', ' + (-1) + ', ' + (1) + ', ' + restId + ')"' +
-//        '> - </button>' +
-//        ' <span id=' + '"' + dishes[dishName]["id"] + '"' + '>' + dishes[
-//          dishName]["count"] + '</span>' +
-//        '<button type="button" onclick="updateOrder(' + '\'' + dishName +
-//        '\', ' + dishes[dishName]["id"] + ", " + dishes[dishName]["price"] +
-//        ', ' + (1) + ', ' + (1) + ', ' + restId + ')"' +
-//        '> + </button>' +
-//        '</div>' +
-//
-//        '<div class="price">' + dishes[dishName]["price"] + '</div>' +
-//        '</div></div>'
-//
-//      );
-//    }
-//  }
-//
-//  console.log(order);
-//
-//  $(".cart_shops").append('</div>');
-//
-//  $(".total .fee").text("A$" + totalPrice);
-//
-//  $("#cart_info .cart-top-sum").text("A$" + totalPrice + " / " + totalNum +
-//    " Item(s)");
-//=======
+
         $(".cart_shops").append('<div class="cart_dishes">');
         if(order[restaurantId] != undefined) {
             var dishes = order[restaurantId];
@@ -235,7 +149,6 @@ function setCart() {
 	$(".total .fee").text("A$" + totalPrice);
 
 	$("#cart_info .cart-top-sum").text("A$" + totalPrice + " / " + totalNum + " Item(s)");
-//>>>>>>> 7bb97c2a2cd5a55d066f96f4210258ab4e95e5cc
 
 }
 
@@ -451,7 +364,7 @@ function updateDBCart(userId) {
   cart.items = info;
   var postData = JSON.stringify(cart);
   restSet(TEXT_HOST + "/shoppingCart/saveCart", POST_METHOD, postData,
-    renderTestFunction(), "");
+    renderTestFunction, "");
 
 }
 
@@ -463,7 +376,7 @@ function processOrder() {
 
 
 function renderTestFunction() {
-
+  console.log("update cart in DB");
 }
 
 function sendOrder() {
@@ -494,38 +407,6 @@ function sendOrder() {
     var url = TEXT_HOST + "/orders/create";
     restSet(url, POST_METHOD, postData, renderSendOrder(), "");
   }
-
-
-  // var order = new Object();
-
-  // order.userId = 1;
-  // order.restaurantId = 1;
-  // order.totalPrice = 1;
-  // order.deliveryFee = 1;
-  // order.deliverId = 1;
-  // order.paymentStatus = "";
-  // order.state = "";
-  // order.creatTime = new Date();
-  // order.deliverTime = null;
-  // order.finishTime = null;
-  // //order.addressId = 1;
-
-  // var dishes= Array();
-  // for(var i=0;i<2;i++){//遍历dish的数量
-  //   var dish=new Object();
-  //   dish.dishId=i+1;
-  //   dish.amount=i;
-  //   dish.price=i;
-  //   dishes.push(dish);
-  // }
-  // //
-
-  // var order2dishes=new Object();
-  // order2dishes.order=order;
-  // order2dishes.dishes=dishes;
-  // var postData = JSON.stringify(order2dishes);
-  // var url=TEXT_HOST+"/orders/create";
-  // restSet(url, POST_METHOD, postData, renderSendOrder(),"");
 }
 
 function renderSendOrder() {

@@ -11,8 +11,6 @@ function displayOrder() {
     var orderContent = $(".confirm");
     var isFirstOrder = true;
 
-    console.log(order);
-    console.log(restid2Name);
     for(var restId in order) {
         if(isFirstOrder == false) {
             var newOrderContent = orderContent.clone();
@@ -22,13 +20,12 @@ function displayOrder() {
         }
 
         var restName = restid2Name[restId];
-        console.log(restName);
         orderContent.find(".shop_name span").text(restName);
+
 
         var dishes = order[restId];
 
         var cartDishes = orderContent.find(".cart_dishes");
-        console.log(cartDishes);
 
         for(var dishName in dishes) {
             var dishId = dishes[dishName]["id"];
@@ -131,7 +128,6 @@ function updateDBCart(userId) {
         info += item;
     }
 
-
     cart.items = info;
     var postData = JSON.stringify(cart);
     restSet(TEXT_HOST + "/shoppingCart/saveCart", POST_METHOD, postData, "", "");
@@ -139,25 +135,48 @@ function updateDBCart(userId) {
 }
 
 
-function generateOrder(restId, userId, dishes, totalPrice) {
-    var Order = new Object();
+function generateOrder() {
+    for(var restId  in order) {
+        var postOrder = new Object();
 
-    order.userId = userId;
-    order.restId = restId;
-    order.addressId = 1;
-    order.totalPrice = totalPrice;
+        postOrder.userId = Number(localStorage.getItem("userId"));
+        postOrder.restaurantId = Number(restId);
+        postOrder.addressId = 1;
 
-    var order2dishes = new Object();
+        postOrder.paymentStatus= "false";
+        // postOrder.creatTime = 10;
+        // postOrder.deliveryfee=4;
+        // postOrder.state=6;
+        // postOrder.creatTime=7;
 
-    order2dishes.order = order;
-    order2dishes.dishes = dishes;
+        var curTotalPrice = 0;
 
-    var postData = JSON.stringify(order2dishes);
-    var url = TEXT_HOST + "/orders/create";
+        var dishes = Array();
+        var items = order[restId];
+        for(var dishName in items) {
+            var item = items[dishName];
+            var dish = new Object();
+            dish.dishId = Number(item["id"]);
+            dish.amount = Number(item["count"]);
+            dish.price = Number(item["price"]);
+            curTotalPrice += dish.price * dish.amount;
+            dishes.push(dish);
+        }
 
-    console.log(postData);
+        postOrder.totalPrice = curTotalPrice;
 
-    restSet(url, POST_METHOD, postData, renderSendOrder(),"");
+        var order2dishes = new Object();
+
+        order2dishes.order = postOrder;
+        order2dishes.dishes = dishes;
+
+        var postData = JSON.stringify(order2dishes);
+        var url = TEXT_HOST + "/orders/create";
+        console.log("postdata: "+ postData);
+
+        restSet(url, POST_METHOD, postData, renderSendOrder, "");
+    }
+    
 }
 
 

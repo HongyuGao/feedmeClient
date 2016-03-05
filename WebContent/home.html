@@ -12,10 +12,56 @@
   <body>
     <div class="background-image"></div>
     <div id="nvabar">
-      <div class="login">
-        <a href="#">Login</a>
-        <a href="#">Regiest</a>
-      </div>
+      <li >
+        <a href="#" id="signUp-trigger">SignUp</a>
+        <div id="signUp-content">
+            <div id=resultDiv></div>
+            <table>
+        			<tr>
+        				<td style="text-align:left;"><select id="title"><option>Mr</option><option>Miss</option><option>Mrs</option><option>Ms</option></select></td>
+              </tr>
+              <tr>
+                <div id="fnVal" style="color:red;"></div>
+                <td><input type="text" placeholder="First Name" id="fname" name="fnVal" /></td>
+              </tr>
+              <tr>
+                <div id="lnVal" style="color:red;"></div>
+                <td><input type="text" placeholder="Last Name" id="lname" name="lnVal" ></td>
+        			</tr>
+        			<tr>
+                <div id="eVal" style="color:red; font-size:10px"></div>
+        				<td><input type="email" placeholder="Email address" id="email" name="eVal" onblur="emailVal(this)"/></td>
+        			</tr>
+        			<tr>
+                <div id="pVal" style="color:red; font-size:10px"></div>
+        				<td><input type="password" placeholder="Password" id="pwd" name="pVal" onblur="emptyVal(this)"></td>
+        			</tr>
+        			<tr>
+                <div id="cpVal" style="color:red; font-size:10px"></div>
+        				<td><input type="password" placeholder="Confirm Password" id="cpwd" name="cpVal" onblur="pwdVal(this)"></td>
+        			</tr>
+              <div id="telVal" style="color:red;  font-size:10px"></div>
+        			<tr>
+
+        				<td><input type="tel" id="tel" placeholder="Phone Number" name="telVal" onblur="emptyVal(this)"></td>
+              </tr>
+              <tr>
+        				<td style="text-align:left;"><select id="pl"><option>prefered Language</option><option>English</option><option>Chinese</option><option>Japanese</option><option>Korean</option></select></td>
+        			</tr>
+        		</table>
+        		<button class="btn cust_btn btn-sm" onclick="signUp()">Sign Up for FeedMe</button>
+        </div>
+      </li>
+      <li>
+        <a href="#" id="login-trigger">Login</a>
+        <div id="login-content">
+          <div id="resultDiv"></div>
+          <input type="email" id="inputEmail" placeholder="Email address" required="required"  autofocus="autofocus">
+          <input type="password" id="inputPassword" placeholder="Password" required="required">
+          <button class="btn cust_btn btn-sm" id="signin" onclick="signIn()">Login</button>
+        </div>
+      </li>
+
     </div>
 
     <div id="home">
@@ -24,7 +70,7 @@
           <img src="img/LogoRed.png" alt="" />
         </div>
         <div class="ele">
-          Hangry?<br/>
+          Hungry?<br/>
           Let <img src="img/LogoFullRed.png" alt="" />
           Serve you!
 
@@ -73,30 +119,55 @@
   	<script src="js/webjars/jquery.min.js"></script>
     <script src="js/webjars/jquery.min.js"></script>
   	<script src="js/webjars/bootstrap.min.js"></script>
-    <script src="js/webjars/jquery.easy-autocomplete.min.js"></script>
+    <!-- <script src="js/webjars/jquery.easy-autocomplete.min.js"></script> -->
   	<script src="js/commonRest.js"></script>
   	<script src="js/commonPath.js"></script>
+    <script src="js/webjars/md5.js"></script>
     <script src="js/actions.js"></script>
-
+    <script src="js/users/user.js"></script>
     <script type="text/javascript">
-  
-  var options = {
-    url: 'temp/suburb.json',
-    getValue: "name",
-    list:{
-      match:{
-        enabled:true
-      },
-      maxNumberOfElements:8
-    },
-    theme:"square",
-  };
-  $('input').easyAutocomplete(options);
 
+  // var options = {
+  //   url: 'temp/suburb.json',
+  //   getValue: "name",
+  //   list:{
+  //     match:{
+  //       enabled:true
+  //     },
+  //     maxNumberOfElements:8
+  //   },
+  //   theme:"square",
+  // };
+  // $('input').easyAutocomplete(options);
+  //
   function locate(){
     var location = $('#search_field').val();
     window.open('index.html?location='+location, '_self', false);
   }
+
+
+//Pop up login
+$(document).ready(function(){
+  $('#login-trigger').click(function(){
+    if($('#signUp-content').is(':visible')){
+      $('#signUp-trigger').next('#signUp-content').slideToggle(1);
+      $('#signUp-trigger').toggleClass('active');
+    }
+
+    $(this).next('#login-content').slideToggle();
+    $(this).toggleClass('active');
+  });
+  $('#signUp-trigger').click(function(){
+    if($('#login-content').is(':visible')){
+      $('#login-trigger').next('#login-content').slideToggle(1);
+      $('#login-trigger').toggleClass('active');
+    }
+
+    $(this).next('#signUp-content').slideToggle();
+    $(this).toggleClass('active');
+    })
+});
+
     </script>
   </body>
 </html>
