@@ -293,6 +293,7 @@ width: 100%;
   height: 100%;
 }
 #menu{
+  display: block;
   float: left;
   height: 100%;
   height: 40px;
@@ -1096,6 +1097,53 @@ ul.nav > li:hover{
 }
 .dd-selected:hover{
       color: #C22D24;
+}
+
+#my_account_info{
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #c22d24;
+  margin-top: 50px;
+  padding: 10px;
+
+  margin-left: 200px;
+  margin-right: 200px;
+
+  height: 200px;
+}
+
+#address_list .list-group-item{
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #c22d24;
+  border: solid 1px #c22d24;
+}
+#address_list .list-group-item:hover{
+  color: #FFF;
+  background-color: rgba(218,129,123,0.4);
+}
+
+#address_list .active{
+  background-color: rgba(218,129,123,0.8);
+  border: solid 1px #c22d24;
+  color: #FFF;
+}
+
+#address_list{
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #c22d24;
+  margin: 5px;
+  padding: 10px;
+  margin-left: 200px;
+  margin-right: 200px;
+
+  height: 400px;
+
+}
+.badge{
+  background-color:inherit;
+  color:#c22d24;
+}
+.badge a{
+  color:#c22d24;
 }
 
 #foot{

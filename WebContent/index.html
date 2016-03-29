@@ -46,11 +46,11 @@
         </a>
       </div>
 
-      <div id="menu">
-        <a href="#"><li>My Account</li></a>
-        <a href="#"><li>My Orders</li></a>
+      <div id="menu" >
+        <a target="_blank" href="myAccount.html"><li>My Account</li></a>
+        <a target="_blank" href="showOrders"><li>My Orders</li></a>
+        <a target="_blank" href="tracking.html"><li>Tracking Order </li></a>
         <a href="#"><li>My Favorite</li></a>
-        <a href="#"><li>Tracking Order </li></a>
       </div>
 
       <div id="cart_info" onclick="slide('cart')">
@@ -104,7 +104,7 @@
           <li>
             <a href="#" id="login-trigger">Login</a>
             <div id="login-content">
-              <div id="resultDiv"></div>
+              <div id="resultDiv_login"></div>
               <input type="email" id="inputEmail" placeholder="Email address" required="required"  autofocus="autofocus">
               <input type="password" id="inputPassword" placeholder="Password" required="required">
               <button class="btn cust_btn btn-sm" id="signin" onclick="signIn()">Login</button>
@@ -305,7 +305,7 @@
               }
               suburbsData.push(suburb);
             });
-          console.log(suburbsData);
+          // console.log(suburbsData);
           location_slick(".suburbs", '160px', 'Suburb', suburbsData);
           }, 'tt');
       });
@@ -331,6 +331,7 @@
 
       $(window).load(function() {
           var url = TEXT_HOST + "/shoppingCart/queryCart?userId=" + localStorage.getItem("userId");
+          // console.log("queryCart.userId="+url);
             restGet(url, GET_METHOD, function(data){
                 var items = data["items"];
                 if(items.trim().length != 0) {
@@ -339,15 +340,7 @@
           });
       });
 
-      $(window).load(function(){
-        console.log("into CheckSignIn");
-        if(checkSignIn()){
-          document.getElementById("personal_info").innerHTML="Hello, "+storage.getItem("userLname")
-        }else{
-          // document.getElementById("personal_info").innerHTML="<button id='signin' onclick='signIn()'>SignIn</button>/<button id='signup' onclick='signUp()'>SignUp</button>"
-          $('#login_signup').show();
-        }
-      })
+
 
       var sharing_slided = false;
       function slideOpen(elem, e2){
@@ -369,31 +362,6 @@
           slideOpen(e, e2);
         }
       }
-
-
-      //Pop up login
-      $(document).ready(function(){
-        $('#signUp-content').css({'right':'200px'});
-        $('#login-content').css({'right':'200px'});
-        $('#login-trigger').click(function(){
-          if($('#signUp-content').is(':visible')){
-            $('#signUp-trigger').next('#signUp-content').slideToggle(1);
-            $('#signUp-trigger').toggleClass('active');
-          }
-
-          $(this).next('#login-content').slideToggle();
-          $(this).toggleClass('active');
-        });
-        $('#signUp-trigger').click(function(){
-          if($('#login-content').is(':visible')){
-            $('#login-trigger').next('#login-content').slideToggle(1);
-            $('#login-trigger').toggleClass('active');
-          }
-
-          $(this).next('#signUp-content').slideToggle();
-          $(this).toggleClass('active');
-          })
-      });
     </script>
   </body>
 </html>

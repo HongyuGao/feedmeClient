@@ -7,7 +7,6 @@
     <link href="css/lib/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/css.css" rel="stylesheet">
-
   </head>
   <body>
     <div id="popDiv" class="ontop"></div>
@@ -156,7 +155,7 @@
           <li>
             <a href="#" id="login-trigger">Login</a>
             <div id="login-content">
-              <div id="resultDiv"></div>
+              <div id="resultDiv_login"></div>
               <input type="email" id="inputEmail" placeholder="Email address" required="required"  autofocus="autofocus">
               <input type="password" id="inputPassword" placeholder="Password" required="required">
               <button class="btn cust_btn btn-sm" id="signin" onclick="signIn()">Login</button>
@@ -248,12 +247,16 @@
     <script src="js/restaurant/restaurant.js"></script>
     <script src="js/actions.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/webjars/md5.js"></script>
+    <script src="js/users/user.js"></script>
     <script type="text/javascript">
       location_slick(".state", '80px', 'State', stateData);
     </script>
     <script type="text/javascript">
 
-      localStorage.setItem("userId", 1);
+      // localStorage.setItem("userId", 1);
+
+      // localStorage.removeItem("userId");
 
       var shopId = getUrlVars()["shopId"];
       var dish_counter = {};
@@ -339,34 +342,11 @@
               }
               suburbsData.push(suburb);
             });
-          console.log(suburbsData);
+          // console.log(suburbsData);
           location_slick(".suburbs", '160px', 'Suburb', suburbsData);
           }, 'tt');
       });
 
-      //Pop up login
-      $(document).ready(function(){
-        $('#signUp-content').css({'right':'200px'});
-        $('#login-content').css({'right':'200px'});
-        $('#login-trigger').click(function(){
-          if($('#signUp-content').is(':visible')){
-            $('#signUp-trigger').next('#signUp-content').slideToggle(1);
-            $('#signUp-trigger').toggleClass('active');
-          }
-
-          $(this).next('#login-content').slideToggle();
-          $(this).toggleClass('active');
-        });
-        $('#signUp-trigger').click(function(){
-          if($('#login-content').is(':visible')){
-            $('#login-trigger').next('#login-content').slideToggle(1);
-            $('#login-trigger').toggleClass('active');
-          }
-
-          $(this).next('#signUp-content').slideToggle();
-          $(this).toggleClass('active');
-          })
-      });
     </script>
 
   </body>

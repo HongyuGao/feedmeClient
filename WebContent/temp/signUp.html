@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- meta must be above <title> -->
+		<title>Sign Up</title>
+		<script src="js/webjars/jquery.js"></script>
+		<script src="js/webjars/md5.js"></script>
+		<script src="js/commonRest.js"></script>
+		<script src="js/users/user.js"></script>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td colspan=3><div id="signInfo" style="color:red;"></div></td>
+			</tr>
+			<tr>
+				<td>Title</td>
+				<td><select id="title"><option>Mr</option><option>Miss</option><option>Mrs</option><option>Ms</option></select></td>
+			</tr>
+			<tr>
+				<td>First name:</td>
+				<td><input type="text"  id="fname" name="fnVal" onblur="emptyVal(this)"/></td>
+				<td><div id="fnVal" style="color:red;"></div></td>
+			</tr>
+			<tr>
+				<td>Last name:</td>
+				<td><input type="text"  id="lname" name="lnVal" onblur="emptyVal(this)"></td>
+				<td><div id="lnVal" style="color:red;"></div></td>
+			</tr>
+			<tr>
+				<td>Email address:</td>
+				<td><input type="email"  id="email" name="eVal" onblur="emailVal(this)"/></td>
+				<td><div id="eVal" style="color:red;"></div></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password"  id="pwd" name="pVal" onblur="emptyVal(this)"></td>
+				<td><div id="pVal" style="color:red;"></div></td>
+			</tr>
+			<tr>
+				<td>Confirm your password:</td>
+				<td><input type="password"  id="cpwd" name="cpVal" onblur="pwdVal(this)"></td>
+				<td><div id="cpVal" style="color:red;"></div></td>
+			</tr>
+			<tr>
+				<td>Birthday:</td>
+				<td><input type="date" id="bod"></td>
+			</tr>
+			<tr>
+				<td>Phone number:</td>
+				<td><input type="tel" id="tel" name="telVal" onblur="emptyVal(this)"></td>
+				<td><div id="telVal" style="color:red;"></div></td>
+			</tr>
+			<tr>
+				<td>Preferred language:</td>
+				<td><select id="pl"><option>English</option><option>Chinese</option><option>Japanese</option><option>Korean</option></select></td>
+			</tr>
+		</table>
+		<button onclick="signUp()">Sign Up for FeedMe</button>		
+	</body>
+</html>

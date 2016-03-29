@@ -3,6 +3,64 @@
  */
 var emailValidate = false;
 
+//Check whether user is login and display related div.
+$(window).load(function() {
+	console.log("into CheckSignIn");
+	if (checkSignIn()) {
+		document.getElementById("personal_info").innerHTML =
+			" <div id='login_signup'><li>Hello, " + localStorage.getItem("userName") +
+			"</li></div>";
+		console.log("localStorage.getItem():" + localStorage.getItem("userId") +
+			": " + localStorage.getItem("userName"));
+	} else {
+		// document.getElementById("personal_info").innerHTML="<button id='signin' onclick='signIn()'>SignIn</button>/<button id='signup' onclick='signUp()'>SignUp</button>"
+		$("#menu").show();
+		$('#login_signup').show();
+
+	}
+});
+
+function checkSignIn() {
+	var storageUserId = localStorage.getItem("userId");
+	console.log("localStorage of userId: " + storageUserId);
+	if (storageUserId == null) {
+		//window.location.href = ATUP_PAGE_URI + "signIn.html";
+		return false;
+	} else {
+		//var user = storage.getItem("userLname");
+		//jQuery('#topDiv').html("Welcome " + user);
+		return true;
+	}
+}
+
+//Pop up login
+$(document).ready(function() {
+	$('#signUp-content').css({
+		'right': '200px'
+	});
+	$('#login-content').css({
+		'right': '200px'
+	});
+	$('#login-trigger').click(function() {
+		if ($('#signUp-content').is(':visible')) {
+			$('#signUp-trigger').next('#signUp-content').slideToggle(1);
+			$('#signUp-trigger').toggleClass('active');
+		}
+
+		$(this).next('#login-content').slideToggle();
+		$(this).toggleClass('active');
+	});
+	$('#signUp-trigger').click(function() {
+		if ($('#login-content').is(':visible')) {
+			$('#login-trigger').next('#login-content').slideToggle(1);
+			$('#login-trigger').toggleClass('active');
+		}
+
+		$(this).next('#signUp-content').slideToggle();
+		$(this).toggleClass('active');
+	});
+});
+
 /**Information Validation**/
 function emptyVal(param) {
 	var value = jQuery.trim(param.value);
@@ -98,7 +156,7 @@ function signIn() {
 		console.log(hashPassword);
 		//var url = ATUP_USER_URI + SIGNIN_PATH + "?user=" + userName + "&password=" + hashPassword;
 		restGet(TEXT_HOST + "/users/login?email=" + userEmail + "&pwd=" +
-			hashPassword, GET_METHOD, renderSignIn, "#resultDiv");
+			hashPassword, GET_METHOD, renderSignIn, "#resultDiv_login");
 	} else {
 		validationInfo("resultDiv", "Username or password can't be empty");
 	}
@@ -136,7 +194,7 @@ function renderEmailCheck(data) {
 
 function renderSignUp(data) {
 	jQuery("#signInfo").html(data.statusInfo);
-	window.location.href = "signUp.html";
+	// window.location.href = "signUp.html";
 }
 
 function renderSignIn(data) {
@@ -144,10 +202,16 @@ function renderSignIn(data) {
 	if (data.statusInfo == "Y") {
 		validationInfo("resultDiv", "Success");
 		console.log("enter renderSignIn If branch");
-		storage.setItem("userId", data.id);
-		storage.setItem("userName", data.firstname);
-		storage.setItem("userRole", data.lastname);
-		window.location.href = "index.html";
+		window.localStorage.setItem("userId", data.id);
+		window.localStorage.setItem("userName", data.firstname);
+		console.log("data.firstName: " + data.firstname);
+		window.localStorage.setItem("userRole", data.lastname);
+		// window.location.href = "index.html";
+		document.getElementById("personal_info").innerHTML =
+			" <div id='login_signup'><li>Hello, " + localStorage.getItem("userName") +
+			"</li></div>";
+		// $('#login_signup').hide();
+
 	} else if (data.statusInfo == "N") {
 		validationInfo("resultDiv", "Incorrect email address or password");
 	} else {
