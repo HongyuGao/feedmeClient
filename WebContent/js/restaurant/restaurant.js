@@ -239,7 +239,7 @@ function addFromPop() {
   var id = $(".pop_dish_info .dish_name").data("dishId");
   var price = Number($(".pop_dish .dish_price").text().substring(2));
   var quantity = Number(document.getElementById("select").value);
-
+// console.log("addFromPop: name, id, price"+ name + " " + id + " " + price);
   addToCart(name, id, price, quantity);
   hide();
 }
@@ -257,14 +257,18 @@ function addToCart(name, id, price, quantity) {
   var flag = 0;
 
   if (order[restaurantId] == undefined) {
-    order[restaurantId] = Object();
-  } else if (order[restaurantId][name] == undefined) {
-    order[restaurantId][name] = Object();
+    order[restaurantId] = restaurantId;
+  } 
+   if (order[restaurantId][name] == undefined) {
+    order[restaurantId][name] = id;
   } else {
     flag = 1;
   }
 
   if (flag == 0) {
+    console.log("addFromPop: name, id, price"+ name + " " + id + " " + price);
+    console.log("restaurant:"+restaurantId + " " + name) ;
+    console.log("print:"+order[restaurantId][name]);
     order[restaurantId][name]["id"] = id;
     order[restaurantId][name]["price"] = price;
     order[restaurantId][name]["count"] = quantity;
