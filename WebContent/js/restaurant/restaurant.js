@@ -256,11 +256,10 @@ function addToCart(name, id, price, quantity) {
   // is already in the cart (flag=1) or not (flag=0).
   var flag = 0;
 
-  if (order[restaurantId] == undefined) {
-    order[restaurantId] = restaurantId;
-  } 
-   if (order[restaurantId][name] == undefined) {
-    order[restaurantId][name] = id;
+ if (order[restaurantId] == undefined) {
+    order[restaurantId] = Object();
+  } else if (order[restaurantId][name] == undefined) {
+    order[restaurantId][name] = Object();
   } else {
     flag = 1;
   }

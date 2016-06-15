@@ -104,10 +104,11 @@
 
             </tr>
             <tr>
-
+            
             </tr>
           </td>
         </table>
+        <h5><a href="index.html" onclick="logout()" style="color: red">Log out</a></h5>
       </div>
     </div>
 
@@ -120,13 +121,13 @@
         <li class="list-group-item">
           <span class="badge edit_addr"><a href="#"> Edit Addr</a></span>  <span class="badge"><a href="#"> Set to Default Delivery Addr </a></span>
           <p>
-            Cras justo odio
+            8 Mary Gillespie Gungahlin, ACT
           </p>
         </li>
         <li class="list-group-item">
           <span class="badge edit_addr"><a href="#"> Edit Addr</a></span>  <span class="badge"><a href="#"> Set to Default Delivery Addr </a></span>
           <p>
-            Cras justo odio
+            27 Flank Steet, Bruce, ACT
           </p>
         </li>
       </ul>
@@ -165,7 +166,11 @@
         });
 
       });
-      localStorage.removeItem("userId");
+    
+
+      function logout(){
+        localStorage.removeItem("userId");
+      }
     </script>
   </body>
 </html>
