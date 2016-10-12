@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Feed Me</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="css/lib/easy-autocomplete.css" rel="stylesheet">
+    <link href="css/lib/easy-autocomplete.themes.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="background-image"></div>
+    <div id="nvabar">
+      <div id="personal_info">
+      <div id="login_signup">
+
+
+      <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </li>
+      <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </li>
+      <li >
+        <a href="#" id="signUp-trigger">SignUp</a>
+        <div id="signUp-content">
+            <div id=resultDiv></div>
+            <table>
+        			<tr>
+        				<td style="text-align:left;"><select id="title"><option>Mr</option><option>Miss</option><option>Mrs</option><option>Ms</option></select></td>
+              </tr>
+              <tr>
+                <div id="fnVal" style="color:red;"></div>
+                <td><input type="text" placeholder="First Name" id="fname" name="fnVal" /></td>
+              </tr>
+              <tr>
+                <div id="lnVal" style="color:red;"></div>
+                <td><input type="text" placeholder="Last Name" id="lname" name="lnVal" ></td>
+        			</tr>
+        			<tr>
+                <div id="eVal" style="color:red; font-size:10px"></div>
+        				<td><input type="email" placeholder="Email address" id="email" name="eVal" onblur="emailVal(this)"/></td>
+        			</tr>
+        			<tr>
+                <div id="pVal" style="color:red; font-size:10px"></div>
+        				<td><input type="password" placeholder="Password" id="pwd" name="pVal" onblur="emptyVal(this)"></td>
+        			</tr>
+        			<tr>
+                <div id="cpVal" style="color:red; font-size:10px"></div>
+        				<td><input type="password" placeholder="Confirm Password" id="cpwd" name="cpVal" onblur="pwdVal(this)"></td>
+        			</tr>
+              <div id="telVal" style="color:red;  font-size:10px"></div>
+        			<tr>
+
+        				<td><input type="tel" id="tel" placeholder="Phone Number" name="telVal" onblur="emptyVal(this)"></td>
+              </tr>
+              <tr>
+        				<td style="text-align:left;"><select id="pl"><option>prefered Language</option><option>English</option><option>Chinese</option><option>Japanese</option><option>Korean</option></select></td>
+        			</tr>
+        		</table>
+        		<button class="btn cust_btn btn-sm" onclick="signUp()">Sign Up for FeedMe</button>
+        </div>
+      </li>
+      <li>
+        <a href="#" id="login-trigger">Login</a>
+        <div id="login-content">
+          <div id="resultDiv_login"></div>
+          <input type="email" id="inputEmail" placeholder="Email address" required="required"  autofocus="autofocus">
+          <input type="password" id="inputPassword" placeholder="Password" required="required">
+          <button class="btn cust_btn btn-sm" id="signin" onclick="signIn()">Login</button>
+        </div>
+      </li>
+</div>
+</div>
+    </div>
+
+    <div id="home">
+      <div class="feedme">
+        <div class="feedme_logo">
+          <img src="img/LogoRed.png" alt="" />
+        </div>
+        <div class="ele">
+          Hungry?<br/>
+          Let <img src="img/LogoFullRed.png" alt="" />
+          Serve you!
+
+        </div>
+      </div>
+      <div class="locate">
+        <div class="locate_s">
+
+        <input type="text" name="name" value="Input Subrub or Postcode" id="search_field" onclick="empty_input()">&nbsp;
+
+      </div>
+      <div class="locate_b">
+
+        <button type="button" name="button" class="btn btn-lg cust_btn" onclick="locate()">Feed Me</button>
+
+      </div>
+      </div>
+
+    </div>
+    <div class="services">
+      <div class="service">
+        <h2>Group Delivery</h2>
+        <i>Share Delivery Fee With a Group</i>
+      </div>
+      <div class="hh">
+
+      </div>
+      <div class="service">
+        <h2>Hot Dishes</h2>
+        <i>Find Hot Sale Dishes</i>
+      </div>
+      <div class="hh">
+
+      </div>
+      <div class="service">
+        <h2>Everything You Want</h2>
+        <i>100+ Restaurants Hosted </i><br/>
+        <i>Find What You Want at FeedME</i>
+      </div>
+    </div>
+    <div id="foot">
+
+    </div>
+
+    <!-- script references -->
+  	<script src="js/webjars/jquery.min.js"></script>
+    <script src="js/webjars/jquery.min.js"></script>
+  	<script src="js/webjars/bootstrap.min.js"></script>
+    <!-- <script src="js/webjars/jquery.easy-autocomplete.min.js"></script> -->
+  	<script src="js/commonRest.js"></script>
+  	<script src="js/commonPath.js"></script>
+    <script src="js/webjars/md5.js"></script>
+    <script src="js/actions.js"></script>
+    <script src="js/users/user.js"></script>
+    <script type="text/javascript">
+
+  // var options = {
+  //   url: 'temp/suburb.json',
+  //   getValue: "name",
+  //   list:{
+  //     match:{
+  //       enabled:true
+  //     },
+  //     maxNumberOfElements:8
+  //   },
+  //   theme:"square",
+  // };
+  // $('input').easyAutocomplete(options);
+  //
+  function locate(){
+    var location = $('#search_field').val();
+    window.open('index.html?location='+location, '_self', false);
+  }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Feed Me</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/css.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div id="popDiv" class="ontop"></div>
+        <div id="dish_popup">
+          <div class="pop_close" onclick="hide()">
+            x
+          </div>
+          <div class="pop_dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="pop_dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="add_shopping_cart">
+                <select class="" name="">
+                  <option value="option" default>One</option>
+                  <option value="option" default>Two</option>
+                  <option value="option" default>Three</option>
+                </select>
+
+                <button type="button" name="button" class="btn cust_btn btn-sm" onclick="redirect_restaurant()">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<div class="background-image"></div>
+<div id="cart">
+  <div class="cart_logo">
+    <i class="fa fa-shopping-cart fa-3x"></i><br/>
+    <i>Hi, You booked these dishes:</i>
+  </div>
+  <div class="cart_shops">
+  </div>
+
+  <div class="total">
+    <div class="delivery_info">
+      Total
+    </div>
+    <div class="fee">
+      A$0.0
+    </div>
+  </div>
+  <div class="payment">
+    <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')">
+      <i class="fa fa-angle-double-left"></i> Continue
+    </div>
+    <div class="checkout btn btn-danger btn-sm" onclick="sendOrder()">
+      Checkout <i class="fa fa-angle-double-right"></i>
+    </div>
+  </div>
+</div>
+
+    <div id="nvabar">
+      <div id="brand">
+        <a href="index.html"><img src="img/LogoWhite.png" alt="" /></a>
+      </div>
+
+      <div id="menu">
+        <a href="#"><li>My Account</li></a>
+        <a href="#"><li>My Orders</li></a>
+        <a href="#"><li>My Favorite</li></a>
+        <a href="#"><li>Tracking Order </li></a>
+      </div>
+
+      <div id="cart_info" onclick="slide('cart')">
+        <i class="fa fa-shopping-cart"></i>
+        &nbsp;A$35 / 5 Items
+
+      </div>
+      <div id="personal_info">
+        Hello Jevy,
+      </div>
+    </div>
+
+    <div id="left_filter">
+      <h4><a href="#">Hot Dishes</a></h4>
+      <hr>
+      <div class="dish_filter">
+          <li>Hot Sale</li>
+          <li>Discount</li>
+          <li>Fresh</li>
+          <li>Fry</li>
+          <li>Soup</li>
+          <li>Drink</li>
+      </div>
+      <div id="other_restaurant">
+        <i class="fa fa-chevron-left"></i>
+        <a href="choose_res.html">Looking others</a>
+      </div>
+
+
+    </div>
+
+    <div id="main">
+      <div class="main_header">
+
+        <div class="suburb">
+          <div id="state">
+            <!--Use ddslick tools to add select data-->
+            <div class="state">
+
+            </div>
+          </div>
+          <div id="suburbs">
+            <div class="suburbs">
+
+            </div>
+          </div>
+          <div id="building">
+            <div class="building">
+
+            </div>
+          </div>
+        </div>
+      <div class="search">
+        <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
+        <i class="fa fa-search fa-2x search_color" onclick="search()"></i>
+      </div>
+
+      </div>
+
+      <div class="dishes">
+
+        <!--Dish Finish-->
+      </div>
+    </div>
+    <div id="foot">
+
+    </div>
+
+
+        <!-- script references -->
+      	<script src="js/webjars/jquery.min.js"></script>
+      	<script src="js/webjars/bootstrap.min.js"></script>
+        <script src="js/webjars/ddslick.js"></script>
+      	<script src="js/commonRest.js"></script>
+      	<script src="js/commonPath.js"></script>
+      	<script src="js/restaurant/restaurant.js"></script>
+        <script src="js/actions.js"></script>
+        <script src="js/home.js"></script>
+        <script type="text/javascript">
+          location_slick(".state", '80px', 'State', stateData);
+          // location_slick(".building", '180px', 'Building', otherData);
+          // location_slick(".delivery_method", '600px', 'Delivery Method', groupData);
+        </script>
+        <script type="text/javascript">
+
+        // display all dishes and calculate counter of dishes:
+                $(window).load(function(){
+                  restGet(TEXT_HOST+'/dishes/query/?shopId='+shopId, GET_METHOD, function(data){
+                    $.each(data, function(i, dish){
+                      total_count += 1;
+                      appendDish(dish);
+                      // count and update the number of items of the chosen type:
+                        var dish_type = dish.type;
+                        if(dish_counter.dish_type == undefined) {
+                            dish_counter[dish_type] = 1;
+                        } else {
+                            dish_counter[dish_type] += 1;
+                        }
+                    });
+
+                    dish_counter["All"] = total_count;
+
+                    // set dish counter information according to selected types in the sidebar:
+                    $(".dish_filter li").each(function(type_index, value){
+                      var count = dish_counter[value.innerHTML];
+                      if(count == undefined) {
+                        count = 0
+                      }
+                      value.innerHTML += "(" + count + ")";
+                    });
+
+                  }, '.dishes'); // ?
+                });
+
+
+                // Dishes fillter by click left menu:
+                $(window).load(function(){
+                  $(".dish_filter li").on('click', function(){
+                    applyFilter($(this).data("type"));
+                  });
+                });
+
+
+
+          // apply restaurants fillter by clicking left menu:
+          $(window).load(function(){
+            $(".dish_filter li").on('click', function(){
+              applyFilter($(this).data("type"));
+            });
+          });
+
+
+          $(window).load(function() {
+              var url = TEXT_HOST + "/shoppingCart/queryCart?userId=" + localStorage.getItem("userId");
+                restGet(url, GET_METHOD, function(data){
+                    var items = data["items"];
+                    if(items.trim().length != 0) {
+                        parseCart(items);
+                    }
+              });
+          });
+
+
+
+          var sharing_slided = false;
+          function slideOpen(elem, e2){
+            $(elem).show( 100);
+            $(e2).hide(100);
+            sharing_slided = true;
+          }
+          function slideClose(elem, e2){
+            //console.log(elem);
+            $(elem).hide( 100);
+            $(e2).show(100);
+            sharing_slided = false;
+          }
+
+          function sharing_slide(e, e2) {
+            if (sharing_slided) {
+              slideClose(e, e2);
+            } else {
+              slideOpen(e, e2);
+            }
+          }
+
+        </script>
+  </body>
+</html>

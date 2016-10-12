@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Feed Me</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/css.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div id="popDiv" class="ontop"></div>
+        <div id="dish_popup">
+          <div class="pop_close" onclick="hide()">
+            x
+          </div>
+          <div class="pop_dish">
+            <div class="dish_photo">
+              <img src="img/test1.jpg" alt="" />
+            </div>
+            <div class="pop_dish_info">
+              <div class="dish_name">
+                Gao SHi Lin
+              </div>
+              <div class="dish_price">
+                A$21
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="add_shopping_cart">
+                <select class="" name="">
+                  <option value="option" default>One</option>
+                  <option value="option" default>Two</option>
+                  <option value="option" default>Three</option>
+                </select>
+
+                <button type="button" name="button" class="btn cust_btn btn-sm" onclick="hide()">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<div class="background-image"></div>
+
+
+    <div id="nvabar">
+      <div id="brand">
+        <img src="img/LogoWhite.png" alt="" />
+      </div>
+
+      <div id="menu">
+        <a href="#"><li>My Account</li></a>
+        <a href="#"><li>My Orders</li></a>
+        <a href="#"><li>My Favorite</li></a>
+        <a href="#"><li>Tracking Order </li></a>
+      </div>
+      <div id="personal_info">
+        Hi Jevy,
+      </div>
+
+    </div>
+
+
+
+    <div id="confirm_order">
+      <div class="main_header">
+
+      <div class="suburb">
+        Confirm Your Order
+      </div>
+      </div>
+
+      <div class="order_content">
+        <div class="shop_name">
+          <input type="checkbox" name="vehicle1" value="Bike" checked="true"> Gao Shi Lin
+        </div>
+        <hr>
+        <div class="cart_dishes">
+          <div class="numbers_row">
+            <div class="dish_name">Fry FIsh</div>
+            <div class="inc_dec">+</div>
+            <input type="text" name="french-hens" id="french-hens" value="3">
+              <div class="inc_dec">-</div>
+              <div class="price">
+                  34
+              </div>
+            </div>
+            <div class="numbers_row">
+              <div class="dish_name">Fry FIsh</div>
+              <div class="inc_dec">+</div>
+              <input type="text" name="french-hens" id="french-hens" value="">
+                <div class="inc_dec">-</div>
+                <div class="price">
+                    34
+                </div>
+              </div>
+
+        </div>
+        <div class="delivery_fee">
+          <div class="delivery_info">
+            Delivery Fee
+          </div>
+          <div class="fee">
+            A$10
+          </div>
+        </div>
+      </div>
+      <div class="order_content">
+        <div class="shop_name">
+          <input type="checkbox" name="vehicle1" value="Bike" checked=""> Gao Shi Lin
+        </div>
+        <hr>
+        <div class="cart_dishes">
+          <div class="numbers_row">
+            <div class="dish_name">Fry FIsh</div>
+            <div class="inc_dec">+</div>
+            <input type="text" name="french-hens" id="french-hens" value="3">
+              <div class="inc_dec">-</div>
+              <div class="price">
+                  34
+              </div>
+            </div>
+            <div class="numbers_row">
+              <div class="dish_name">Fry FIsh</div>
+              <div class="inc_dec">+</div>
+              <input type="text" name="french-hens" id="french-hens" value="">
+                <div class="inc_dec">-</div>
+                <div class="price">
+                    34
+                </div>
+              </div>
+
+        </div>
+        <div class="delivery_fee">
+          <div class="delivery_info">
+            Delivery Fee
+          </div>
+          <div class="fee">
+            A$10
+          </div>
+        </div>
+      </div>
+
+      <div class="total">
+        <div class="delivery_info">
+          Total
+        </div>
+        <div class="fee">
+          A$50
+        </div>
+      </div>
+      <div class="payment">
+        <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')">
+          <i class="fa fa-angle-double-left"></i> Continue Shopping
+        </div>
+        <div class="checkout btn btn-danger btn-sm">
+          Confirm & Payment <i class="fa fa-angle-double-right"></i>
+        </div>
+      </div>
+
+    </div>
+    <div id="foot">
+
+    </div>
+
+    <!-- script references -->
+  	<script src="js/webjars/jquery.min.js"></script>
+  	<script src="js/webjars/bootstrap.min.js"></script>
+  	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
+  	<script src="js/commonRest.js"></script>
+  	<script src="js/commonPath.js"></script>
+  	<script src="js/restaurant.js"></script>
+    <script src="js/actions.js"></script>
+    <script type="text/javascript">
+
+    </script>
+  </body>
+</html>

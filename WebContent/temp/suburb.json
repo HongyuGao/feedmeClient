@@ -1,0 +1,337 @@
+[{
+  "id": 1,
+  "postcode": "2601",
+  "stateId": 1,
+  "name": "Acton",
+  "shortName": ""
+}, {
+  "id": 2,
+  "postcode": "2602",
+  "stateId": 1,
+  "name": "Ainslie",
+  "shortName": ""
+}, {
+  "id": 3,
+  "postcode": "2914",
+  "stateId": 1,
+  "name": "Amaroo",
+  "shortName": ""
+}, {
+  "id": 4,
+  "postcode": "2614",
+  "stateId": 1,
+  "name": "Aranda",
+  "shortName": ""
+}, {
+  "id": 5,
+  "postcode": "0200",
+  "stateId": 1,
+  "name": "Australian National University",
+  "shortName": "ANU"
+}, {
+  "id": 6,
+  "postcode": "2906",
+  "stateId": 1,
+  "name": "Banks",
+  "shortName": ""
+}, {
+  "id": 7,
+  "postcode": "2600",
+  "stateId": 1,
+  "name": "Barton",
+  "shortName": ""
+}, {
+  "id": 8,
+  "postcode": "2616",
+  "stateId": 1,
+  "name": "Belconnen",
+  "shortName": ""
+}, {
+  "id": 9,
+  "postcode": "2617",
+  "stateId": 1,
+  "name": "Belconnen",
+  "shortName": ""
+}, {
+  "id": 10,
+  "postcode": "2601",
+  "stateId": 1,
+  "name": "Black Mountain",
+  "shortName": ""
+}, {
+  "id": 11,
+  "postcode": "2914",
+  "stateId": 1,
+  "name": "Bonner",
+  "shortName": ""
+}, {
+  "id": 12,
+  "postcode": "2905",
+  "stateId": 1,
+  "name": "Bonython",
+  "shortName": ""
+}, {
+  "id": 13,
+  "postcode": "2612",
+  "stateId": 1,
+  "name": "Braddon",
+  "shortName": ""
+}, {
+  "id": 14,
+  "postcode": "2617",
+  "stateId": 1,
+  "name": "Bruce",
+  "shortName": ""
+}, {
+  "id": 15,
+  "postcode": "2905",
+  "stateId": 1,
+  "name": "Calwell",
+  "shortName": ""
+}, {
+  "id": 16,
+  "postcode": "2612",
+  "stateId": 1,
+  "name": "Campbell",
+  "shortName": ""
+}, {
+  "id": 17,
+  "postcode": "2610",
+  "stateId": 1,
+  "name": "Canberra Business Centre",
+  "shortName": ""
+}, {
+  "id": 18,
+  "postcode": "2600",
+  "stateId": 1,
+  "name": "Canberra",
+  "shortName": ""
+}, {
+  "id": 19,
+  "postcode": "2601",
+  "stateId": 1,
+  "name": "Canberra",
+  "shortName": ""
+}, {
+  "id": 20,
+  "postcode": "2604",
+  "stateId": 1,
+  "name": "Causeway",
+  "shortName": ""
+}, {
+  "id": 21,
+  "postcode": "2611",
+  "stateId": 1,
+  "name": "Chapman",
+  "shortName": ""
+}, {
+  "id": 22,
+  "postcode": "2615",
+  "stateId": 1,
+  "name": "Charnwood",
+  "shortName": ""
+}, {
+  "id": 23,
+  "postcode": "2606",
+  "stateId": 1,
+  "name": "Chifley",
+  "shortName": ""
+}, {
+  "id": 24,
+  "postcode": "2905",
+  "stateId": 1,
+  "name": "Chisholm",
+  "shortName": ""
+}, {
+  "id": 25,
+  "postcode": "2601",
+  "stateId": 1,
+  "name": "City Centre",
+  "shortName": ""
+}, {
+  "id": 26,
+  "postcode": "2608",
+  "stateId": 1,
+  "name": "Civic Square",
+  "shortName": ""
+}, {
+  "id": 27,
+  "postcode": "2906",
+  "stateId": 1,
+  "name": "Conder",
+  "shortName": ""
+}, {
+  "id": 28,
+  "postcode": "2614",
+  "stateId": 1,
+  "name": "Cook",
+  "shortName": ""
+}, {
+  "id": 29,
+  "postcode": "2605",
+  "stateId": 1,
+  "name": "Curtin",
+  "shortName": ""
+}, {
+  "id": 30,
+  "postcode": "2600",
+  "stateId": 1,
+  "name": "Deakin",
+  "shortName": ""
+}, {
+  "id": 31,
+  "postcode": "2600",
+  "stateId": 1,
+  "name": "Deakin West",
+  "shortName": ""
+}, {
+  "id": 32,
+  "postcode": "2602",
+  "stateId": 1,
+  "name": "Dickson",
+  "shortName": ""
+}, {
+  "id": 33,
+  "postcode": "2602",
+  "stateId": 1,
+  "name": "Downer",
+  "shortName": ""
+}, {
+  "id": 34,
+  "postcode": "2611",
+  "stateId": 1,
+  "name": "Duffy",
+  "shortName": ""
+}, {
+  "id": 35,
+  "postcode": "2615",
+  "stateId": 1,
+  "name": "Dunlop",
+  "shortName": ""
+}, {
+  "id": 36,
+  "postcode": "2600",
+  "stateId": 1,
+  "name": "Duntroon",
+  "shortName": ""
+}, {
+  "id": 37,
+  "postcode": "2903",
+  "stateId": 1,
+  "name": "Erindale Centre",
+  "shortName": ""
+}, {
+  "id": 38,
+  "postcode": "2617",
+  "stateId": 1,
+  "name": "Evatt",
+  "shortName": ""
+}, {
+  "id": 39,
+  "postcode": "2904",
+  "stateId": 1,
+  "name": "Fadden",
+  "shortName": ""
+}, {
+  "id": 40,
+  "postcode": "2607",
+  "stateId": 1,
+  "name": "Farrer",
+  "shortName": ""
+}, {
+  "id": 41,
+  "postcode": "2611",
+  "stateId": 1,
+  "name": "Fisher",
+  "shortName": ""
+}, {
+  "id": 42,
+  "postcode": "2615",
+  "stateId": 1,
+  "name": "Florey",
+  "shortName": ""
+}, {
+  "id": 43,
+  "postcode": "2615",
+  "stateId": 1,
+  "name": "Flynn",
+  "shortName": ""
+}, {
+  "id": 44,
+  "postcode": "2914",
+  "stateId": 1,
+  "name": "Forde",
+  "shortName": ""
+}, {
+  "id": 45,
+  "postcode": "2603",
+  "stateId": 1,
+  "name": "Forrest",
+  "shortName": ""
+}, {
+  "id": 46,
+  "postcode": "2615",
+  "stateId": 1,
+  "name": "Fraser",
+  "shortName": ""
+}, {
+  "id": 47,
+  "postcode": "2609",
+  "stateId": 1,
+  "name": "Fyshwick",
+  "shortName": ""
+}, {
+  "id": 48,
+  "postcode": "2605",
+  "stateId": 1,
+  "name": "Garran",
+  "shortName": ""
+}, {
+  "id": 49,
+  "postcode": "2905",
+  "stateId": 1,
+  "name": "Gilmore",
+  "shortName": ""
+}, {
+  "id": 50,
+  "postcode": "2913",
+  "stateId": 1,
+  "name": "Ginninderra Village",
+  "shortName": ""
+}, {
+  "id": 51,
+  "postcode": "2617",
+  "stateId": 1,
+  "name": "Giralang",
+  "shortName": ""
+}, {
+  "id": 52,
+  "postcode": "2906",
+  "stateId": 1,
+  "name": "Gordon",
+  "shortName": ""
+}, {
+  "id": 53,
+  "postcode": "2904",
+  "stateId": 1,
+  "name": "Gowrie",
+  "shortName": ""
+}, {
+  "id": 54,
+  "postcode": "2900",
+  "stateId": 1,
+  "name": "Greenway",
+  "shortName": ""
+}, {
+  "id": 55,
+  "postcode": "2603",
+  "stateId": 1,
+  "name": "Griffith",
+  "shortName": ""
+}, {
+  "id": 56,
+  "postcode": "2912",
+  "stateId": 1,
+  "name": "Gungahlin",
+  "shortName": ""
+}]

@@ -1,286 +1,353 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>Feed Me</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
 
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link href="css/lib/bootstrap.min.css" rel="stylesheet">
-		<link href="css/left_menu.css" rel="stylesheet">
-		<link href="css/styles.css" rel="stylesheet">
-		<link href="css/cart.css" rel="stylesheet">
-		<title>Feed Me - Gloden Drum</title>
-		<style type="text/css">object,embed{-webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;-ms-animation-duration:.001s;-ms-animation-name:playerInserted;-o-animation-duration:.001s;-o-animation-name:playerInserted;animation-duration:.001s;animation-name:playerInserted;}@-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}@keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style>
-	</head>
+    <link href="css/css.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="popDiv" class="ontop"></div>
+        <div id="dish_popup">
+          <div class="pop_close" onclick="hide()">
+            x
+          </div>
+          <div class="pop_dish">
+            <div class="dish_photo">
+              <img src="" alt="" />
+            </div>
 
-	<body>
-		<!-- Left transition menu to filter content-->
-		<nav>
-		  	<ul class="list-unstyled main-menu">
-			    <!--Include your navigation here-->
-			    <a href="#" id="nav-close"><li class="text-right">Filter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-times"></i> &nbsp;</li></a>
+            <div class="pop_dish_info">
+              <div class="dish_name" data-dishId="">
+              </div>
+              <div class="dish_price">
+              </div>
+              <div class="dish_stars">
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+                <span class='glyphicon glyphicon-star-empty'></span>
+              </div>
+              <div class="add_shopping_cart">
+                <select class="options" name="" id="select">
+                  <option value="1" default>One</option>
+                  <option value="2" default>Two</option>
+                  <option value="3" default>Three</option>
+                </select>
 
-				<a href="#" class="text-left">
-					<li> Restaurant Info <span class="icon"></span> </li>
+                <!-- <button type="button" name="button" class="btn cust_btn btn-sm" onclick="hide()">Add</button> -->
+                <button type="button" name="button" class="btn cust_btn btn-sm" onclick="addFromPop()">
+                  Add
+                </button>
 
+              </div>
+            </div>
 
-        			<!-- <img src=PICTURE_HOST + "/img/photo/" + dish.photo> -->
-        			<div id="res_photo"> </div>
+          </div>
+        </div>
 
-
-					<ul id="restaurantInfo" class="text-left">
-						<!-- data to be inserted dynamically -->
-					</ul>
-				</a>
-
-				<hr>
-
-				<a href="#">
-					<li class="sub-nav" >
-						<i class="forder" data-status="open"> Dish Menu
-							<i class="fa fa-angle-down"></i>
-						</i>
-
-						<ul id="dishTypeList" class="list-unstyled" data-index="0" style="display:block">
-
-
-					    	<a href="#"><li class="sub-sub-nav" data-type="All" data-status="open">All</li></a>
-
-					    	<a href="#"><li class="sub-sub-nav" data-type="Staple" data-status="open">Staple</li></a>
-
-					    	<a href="#"><li class="sub-sub-nav" data-type="Soup" data-status="open">Soup</li></a>
-
-					    	<a href="#"><li class="sub-sub-nav" data-type="Dessert" data-status="open">Dessert</li></a>
-
-					    	<a href="#"><li class="sub-sub-nav" data-type="Drinks" data-status="open">Drinks</li></a>
-
-					    	<a href="#"><li class="sub-sub-nav" data-type="Others" data-status="open">Others</li></a>
-
-						</ul>
-
-					</li>
-				</a>
-
-		  	</ul>
-		</nav>
-		<!-- End Left transition menu to filter content-->
+<div class="background-image"></div>
 
 
-			<!-- begin shopping cart -->
-			<div id="shoppingcart">
-				<div id="cart_left">
-					<li class="rotate">ShoppingCart</li>
-
-				</div>
-				<div id="cart">
-					<div id="rest_info">
-						<!-- to be inserted dynamincally -->
-						
-					</div>
-					<div id="dish_info">
-						<!--
-							<li class="dish_item" id="1"> item1 <button type="button"> - </button> 5 <button type="button"> + </button> price1 </li>
-							<li class="dish_item" id="2"> item2 <button type="button"> - </button> 5 <button type="button"> + </button> price2 </li>
-						-->
-					</div>
-					<hr>
-					<div id="other_fee">
-						Other Fee (not included in total price)
-					</div>
-					<div id="delivery_fee">
-						Deliver Fee: 0
-					</div>
-					<div id="order_note">
-						Note:
-					</div>
-					<div id="cart_summary">
-						Total Items: <span id="cart_sum_num" class="cart_sum_q"> 0 </span> <br>
-						Total Price: <span id="cart_sum_price" class="cart_sum_p"> 0.00 </span>
-					</div>
-					<div id="place_order">
-						<hr>
-						<hr>
-						<div>
-							Total Items (all orders): <span id="all_sum_num"></span> <br>
-							Total Price (all orders): <span id="all_sum_price"></span> <br>
-							Total Delivery Fee (all orders): <span id="all_sum_delivery">0</span>
-						</div>
-						<div>
-							<a href="pay.html">
-								<button type="submit" onclick=""> Place Your Order </button>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- end shopping cart -->
-
-		<!-- Navbar on head of page-->
-		<div class="navbar navbar-custom navbar-fixed-top">
-				<div class="navbar-header ">
-				<!-- <a class="navbar-brand nav-expander glyphicon glyphicon-list" href="#">  &nbsp;</a> -->
-				<span class="navbar-brand">
-					Brand
-				</span>
-			</div>
-				<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<!-- <li class="active"><a href="#">&nbsp; &nbsp; &nbsp;</a></li> -->
-						<li class="active"><a href="index.html">Home</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="#">Contact</a></li>
-						<li>&nbsp;</li>
-					</ul>
-					<form class="navbar-form">
-						<div class="form-group" style="display:inline;">
-							<div class="input-group">
-								<div class="input-group-btn">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-										Category <span class="caret"></span></button>
-									<ul class="dropdown-menu">
-										<li><a href="#">China</a></li>
-										<li><a href="#">India</a></li>
-										<li><a href="#">Korea</a></li>
-										<li><a href="#">Singapore</a></li>
-										<li><a href="#">Australia</a></li>
-									</ul>
-								</div>
-								<input type="text" class="form-control" placeholder="Search resturants and foods here">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">Search</button>
-								</span>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- End Navbar on head of page-->
-
-		<div class="float_left">
-			<a id="nav-expander">
-				 <i class="fa fa-bars fa-lg white"></i>
-			</a>
-		</div>
+    <!-- begin of shopping cart -->
+    <div id="cart">
+      <div class="cart_logo">
+        <i class="fa fa-shopping-cart fa-3x"></i><br/>
+        <i>Hi, You booked these dishes:</i>
+      </div>
 
 
-	<!-- begin container -->
-	<div class="container">
+      <div class="cart_shops">
 
-		<div class="container-fluid" id="dishes">
-			<!-- relevant content will be inserted here after js files are executed -->
-		</div>
-
-	</div>
-	<!-- End Container-->
+      </div>
 
 
 
 
-	<div id="info">
+      <div class="total">
+        <div class="delivery_info">
+          Total
+        </div>
+        <div class="fee">
+          A$0.0
+        </div>
+      </div>
 
-	</div>
+      <div class="payment">
+        <div class="go_back btn cust_btn btn-sm" onclick="slideOut('cart')">
+          <i class="fa fa-angle-double-left"></i> Continue
+        </div>
+        <a href="confirm_order.html">
+          <div class="checkout btn cust_btn btn-sm" onclick="processOrder()">
+            Checkout <i class="fa fa-angle-double-right"></i>
+          </div>
+        </a>
+      </div>
 
-<!-- script references -->
-<script src="js/webjars/jquery.min.js"></script>
-<script src="js/webjars/bootstrap.min.js"></script>
-<script src="js/commonRest.js"></script>
-<script src="js/commonPath.js"></script>
-<script src="js/restaurant.js"></script>
-<script>
+    </div>
 
-	localStorage.setItem("userId", 1);
+    <!-- end of shopping cart -->
 
-	var shopId = getUrlVars()["shopId"];
-	var dish_counter = {};
-	var total_count = 0;
+    <div id="nvabar">
+      <div id="brand">
+        <a href="index.html">
+          <img src="img/LogoPure.png" alt="" />
+        </a>
+      </div>
 
-	$(document).ready(function(){
-	   	// Navigation Menu Slider
-	    $('#nav-expander').on('click',function(e){
-	  		e.preventDefault();
-	  		$('body').removeClass('nav-expanded');
-	  	});
+      <div id="menu">
+        <a target="_blank" href="myAccount.html"><li>My Account</li></a>
+        <a href="#"><li>My Orders</li></a>
+        <a href="#"><li>My Favorite</li></a>
+        <a href="#"><li>Tracking Order </li></a>
+      </div>
 
-	  	$('#nav-close').on('click',function(e){
-	  		e.preventDefault();
-	  		$('body').toggleClass('nav-expanded');
-	  	});
-    });
+      <div id="cart_info" onclick="slide('cart')">
+        <i class="fa fa-shopping-cart"></i>
+         &nbsp;<span class="cart-top-sum">A$0.0 / 0 Item(s) </span>
 
-	$(document).ready(function(){
-		$('.forder').on('click', function(){
-			var status = $(this).data('status');
-			if(status==='open'){
-				$(this).data('status','close');
-				$(this).parent().parent().find("ul").slideUp();
-			}else if(status==='close'){
-				$(this).data('status','open');
-				$(this).parent().parent().find("ul").slideDown();
-			}
-		});
+      </div>
+      <div id="personal_info">
+        <div id="login_signup">
+          <li >
+            <a href="#" id="signUp-trigger">SignUp</a>
+            <div id="signUp-content">
+                <div id=resultDiv></div>
+                <table>
+            			<tr>
+            				<td style="text-align:left;"><select id="title"><option>Mr</option><option>Miss</option><option>Mrs</option><option>Ms</option></select></td>
+                  </tr>
+                  <tr>
+                    <div id="fnVal" style="color:red;"></div>
+                    <td><input type="text" placeholder="First Name" id="fname" name="fnVal" /></td>
+                  </tr>
+                  <tr>
+                    <div id="lnVal" style="color:red;"></div>
+                    <td><input type="text" placeholder="Last Name" id="lname" name="lnVal" ></td>
+            			</tr>
+            			<tr>
+                    <div id="eVal" style="color:red; font-size:10px"></div>
+            				<td><input type="email" placeholder="Email address" id="email" name="eVal" onblur="emailVal(this)"/></td>
+            			</tr>
+            			<tr>
+                    <div id="pVal" style="color:red; font-size:10px"></div>
+            				<td><input type="password" placeholder="Password" id="pwd" name="pVal" onblur="emptyVal(this)"></td>
+            			</tr>
+            			<tr>
+                    <div id="cpVal" style="color:red; font-size:10px"></div>
+            				<td><input type="password" placeholder="Confirm Password" id="cpwd" name="cpVal" onblur="pwdVal(this)"></td>
+            			</tr>
+                  <div id="telVal" style="color:red;  font-size:10px"></div>
+            			<tr>
 
-		$('.show_dish_detail').on('click', function(){
-			var status = $(this).data('status');
-			if(status==='close'){
-				$(this).data('status','open');
-				$(this).parent().parent().find(".dish_desc").slideDown();
-				$(this).html("Hidden");
-			}else if(status==='open'){
-				$(this).data('status','close');
-				$(this).parent().parent().find(".dish_desc").slideUp();
-				$(this).html("Show More");
-			}
-		});
-	});
+            				<td><input type="tel" id="tel" placeholder="Phone Number" name="telVal" onblur="emptyVal(this)"></td>
+                  </tr>
+                  <tr>
+            				<td style="text-align:left;"><select id="pl"><option>prefered Language</option><option>English</option><option>Chinese</option><option>Japanese</option><option>Korean</option></select></td>
+            			</tr>
+            		</table>
+            		<button class="btn cust_btn btn-sm" onclick="signUp()">Sign Up for FeedMe</button>
+            </div>
+          </li>
+          <li>
+            <a href="#" id="login-trigger">Login</a>
+            <div id="login-content">
+              <div id="resultDiv_login"></div>
+              <input type="email" id="inputEmail" placeholder="Email address" required="required"  autofocus="autofocus">
+              <input type="password" id="inputPassword" placeholder="Password" required="required">
+              <button class="btn cust_btn btn-sm" id="signin" onclick="signIn()">Login</button>
+            </div>
+          </li>
+        </div>
+      </div>
+    </div>
 
-	// Display restaurant general information:
-	$(window).load(function(){
-		restGet(TEXT_HOST + "/restaurants/query/?id=" + shopId, GET_METHOD, function(data){
-			setRestaurantInfo(data);
-		});
-	});
+    <div id="left_filter">
+      <div class="left_shop">
 
-	// Display all dishes:
-	$(window).load(function(){
-		restGet(TEXT_HOST+'/dishes/query/?shopId='+shopId, GET_METHOD, function(data){
-			$.each(data, function(i, dish){
-				total_count += 1;
-				dishAppend(dish);
-				// count and update the number of items of the chosen type:
-			    var dish_type = "" + dish.type;
-			    if(dish_counter.dish_type == undefined) {
-			        dish_counter[dish_type] = 1;
-			    } else {
-			        dish_counter[dish_type] += 1;
-			    }
-			});
+        <div class="left_shop_img">
+          <img src="" alt="" />
+        </div>
 
-			dish_counter["All"] = total_count;
+        <div class="shop_name">
 
-			// set dish counter information according to selected types in the sidebar:
-			$(".sub-sub-nav").each(function(type_index, value){
-				var count = dish_counter[value.innerHTML.trim()];
-				if(count == undefined) {
-					count = 0
-				}
-				value.innerHTML += "(" + count + ")";
-			});
-		}, '#info');
-	});
+        </div>
 
-	// Dishes fillter by click left menu:
-	$(window).load(function(){
-		$(".sub-sub-nav").on('click', function(){
-			// get the current selected food type:
-			var current_type = $(this).data("type");
-			// apply filter and update the content inside the display area:
-			update(current_type);
-		});
-	});
+        <div class="open_time">
+            <li class='fa fa-clock-o morning'></li>
+            <li class='fa fa-clock-o afternoon'></li>
+        </div>
 
-</script>
-	
-</body>
+      </div>
 
+      <hr>
+      <div class="dish_filter">
+          <li data-type="Hot Sale">Hot Sale</li>
+          <li data-type="Discount">Discount</li>
+          <li data-type="Soup">Soup</li>
+          <li data-type="Dessert">Dessert</li>
+          <li data-type="Staple">Staple</li>
+          <li data-type="Drinks">Drinks</li>
+          <li data-type="Others">Others</li>
+      </div>
+      <div id="other_restaurant">
+        <i class="fa fa-chevron-left"></i>
+        <a href="index.html">Looking others</a>
+      </div>
+
+
+    </div>
+
+    <div id="main">
+      <div class="main_header">
+
+        <div class="suburb">
+          <div id="state">
+            <!--Use ddslick tools to add select data-->
+            <div class="state">
+
+            </div>
+          </div>
+          <div id="suburbs">
+            <div class="suburbs">
+
+            </div>
+          </div>
+          <div id="building">
+            <div class="building">
+
+            </div>
+          </div>
+        </div>
+      <div class="search">
+        <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
+        <i class="fa fa-search fa-2x search_color" onclick="search()"></i>
+      </div>
+
+      </div>
+      <div class="dishes">
+
+        <!--Dish Finish-->
+      </div>
+    </div>
+    <div id="foot">
+
+    </div>
+
+    <!-- script references -->
+
+  	<script src="js/webjars/jquery.min.js"></script>
+  	<script src="js/webjars/bootstrap.min.js"></script>
+    <script src="js/webjars/ddslick.js"></script>
+    <script src="js/commonRest.js"></script>
+    <script src="js/commonPath.js"></script>
+    <script src="js/restaurant/restaurant.js"></script>
+    <script src="js/actions.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/webjars/md5.js"></script>
+    <script src="js/users/user.js"></script>
+    <script type="text/javascript">
+      location_slick(".state", '80px', 'State', stateData);
+    </script>
+    <script type="text/javascript">
+
+      // localStorage.setItem("userId", 1);
+
+      // localStorage.removeItem("userId");
+
+      var shopId = getUrlVars()["shopId"];
+      var dish_counter = {};
+      var total_count = 0;
+
+      // general restaurant information:
+      $(window).load(function() {
+          restGet(TEXT_HOST + "/restaurants/query/?id=" + shopId, GET_METHOD, function(data){
+
+            $(".left_shop_img img").attr("src", PICTURE_HOST + "/img/logo/" + data.logo);
+            $(".left_shop .shop_name").text(data.name);
+            $(".open_time .morning").text(data.openTimeMorning);
+            $(".open_time .afternoon").text(data.openTimeAfternoon);
+
+            setRestaurantInfo(data);
+            $("title").append(" - " + restaurantName);
+
+            var url = TEXT_HOST + "/shoppingCart/queryCart?userId=" + localStorage.getItem("userId");
+            restGet(url, GET_METHOD, function(data){
+                var items = data["items"];
+                if(items.trim().length != 0) {
+                    parseCart(items);
+                }
+            });
+
+          });
+      });
+
+
+      // display all dishes and calculate counter of dishes:
+      $(window).load(function(){
+        restGet(TEXT_HOST+'/dishes/query/?shopId='+shopId, GET_METHOD, function(data){
+          $.each(data, function(i, dish){
+            total_count += 1;
+            appendDish(dish);
+            // count and update the number of items of the chosen type:
+              var dish_type = dish.type;
+              if(dish_counter.dish_type == undefined) {
+                  dish_counter[dish_type] = 1;
+              } else {
+                  dish_counter[dish_type] += 1;
+              }
+          });
+
+          dish_counter["All"] = total_count;
+
+          // set dish counter information according to selected types in the sidebar:
+          $(".dish_filter li").each(function(type_index, value){
+            var count = dish_counter[value.innerHTML];
+            if(count == undefined) {
+              count = 0
+            }
+            value.innerHTML += "(" + count + ")";
+          });
+
+        }, '.dishes'); // ?
+      });
+
+
+      // Dishes fillter by click left menu:
+      $(window).load(function(){
+        $(".dish_filter li").on('click', function(){
+          applyFilter($(this).data("type"));
+        });
+      });
+
+      //slide('cart');
+
+      var suburbsData = [];
+      $(window).load(function() {
+        var location = getUrlVars()["location"];
+        restGet(TEXT_HOST + "/address/querySuburb?stateId=1", GET_METHOD,
+          function(data) {
+            $.each(data, function(i, row) {
+              var suburb = new Object();
+              suburb.text = row.name;
+              // suburb.postcode = row.postcode;
+              suburb.value = row.id;
+              if(location==row.name){
+                suburb.selected = true;
+              }else{
+                suburb.selected = false;
+              }
+              suburbsData.push(suburb);
+            });
+          // console.log(suburbsData);
+          location_slick(".suburbs", '160px', 'Suburb', suburbsData);
+          }, 'tt');
+      });
+
+    </script>
+
+  </body>
 </html>

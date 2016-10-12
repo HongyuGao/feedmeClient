@@ -4,104 +4,22 @@
     <meta charset="utf-8">
     <title>Feed Me</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
-    <link href="css/lib/jquery.timepicker.css" rel="stylesheet" type="text/css">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+
     <link href="css/css.css" rel="stylesheet">
 
   </head>
   <body>
-    <div id="popDiv" class="ontop"></div>
-
-          <table border="0" id="popup">
-            <tr>
-              <td style="text-align:center, font-size:28px padding-bottom:25px" colspan=2 class="shop_name" >
-                Create Sharing Order
-              </td>
-            </tr><tr>
-              <td style="text-align:right">
-                Max Members
-              </td>
-              <td>
-                <select class="" name="" style="width:180px">
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align:right">
-                Deliery Time
-              </td>
-              <td>
-                <p id="date_time">
-                <input type="text" class="time ui-timepicker-input"  style="width:90px" >
-              </input>
-                <input type="text" class="date"  style="width:90px" >
-              </input>
-                </p>
-              </td>
-            </tr>
-
-            <tr>
-              <td style="text-align:center" colspan=2 class="shop_name">
-                <hr style="width:340px">
-                Detail Delivery Address
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" style="height:60px">
-                Suburb&nbsp;
-                <select class="" name="">
-                  <option value="option">option</option>
-                </select>
-                &nbsp;Street&nbsp;
-                <select class="" name="">
-                  <option value="option">option</option>
-                </select>
-                <br/>
-                <br/>
-                Building&nbsp;
-                <input type="text" name="name" value="" size="35">
-              </td>
-            </tr>
-            <tr> <!--Empty row to separe confim button-->
-              <td>
-              </td>
-              <td>
-              </td>
-            </tr>
-            <tr  style="padding-top:40px">
-
-              <td colspan="2" style="text-align:right">
-                <button type="button" class="btn cust_btn btn-sm" name="Cancle" onclick="hide()">Cancle</button>
-                <!--Call join_in function, param: shopId-->
-                <button type="button" class="btn cust_btn btn-sm"  name="Confirm" onclick="create_share_order()">Confirm</button>
-              </td>
-            </tr>
-          </table>
-
     <div class="background-image"></div>
-
-    <div id="share_cart">
+    <div id="cart">
       <div class="cart_logo">
-        <i class="fa fa-shopping-cart fa-3x"></i> &nbsp;<i class="fa fa-share-alt fa-3x"></i><br/>
-        <i>Sharing Shopping Cart</i>
-      </div>
-
-      <div class="return_bound">
-        <i>9</i> Bounds Returned
-      </div>
-      <div class="total_member">
-        <i>4</i> Member Join In
+        <i class="fa fa-shopping-cart fa-3x"></i><br/>
+        <i>Hi, You booked these dishes:</i>
       </div>
 
       <div class="cart_shops">
         <div class="shop_name">
-          Jevy
+          Gao Shi Lin
         </div>
         <hr>
         <div class="cart_dishes">
@@ -111,7 +29,7 @@
             <input type="text" name="french-hens" id="french-hens" value="3">
               <div class="inc_dec">-</div>
               <div class="price">
-                  $34
+                  34
               </div>
             </div>
             <div class="numbers_row">
@@ -120,25 +38,52 @@
               <input type="text" name="french-hens" id="french-hens" value="">
                 <div class="inc_dec">-</div>
                 <div class="price">
-                    $34
+                    34
                 </div>
               </div>
+
         </div>
         <div class="delivery_fee">
           <div class="delivery_info">
-            Avg Delivery Fee
+            Delivery Fee
           </div>
           <div class="fee">
-            $10
+            A$10
           </div>
         </div>
+      </div>
+      <div class="cart_shops">
+        <div class="shop_name">
+          Gao Shi Lin
+        </div>
         <hr>
-        <div class="sub_total">
+        <div class="cart_dishes">
+          <div class="numbers_row">
+            <div class="dish_name">Fry FIsh</div>
+            <div class="inc_dec">+</div>
+            <input type="text" name="french-hens" id="french-hens" value="3">
+              <div class="inc_dec">-</div>
+              <div class="price">
+                  34
+              </div>
+            </div>
+            <div class="numbers_row">
+              <div class="dish_name">Fry FIsh</div>
+              <div class="inc_dec">+</div>
+              <input type="text" name="french-hens" id="french-hens" value="">
+                <div class="inc_dec">-</div>
+                <div class="price">
+                    34
+                </div>
+              </div>
+
+        </div>
+        <div class="delivery_fee">
           <div class="delivery_info">
-            Sub Total
+            Delivery Fee
           </div>
           <div class="fee">
-            $10
+            A$10
           </div>
         </div>
       </div>
@@ -152,10 +97,10 @@
         </div>
       </div>
       <div class="payment">
-        <div class="go_back btn cust_btn btn-sm" onclick="slideOut('share_cart')">
+        <div class="go_back btn btn-danger btn-sm" onclick="slideOut('cart')">
           <i class="fa fa-angle-double-left"></i> Continue
         </div>
-        <div class="checkout btn cust_btn btn-sm">
+        <div class="checkout btn btn-danger btn-sm">
           Checkout <i class="fa fa-angle-double-right"></i>
         </div>
       </div>
@@ -163,7 +108,7 @@
 
     <div id="nvabar">
       <div id="brand">
-        <img src="img/LogoPure.png" alt="" />
+        <img src="img/LogoWhite.png" alt="" />
       </div>
 
       <div id="menu">
@@ -175,13 +120,13 @@
       <div id="personal_info">
         Hello Jevy,
       </div>
-      <div id="cart_info" onclick="slide('share_cart')">
+      <div id="cart_info" onclick="slide('cart')">
         <i class="fa fa-shopping-cart"></i>
         &nbsp;A$35 / 5 Items
 
       </div>
     </div>
-    <div id="share_left_filter">
+    <div id="left_filter">
       <div class="dish_filter">
         <h4>Dish Filter</h4>
         <hr>
@@ -191,17 +136,49 @@
           <li>Singapore</li>
           <li>Australia</li>
       </div>
-      <div id="share_order_filter">
+      <div id="share_order">
         <h4><a href="#">Share Order</a></h4>
         <hr>
-        <li>All Restaurants</li>
-        <li>Order Sharing</li>
-        <li>Not Sharning</li>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <a href="choose_res.html"><img src="img/plus.png" alt="" /></a>
+        </div>
       </div>
+      <div id="hot_dish">
+        <h4><a href="#">Hot Dishes</a></h4>
+        <hr>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/test2.jpg" alt="" />
+        </div>
+        <div class="hot">
+          <img src="img/more.png" alt="" />
+        </div>
+      </div>
+
     </div>
 
-
-    <div id="share_main">
+    <div id="main">
       <div class="main_header">
 
       <div class="suburb">
@@ -209,14 +186,13 @@
       </div>
       <div class="search">
         <input type="text" name="name" value="Search Dish" id="search_field" onclick="empty_input()">&nbsp;
-        <i class="fa fa-search fa-2x search_color "> </i>
+        <i class="fa fa-search fa-2x search_color"></i>
       </div>
 
       </div>
       <div class="shops">
-
+        <a href="new_restaurant.html?shopId=1">
         <div class="shop">
-          <a href="#" onclick="pop('1')">
           <div class="shop_logo">
             <img src="img/test1.jpg" alt="" />
           </div>
@@ -253,15 +229,14 @@
           </div>
         </a>
           <div class="sharing">
-            <li style="font-size:24px">Order Sharing</li>
-            <li><i>4</i>&nbsp people sharing</li>
-            <li><i>A$1</i>&nbsp; only to deliver</li>
-            <li><i>1</i>&nbsp; hours left</li>
-            <button class="btn cust_btn btn-sm" onclick="join_in('1')">Join In Now</button>
+            <li>Group Delivery</li>
+            <li><i>4</i>&nbsp groups are sharing</li>
+            <li><i>$1</i>&nbsp; minimal delivery fee</li>
+            <button class="btn cust_btn btn-sm" onclick="join_in_share('1')">Join In Now</button>
           </div>
         </div>
         <div class="shop">
-
+          <a href="new_restaurant.html?shopId=1">
           <div class="shop_logo">
             <img src="img/test1.jpg" alt="" />
           </div>
@@ -296,13 +271,7 @@
             </div>
             </div>
           </div>
-          <!-- <div class="sharing">
-            <li style="font-size:24px">Order Sharing</li>
-            <li><i>4</i>&nbsp people sharing</li>
-            <li><i>A$1</i>&nbsp; only to deliver</li>
-            <li><i>1</i>&nbsp; hours left</li>
-            <button class="btn btn-danger btn-sm">Join In Now</button>
-          </div> -->
+          </a>
         </div>
         <div class="shop">
           <div class="shop_logo">
@@ -340,18 +309,14 @@
             </div>
           </div>
           <div class="sharing">
-            <li style="font-size:24px">Order Sharing</li>
-            <li><i>4</i>&nbsp people sharing</li>
-            <li><i>A$1</i>&nbsp; only to deliver</li>
-            <li><i>1</i>&nbsp; hours left</li>
-            <button class="btn cust_btn btn-sm" onclick="join_in('1')">Join In Now</button>
+            <li>Group Delivery</li>
+            <li><i>4</i>&nbsp groups are sharing</li>
+            <li><i>$1</i>&nbsp; minimal delivery fee</li>
+            <button class="btn cust_btn btn-sm" onclick="join_in_share('1')">Join In Now</button>
           </div>
         </div>
       </div>
     </div>
-
-
-
     <div id="foot">
 
     </div>
@@ -359,62 +324,15 @@
     <!-- script references -->
   	<script src="js/webjars/jquery.min.js"></script>
   	<script src="js/webjars/bootstrap.min.js"></script>
-    <script src="js/webjars/bootstrap-datepicker.js"></script>
-    <script src="js/webjars/jquery.timepicker.js"></script>
-    <script src="js/webjars/datepair.js"></script>
-    <script src="js/webjars/jquery.datepair.js"></script>
-
   	<!-- <script src="js/lib/jquery.navgoco.js"></script> -->
   	<script src="js/commonRest.js"></script>
   	<script src="js/commonPath.js"></script>
   	<script src="js/restaurant.js"></script>
     <script src="js/actions.js"></script>
-
     <script type="text/javascript">
-
-      // initialize input widgets first
-    $('#date_time .time').timepicker({
-        'showDuration': true,
-        'timeFormat': 'g:ia'
-    });
-    $('#date_time .date').datepicker({
-        'format': 'm/d/yyyy',
-        'autoclose': true
-    });
-    // initialize datepair
-    var basicExampleEl = document.getElementById('date_time');
-    var datepair = new Datepair(basicExampleEl);
-    $('#date_time').datepair();
-
-
-    var choosed_shopId
-    //Div pop hide code -- Customed for this page
-    function pop(shopId) {
-      document.getElementById('popDiv').style.display = 'block';
-      document.getElementById("popup").style.display = 'block';
-      choosed_shopId = shopId;
-    }
-
-    function hide() {
-      document.getElementById('popDiv').style.display = 'none';
-      document.getElementById("popup").style.display = 'none';
-    }
-    //To detect escape button
-    document.onkeydown = function(evt) {
-      evt = evt || window.event;
-      if (evt.keyCode == 27) {
-        hide('popDiv');
+      function join_in_share(shopId){
+        window.open('choose_dish.html?shopId='+shopId, '_self', false);
       }
-    };
-
-    function create_share_order(){
-      hide();
-      
-      //Save create share order information to database
-
-      window.open('choose_dish.html?shopId='+choosed_shopId, '_self', false);
-    }
-
     </script>
   </body>
 </html>
